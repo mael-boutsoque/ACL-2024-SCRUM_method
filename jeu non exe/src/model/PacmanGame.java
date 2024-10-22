@@ -18,6 +18,8 @@ import engine.Game;
  */
 public class PacmanGame implements Game {
 
+	private int entity_delay = 0;
+
 	/**
 	 * constructeur avec fichier source pour le help
 	 * 
@@ -43,12 +45,8 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void evolve(ArrayList<Cmd> commandes , Entities entities) {
-		//System.out.println("("+String.valueOf(entities.get_player().get_x())+","+String.valueOf(entities.get_player().get_y())+")");
-		//System.out.println("Execute "+commande);
-
-
 		//deplacement joueur
-		System.out.println(commandes.toString());
+		//System.out.println(commandes.toString());
 		int x=0,y=0;
 		Cmd commande = Cmd.IDLE;
 		for(int i=0;i<commandes.size();i++){
@@ -84,12 +82,16 @@ public class PacmanGame implements Game {
 				entities.get_by_id(i).show_hitbox = true ;
 			}
 		}
-		entities.get_player().show_hitbox = false;
 		
 		//fait évoluer les entitiés
-		for(int i =0;i<entities.size();i++) {
-			entities.get_by_id(i).evolve(entities);
+		if(entity_delay>1){
+			entity_delay=0;
+
+			for(int i =0;i<entities.size()-1;i++) {
+				entities.get_by_id(i).evolve(entities);
+			}
 		}
+		else entity_delay++;
 	}
 
 	/**
