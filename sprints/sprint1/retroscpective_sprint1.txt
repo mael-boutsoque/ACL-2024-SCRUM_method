@@ -1,10 +1,11 @@
 ##Rétrospective du sprint 1##
 
 #Echanges entre les membres du groupe
-- points positifs : on a des échanges réguliers entre tous les membres du groupe
+- points positifs : la totalité des fonctionnalités que l'on désirait mettre en place ont été implémentées.
+On a des échanges réguliers entre tous les membres du groupe.
 
-- points négatifs : 
+- points négatifs : perte de temps au début du sprint due au temps d'analyse du code fourni et d'une répartition des tâches qui n'était pas définie dès le début du sprint.
 
 
 #Décisions prises pour le sprint 2 : 
-- 
+- établir une répartition des tâches claire dès le début du prochain sprint
