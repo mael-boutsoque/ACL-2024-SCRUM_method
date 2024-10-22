@@ -10,4 +10,4 @@ How to launch:
 
 5) run command : mvn exec:java
 
-6) utiliser les touches "z q s d" pour se déplacer dans le jeu
+6) use "z q s d" to move . 
