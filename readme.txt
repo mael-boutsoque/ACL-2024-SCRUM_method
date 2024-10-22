@@ -1,6 +1,6 @@
 How to launch:
 
-1) Make sure "Apache Maven 3.9.9" and "Java version: 21.0.2" are installed.
+1) Make sure "Apache Maven 3.9.9" and "Java version: 21.0.2" are installed. (those are the latest versions)
 
 2) Open cmd and go to the directory ACL-2024-SCRUM_method\jeu
 
