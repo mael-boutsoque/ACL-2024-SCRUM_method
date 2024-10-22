@@ -9,3 +9,5 @@ How to launch:
 4) run command : mvn install
 
 5) run command : mvn exec:java
+
+6) utiliser les touches "z q s d" pour se déplacer dans le jeu
