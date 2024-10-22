@@ -1,4 +1,4 @@
-package model;
+package fr.ul.acl.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-import engine.Cmd;
-import engine.Game;
+import fr.ul.acl.engine.Cmd;
+import fr.ul.acl.engine.Game;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -56,22 +56,32 @@ public class PacmanGame implements Game {
 				case IDLE:
 					break;
 				case UP:
-					y += -1;
+					y += -2;
 					break;
 				case DOWN:
-					y += 1;
+					y += 2;
 					break;
 				case LEFT:
-					x += -1;
+					x += -2;
 					break;
 				case RIGHT:
-					x += 1;
+					x += 2;
 					break;
 			}
 		}
 
+		if(Math.abs(x)==1 && Math.abs(y)==1){
+			x = (int) (0.5*x);
+			y = (int) (0.5*y);
+		}
+
 		int speed = entities.get_player().get_speed();
-		if (entities.get_player().can_move(x*speed, y*speed, entities)){entities.player_move(x*speed, y*speed, entities);}
+		if (entities.get_player().can_move(0, y*speed, entities)){
+			entities.player_move(0, y*speed, entities);
+		}
+		if (entities.get_player().can_move(x*speed, 0, entities)){
+			entities.player_move(x*speed, 0, entities);
+		}
 
 		// show entities hitbox if collision to debug
 		for(int j=0;j<entities.size();j++){

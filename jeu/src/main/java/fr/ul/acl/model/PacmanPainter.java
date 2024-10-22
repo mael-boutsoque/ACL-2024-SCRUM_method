@@ -1,11 +1,11 @@
-package model;
+package fr.ul.acl.model;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.BasicStroke;
 
-import engine.GamePainter;
+import fr.ul.acl.engine.GamePainter;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -47,7 +47,7 @@ public class PacmanPainter implements GamePainter {
 			crayon.drawImage(entitee.get_image(), entitee.get_x(), entitee.get_y(), entitee.get_width(), entitee.get_height(), null, null);
 
 			// show hitbox to debbug
-			if(entitee.show_hitbox) {
+			if(true) {
 				crayon.setColor(Color.BLUE);
 				crayon.drawRect(entitee.hitbox.get_x(), entitee.hitbox.get_y(), entitee.hitbox.get_width(), entitee.hitbox.get_height());
 			}

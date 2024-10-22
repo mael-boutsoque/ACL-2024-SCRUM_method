@@ -1,4 +1,4 @@
-package model;
+package fr.ul.acl.model;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,14 +24,14 @@ public class Entity {
     protected BufferedImage image;
 
     // debug
-    public boolean show_hitbox = false;
+    public boolean show_hitbox = true;
 
     Entity(int x,int y,int width,int height){
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
-        image_path = "model\\images\\entity.png";
+        image_path = "images\\entity.png";
         load_image();
         this.load_hitbox();
     }

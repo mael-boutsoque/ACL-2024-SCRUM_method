@@ -1,10 +1,10 @@
-package start;
+package fr.ul.acl;
 
-import model.PacmanPainter;
-import model.Entities;
-import engine.GameEngineGraphical;
-import model.PacmanController;
-import model.PacmanGame;
+import fr.ul.acl.model.PacmanPainter;
+import fr.ul.acl.model.Entities;
+import fr.ul.acl.engine.GameEngineGraphical;
+import fr.ul.acl.model.PacmanController;
+import fr.ul.acl.model.PacmanGame;
 
 /**
  * lancement du moteur avec le jeu

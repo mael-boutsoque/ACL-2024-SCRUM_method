@@ -1,9 +1,9 @@
-package model;
+package fr.ul.acl.model;
 
 public class MonstreTest extends Entity{
 	MonstreTest(int x,int y,int width,int height){
 		super(x,y,width,height);
-		   image_path = "model\\images\\OuroudjSama.png";
+		   image_path = "images\\entity.png";
 	        this.load_image();
 	}
 	

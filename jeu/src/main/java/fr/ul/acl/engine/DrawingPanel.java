@@ -1,4 +1,4 @@
-package engine;
+package fr.ul.acl.engine;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import model.Entities;
+import fr.ul.acl.model.Entities;
 
 public class DrawingPanel extends JPanel {
 

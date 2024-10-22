@@ -1,8 +1,8 @@
-package engine;
+package fr.ul.acl.engine;
 
 import java.util.ArrayList;
 
-import model.Entities;
+import fr.ul.acl.model.Entities;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas

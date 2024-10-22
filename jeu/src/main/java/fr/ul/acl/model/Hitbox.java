@@ -1,4 +1,4 @@
-package model;
+package fr.ul.acl.model;
 
 public class Hitbox {
 	int x;
