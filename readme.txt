@@ -4,8 +4,8 @@ How to launch:
 
 2) Open cmd and go to the directory ACL-2024-SCRUM_method\jeu
 
-4) run command : mvn install
+3) run command : mvn install
 
-5) run command : mvn exec:java
+4) run command : mvn exec:java
 
-6) use "z q s d" to move . 
+5) use "z q s d" to move . 
