@@ -25,10 +25,10 @@ public class Hitbox {
 		return height;
 	}
 	public boolean colide(Hitbox entity2){
-        if(this.get_x()<=entity2.get_x()+entity2.width 
-        		&& this.get_x()+this.width >= entity2.get_x()
-        		&& this.get_y() <= entity2.get_y()+entity2.height
-        		&& this.height+this.get_y() >= entity2.get_y()) {return true;}
+        if(this.get_x()<entity2.get_x()+entity2.width 
+        		&& this.get_x()+this.width > entity2.get_x()
+        		&& this.get_y() < entity2.get_y()+entity2.height
+        		&& this.height+this.get_y() > entity2.get_y()) {return true;}
         return false;
     }
 	
