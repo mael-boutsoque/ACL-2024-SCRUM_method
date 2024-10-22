@@ -4,4 +4,4 @@
 - création d'une classe entité ainsi que d'une classe player dérivée d'entité 
 - le joueur est placé au centre du jeu et le reste des éléments se déplacent en fonction des touches entrées par l'utilisateur
 - création d'une classe entitée, dérivée de la classe entité, qui permet de placer des obstacles non franchissables par le personnage
-- on affiche une carte de taille limitée
+- on affiche une carte de taille limitée avec des bordures infranchissables par le joueur.
