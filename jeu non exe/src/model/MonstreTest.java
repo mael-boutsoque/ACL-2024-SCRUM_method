@@ -10,12 +10,12 @@ public class MonstreTest extends Entity{
 	public void evolve(Entities entities) {
 		
 		int dx = 0 , dy = 0;
-		if(entities.get_player().get_x()>this.get_x()){
+		if(entities.get_player().get_x()+30>this.get_x()+0.5*width){
 			dx = 1;
 		}
 		else dx = -1;
 
-		if(entities.get_player().get_y()>this.get_y()){
+		if(entities.get_player().get_y()+30>this.get_y()+0.5*height){
 			dy = 1;
 		}
 		else dy = -1;
