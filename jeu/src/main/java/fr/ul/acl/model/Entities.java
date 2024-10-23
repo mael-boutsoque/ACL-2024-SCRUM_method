@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Entities {
     private ArrayList<Entity> liste;
 
+    /*
+     * the map is always the first entity
+     * the player is always the last entity
+     */
     public Entities(){
         liste = new ArrayList<Entity>() ;
         liste.add(new Map(0,0,1920*2,1080*2));

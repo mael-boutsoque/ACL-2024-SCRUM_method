@@ -24,6 +24,10 @@ public class Hitbox {
 	public int get_height(){
 		return height;
 	}
+
+	/*
+	 * test le collision entre 2 hitbox
+	 */
 	public boolean colide(Hitbox entity2){
         if(this.get_x()<entity2.get_x()+entity2.width 
         		&& this.get_x()+this.width > entity2.get_x()

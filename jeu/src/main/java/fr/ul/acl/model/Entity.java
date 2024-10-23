@@ -36,6 +36,9 @@ public class Entity {
         this.load_hitbox();
     }
 
+    /*
+     * bouge le l'entitee sur la carte
+     */
     public void move(int x,int y,Entities entities){
     	if (this.can_move(x, y, entities)) {
         this.x += x;
@@ -44,12 +47,18 @@ public class Entity {
     	}
     }
 
+    /*
+     * bouge l'entitee en fonction de la position du joueur (utilisé dans )
+     */
     public void move_relative(int x,int y,Entities entities){
         this.x_relative += x;
         this.y_relative += y;
         this.hitbox.move(this.get_x(),this.get_y());
     }
     
+    /*
+     * test si l'entitee peut bouger d'un deplacement x,y
+     */
     public boolean can_move(int x, int y,Entities entities) {
     	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
 		for(int i=0;i<entities.size();i++) {
@@ -95,7 +104,7 @@ public class Entity {
     }
 
     public int get_speed() {
-        throw new UnsupportedOperationException("Unimplemented method 'get_speed'");
+        throw new UnsupportedOperationException("this entity have no speed");
     }
 
     public boolean colide(Entity entity2) {
