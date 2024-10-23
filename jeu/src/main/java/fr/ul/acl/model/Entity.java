@@ -116,4 +116,7 @@ public class Entity {
     public void on_collision(Entities entities){
 
     }
+    public void kill(Entities entities) {
+    	entities.supp_entities(this);
+    }
 }
