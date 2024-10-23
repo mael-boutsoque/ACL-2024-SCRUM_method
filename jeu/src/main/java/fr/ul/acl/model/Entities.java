@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Entities {
     private ArrayList<Entity> liste;
+    private Player player;
 
     /*
      * the map is always the first entity
@@ -28,8 +29,8 @@ public class Entities {
 
         //liste.add(new MonstreTest(700,300,110,110));
         //liste.add(new MonstreTest(500,0,20,20));
-        liste.add(new Player( 1920/4 , 1080/4));
-        this.player_move(1920, 1080, this);
+        player = new Player( 1920/4 , 1080/4);
+        this.player.move(1902, 1080,this);
     }
 
     public Entity get_by_id(int id){
@@ -47,8 +48,8 @@ public class Entities {
         return liste.size();
     }
 
-    public Entity get_player(){
-        return liste.get(this.size()-1);
+    public Player get_player(){
+        return player;
     }
     
     public void player_move(int x,int y,Entities entities){

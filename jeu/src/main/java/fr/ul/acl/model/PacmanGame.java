@@ -71,6 +71,7 @@ public class PacmanGame implements Game {
 		}
 
 		if(Math.abs(x)==1 && Math.abs(y)==1){
+			System.out.println("slow down");
 			x = (int) (0.5*x);
 			y = (int) (0.5*y);
 		}
@@ -94,6 +95,8 @@ public class PacmanGame implements Game {
 		}
 		
 		//fait évoluer les entitiés
+		entities.get_player().evolve(entities);
+
 		if(entity_delay>1){
 			entity_delay=0;
 

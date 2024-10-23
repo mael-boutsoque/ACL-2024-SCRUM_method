@@ -51,14 +51,12 @@ public class PacmanPainter implements GamePainter {
 				crayon.setColor(Color.BLUE);
 				crayon.drawRect(entitee.hitbox.get_x(), entitee.hitbox.get_y(), entitee.hitbox.get_width(), entitee.hitbox.get_height());
 			}
+		
+			// dessine le joueur
+			entitee = entities.get_player();
+			crayon.drawImage(entitee.get_image(), entitee.get_x(), entitee.get_y(), entitee.get_width(), entitee.get_height(), null, null);
 			
-			/*
-			try {
-				crayon.setColor(Color.GREEN);
-				crayon.drawRect(entitee.hitboxTemp.get_x(), entitee.hitboxTemp.get_y(), entitee.hitboxTemp.get_width(), entitee.hitboxTemp.get_height());
-			}
-			catch(Exception e){}
-			*/
+			
 				
 		}
 
