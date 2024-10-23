@@ -24,5 +24,16 @@ public class MonstreTest extends Entity{
 		this.move(0,dy,entities);
 		
 	}
+	public void move(int x,int y,Entities entities){
+    	if (this.can_move(x, y, entities)) {
+        this.x += x;
+        this.y += y;
+        this.hitbox.move(this.get_x(),this.get_y());
+    	}
+    	else {
+    		this.kill(entities);
+    	}
+    }
+	
 		
 }
