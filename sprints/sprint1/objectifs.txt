@@ -12,4 +12,8 @@ Avoir et afficher une carte limitée.-> Théodore
 
 Avoir une classe obstacle fonctionnelle.-> Mael
 
+--> HC: pas vraiment une fonctionnalité, plutôt une tâche
+
 Un obstacle est un rectangle dans lequel le joueur ne peut pas rentrer. -> Ouroudj
+
+--> la fonctionnalité pour les deux derniers items est plutôt: le personnage ne peut pas bouger s'il rencontre un obstacle
