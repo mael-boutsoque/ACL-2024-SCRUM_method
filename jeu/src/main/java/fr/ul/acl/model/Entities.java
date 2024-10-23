@@ -7,14 +7,14 @@ public class Entities {
 
     public Entities(){
         liste = new ArrayList<Entity>() ;
-        liste.add(new Map(0,0,1920*2,1080*2));
+        liste.add(new Map(0,0,1200*4,600*4));
         liste.add(new Entity(0,0,100,100));
         liste.add(new Entity(300, 300,100,70));
         //bord de map
-        liste.add(new Entity(0, -1,1920*2,1));//haut
-        liste.add(new Entity(0, 1080*2+1,1920*2,1));//bas
-        liste.add(new Entity(-1, 0,1,1080*2));//gauche
-        liste.add(new Entity(1920*2, 0,1,1080*2));//droite
+        liste.add(new Invisible(0, -10,1200*4,10));//haut
+        liste.add(new Invisible(0, 600*4,1200*4,10));//bas
+        liste.add(new Invisible(-10, 0,10,600*4));//gauche
+        liste.add(new Invisible(1200*4, 0,10,600*4));//droite
         //liste.add(new MonstreTest(700,300,110,110));
         //liste.add(new MonstreTest(500,0,20,20));
         liste.add(new Player( 1920/4 , 1080/4));
