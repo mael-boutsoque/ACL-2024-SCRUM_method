@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.*;
+import javax.imageio.ImageIO;
 
 public class Entity {
     // position et dimension
@@ -83,12 +83,17 @@ public class Entity {
     }
 
     public void load_image(){
-        try {
-            image = ImageIO.read(new File(image_path));
-       }
-       catch(IOException e) {
-           System.err.println("image not load for "+this.getClass().getName());
-       }
+        if (image_path==null){
+            image = null;
+        }
+        else{
+            try {
+                image = ImageIO.read(new File(image_path));
+            }
+            catch(IOException e) {
+            System.err.println("image not load for "+this.getClass().getName());
+            }
+        }
     }
 
     public Image get_image() {
@@ -124,5 +129,8 @@ public class Entity {
 
     public void on_collision(Entities entities){
 
+    }
+    public void kill(Entities entities) {
+    	entities.supp_entities(this);
     }
 }

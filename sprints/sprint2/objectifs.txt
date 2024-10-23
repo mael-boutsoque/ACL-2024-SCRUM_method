@@ -1,0 +1,10 @@
+VISION
+
+Avoir un plateau et des personnages avec des images associées
+
+OBJECTIFS
+
+Avoir des textures graphiques pour chaque éléments du jeu
+
+être capable de détruire une entitée
+
