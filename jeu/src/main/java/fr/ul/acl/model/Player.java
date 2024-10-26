@@ -9,7 +9,7 @@ public class Player extends Entity implements MouseInputListener {
     private double angle = 1;
 
     Player(int x , int y){
-        super(x - 30, y - 30 , 60 , 60);
+        super(x - 70, y - 70 , 60 , 60);
 
         //chargement image
         image_path = "images\\player.png";
