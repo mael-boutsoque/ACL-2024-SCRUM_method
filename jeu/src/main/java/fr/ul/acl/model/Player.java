@@ -13,7 +13,7 @@ public class Player extends Entity {
 
         // stats
         this.speed = 1;
-        this.gun = new Gun();
+        this.gun = new Gun(this);
     }
 
     public void move(int x,int y,Entities entities){

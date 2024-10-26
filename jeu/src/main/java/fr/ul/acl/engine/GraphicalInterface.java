@@ -16,6 +16,8 @@ public class GraphicalInterface  {
 	 * le Panel pour l'afficheur
 	 */
 	private DrawingPanel panel;
+
+	private JFrame f;
 	
 	/**
 	 * la construction de l'interface graphique: JFrame avec panel pour le game
@@ -25,7 +27,7 @@ public class GraphicalInterface  {
 	 * 
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
-		JFrame f=new JFrame();
+		f=new JFrame();
 		//f.setPreferredSize(new Dimension(400,800));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -48,6 +50,10 @@ public class GraphicalInterface  {
 	 */
 	public void paint(Game game , Entities entities) {
 		this.panel.drawGame(entities);	
+	}
+
+	public JFrame get_jframe(){
+		return this.f;
 	}
 	
 }

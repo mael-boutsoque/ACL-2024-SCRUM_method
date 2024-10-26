@@ -8,7 +8,6 @@ public class Entities {
 
     /*
      * the map is always the first entity
-     * the player is always the last entity
      */
     public Entities(){
         liste = new ArrayList<Entity>() ;
