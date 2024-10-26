@@ -56,7 +56,8 @@ public class PacmanPainter implements GamePainter {
 			entitee = entities.get_player();
 			crayon.drawImage(entitee.get_image(), entitee.get_x(), entitee.get_y(), entitee.get_width(), entitee.get_height(), null, null);
 			
-			
+			//dessine le pistolet
+			entities.get_player().getGun().draw(crayon, entities.get_player());
 				
 		}
 
