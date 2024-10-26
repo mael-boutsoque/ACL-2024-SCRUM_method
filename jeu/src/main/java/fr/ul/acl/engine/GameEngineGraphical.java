@@ -75,7 +75,7 @@ public class GameEngineGraphical {
 			this.gui.paint(this.game , entities);
 			this.gui.get_jframe().addMouseMotionListener(player);
 			// met en attente
-			Thread.sleep(4);
+			Thread.sleep(6);
 		}
 	}
 
