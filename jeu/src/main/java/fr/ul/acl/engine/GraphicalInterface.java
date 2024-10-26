@@ -28,13 +28,11 @@ public class GraphicalInterface  {
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
 		f=new JFrame();
-		//f.setPreferredSize(new Dimension(400,800));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// attacher le panel contenant l'afficheur du game
 		this.panel=new DrawingPanel(gamePainter);
 		f.setContentPane(this.panel);
-		f.setUndecorated(true);
 		
 		// attacher controller au panel du game
 		this.panel.addKeyListener(gameController);	
