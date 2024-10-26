@@ -16,6 +16,7 @@ public class Entity {
     protected int height = 100;
     protected int width = 100;
     protected boolean is_colidable = true;
+    protected boolean is_dead = false;
     Hitbox hitbox;
     Hitbox hitboxTemp;
 

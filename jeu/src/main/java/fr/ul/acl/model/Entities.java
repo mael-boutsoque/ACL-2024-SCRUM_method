@@ -29,7 +29,7 @@ public class Entities {
 
         //liste.add(new MonstreTest(700,300,110,110));
         //liste.add(new MonstreTest(500,0,20,20));
-        player = new Player( win_width/2 , win_height/2 );
+        player = new Player( win_width/2 , win_height/2 , this);
         this.player.move(1902, 1080,this);
     }
 
@@ -42,6 +42,10 @@ public class Entities {
     			liste.remove(i);
     		}
     	}
+    }
+
+    public void add_entity(Entity entity){
+        liste.add(entity);
     }
 
     public int size(){
@@ -62,7 +66,14 @@ public class Entities {
         for(int i=0;i<this.size();i++){
 			this.get_by_id(i).draw(crayon);
         }
-
         this.get_player().draw(crayon);
+    }
+
+    public void kill_dead_entities(){
+        for(int i=liste.size()-1 ; i>=0 ; i--){
+            if (liste.get(i).is_dead){
+                liste.remove(i);
+            }
+        }
     }
 }

@@ -31,7 +31,7 @@ public class MonstreTest extends Entity{
         this.hitbox.move(this.get_x(),this.get_y());
     	}
     	else {
-    		this.kill(entities);
+    		this.is_dead = true;
     	}
     }
 	

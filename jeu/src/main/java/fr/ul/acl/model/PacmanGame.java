@@ -89,6 +89,7 @@ public class PacmanGame implements Game {
 			}
 		}
 		
+		entities.kill_dead_entities();
 		//fait évoluer les entitiés
 		entities.get_player().evolve(entities);
 

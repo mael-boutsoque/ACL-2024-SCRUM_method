@@ -7,9 +7,12 @@ import javax.swing.event.MouseInputListener;
 public class Player extends Entity implements MouseInputListener {
     private int speed;
     private double angle = 1;
+    private Gun gun;
+    private Entities entities;
 
-    Player(int x , int y){
+    Player(int x , int y , Entities entities){
         super(x - 70, y - 70 , 80 , 80);
+        this.entities = entities;
 
         //chargement image
         image_path = "images\\player.png";
@@ -18,11 +21,12 @@ public class Player extends Entity implements MouseInputListener {
 
         // stats
         this.speed = 2;
+
+        this.gun = new Gun();
     }
 
     public void draw(Graphics2D crayon){
         if(this.show_hitbox) {
-			//crayon.setColor(Color.BLUE);
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 		}
 
@@ -41,6 +45,10 @@ public class Player extends Entity implements MouseInputListener {
     	entities.player_move(i, j, entities);
     }
 
+    public void evolve(Entities entities) {
+    	this.gun.update();
+    }
+
     public int get_speed() {
         return speed;
     }
@@ -55,7 +63,12 @@ public class Player extends Entity implements MouseInputListener {
         angle = -Math.atan2(mx,my)-3 ;
     }
 
-    private void shoot(){
+    private void shoot(Entities entities){
+        this.gun.try_to_shoot(angle - 1.5 , entities);
+    }
+
+    public Gun get_gun(){
+        return gun;
     }
 
     @Override
@@ -66,7 +79,7 @@ public class Player extends Entity implements MouseInputListener {
     @Override
     public void mouseDragged(MouseEvent e) {
         this.update_angle(e);
-        this.shoot();
+        this.shoot(this.entities);
     }
 
 
