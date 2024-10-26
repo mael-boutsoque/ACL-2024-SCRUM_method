@@ -3,6 +3,8 @@ package fr.ul.acl.model;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fr.ul.acl.engine.Cmd;
 import fr.ul.acl.engine.GameController;
 
@@ -43,11 +45,16 @@ public class PacmanController implements GameController {
 	 */
 	public void keyPressed(KeyEvent e) {
 		//gestion touches
+		//System.out.println(e.toString());
 			char keychar = e.getKeyChar();
 			if( keychar == 'z' && !commandeEnCours.contains(Cmd.UP)) this.commandeEnCours.add(Cmd.UP);
 			if( keychar == 's' && !commandeEnCours.contains(Cmd.DOWN)) this.commandeEnCours.add(Cmd.DOWN);
 			if( keychar == 'q' && !commandeEnCours.contains(Cmd.LEFT)) this.commandeEnCours.add(Cmd.LEFT);
 			if( keychar == 'd' && !commandeEnCours.contains(Cmd.RIGHT)) this.commandeEnCours.add(Cmd.RIGHT);
+			if( e.getKeyCode()==27) {
+				System.out.println("echap");
+				System.exit(0);
+ 			}
 	}
 
 	@Override

@@ -34,6 +34,7 @@ public class GraphicalInterface  {
 		// attacher le panel contenant l'afficheur du game
 		this.panel=new DrawingPanel(gamePainter);
 		f.setContentPane(this.panel);
+		f.setUndecorated(true);
 		
 		// attacher controller au panel du game
 		this.panel.addKeyListener(gameController);	

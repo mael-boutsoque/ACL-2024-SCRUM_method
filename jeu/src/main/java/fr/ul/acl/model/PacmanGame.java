@@ -19,6 +19,7 @@ import fr.ul.acl.engine.Game;
 public class PacmanGame implements Game {
 
 	private int entity_delay = 0;
+	private boolean game_is_close = false;
 
 	/**
 	 * constructeur avec fichier source pour le help
@@ -107,7 +108,7 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-		return false;
+		return game_is_close;
 	}
 
 }
