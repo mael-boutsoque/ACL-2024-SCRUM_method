@@ -26,10 +26,11 @@ public class Player extends Entity implements MouseInputListener {
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 		}
 
+        int correction = 40;
 		crayon.translate(this.get_x()+this.get_width()/2, this.get_y()+this.get_height()/2);
 		crayon.rotate(this.get_angle());
-		crayon.translate(-this.get_width()/2,-this.get_height()/2);
-		crayon.drawImage(this.get_image(), 0, 0, this.get_width(), this.get_height(), null, null);
+		crayon.translate(-(this.get_width()+correction)/2,-(this.get_height()+correction)/2);
+		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);
     }
 
     public void move(int x,int y,Entities entities){
@@ -55,7 +56,6 @@ public class Player extends Entity implements MouseInputListener {
     }
 
     private void shoot(){
-        System.out.println("tir");
     }
 
     @Override
