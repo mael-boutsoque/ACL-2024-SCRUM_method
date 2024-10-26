@@ -39,16 +39,10 @@ public class PacmanPainter implements GamePainter {
 		// creation du crayon pour dessiner
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setStroke(new BasicStroke(3));
-		crayon.setColor(Color.RED);
-
-		//TEST #####################################################################################################################
+		crayon.setColor(Color.GREEN);
 
 		// parcour les entities pour les dessiner
 		entities.draw(crayon);
-
-		// dessine le joueur
-
-		
 
 		crayon.dispose();
 	}

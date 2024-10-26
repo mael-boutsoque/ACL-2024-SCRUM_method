@@ -9,7 +9,7 @@ public class Player extends Entity implements MouseInputListener {
     private double angle = 1;
 
     Player(int x , int y){
-        super(x - 70, y - 70 , 60 , 60);
+        super(x - 70, y - 70 , 80 , 80);
 
         //chargement image
         image_path = "images\\player.png";
@@ -17,7 +17,7 @@ public class Player extends Entity implements MouseInputListener {
         //this.show_hitbox = true;
 
         // stats
-        this.speed = 1;
+        this.speed = 2;
     }
 
     public void draw(Graphics2D crayon){
