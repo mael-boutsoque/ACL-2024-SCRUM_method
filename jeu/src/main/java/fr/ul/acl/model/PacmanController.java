@@ -3,8 +3,6 @@ package fr.ul.acl.model;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import fr.ul.acl.engine.Cmd;
 import fr.ul.acl.engine.GameController;
 
