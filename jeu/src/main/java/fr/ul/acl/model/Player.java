@@ -1,7 +1,7 @@
 package fr.ul.acl.model;
 
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
-
 import javax.swing.event.MouseInputListener;
 
 public class Player extends Entity implements MouseInputListener {
@@ -14,9 +14,22 @@ public class Player extends Entity implements MouseInputListener {
         //chargement image
         image_path = "images\\player.png";
         this.load_image();
+        //this.show_hitbox = true;
 
         // stats
         this.speed = 1;
+    }
+
+    public void draw(Graphics2D crayon){
+        if(this.show_hitbox) {
+			//crayon.setColor(Color.BLUE);
+			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
+		}
+
+		crayon.translate(this.get_x()+this.get_width()/2, this.get_y()+this.get_height()/2);
+		crayon.rotate(this.get_angle());
+		crayon.translate(-this.get_width()/2,-this.get_height()/2);
+		crayon.drawImage(this.get_image(), 0, 0, this.get_width(), this.get_height(), null, null);
     }
 
     public void move(int x,int y,Entities entities){

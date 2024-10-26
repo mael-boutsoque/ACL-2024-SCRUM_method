@@ -1,5 +1,6 @@
 package fr.ul.acl.model;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 public class Entities {
@@ -55,5 +56,13 @@ public class Entities {
         for(int i=0;i<this.size();i++){
             this.get_by_id(i).move_relative(-x, -y,entities);
         }
+    }
+
+    public void draw(Graphics2D crayon){
+        for(int i=0;i<this.size();i++){
+			this.get_by_id(i).draw(crayon);
+        }
+
+        this.get_player().draw(crayon);
     }
 }

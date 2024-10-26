@@ -1,9 +1,10 @@
 package fr.ul.acl.model;
+
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class Entity {
@@ -32,6 +33,7 @@ public class Entity {
         this.width = width;
         image_path = "images\\entity.png";
         load_image();
+        this.show_hitbox = true;
         this.load_hitbox();
     }
 
@@ -68,6 +70,14 @@ public class Entity {
 			}
 		}
     	return true;
+    }
+
+    public void draw(Graphics2D crayon){
+        crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
+        if(!this.show_hitbox) {
+            //crayon.setColor(Color.BLUE);
+            crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
+        }
     }
 
     private Hitbox get_hitbox() {

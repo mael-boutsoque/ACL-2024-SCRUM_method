@@ -44,30 +44,10 @@ public class PacmanPainter implements GamePainter {
 		//TEST #####################################################################################################################
 
 		// parcour les entities pour les dessiner
-		Entity entitee;
-		for(int i=0;i<entities.size();i++){
-			entitee = entities.get_by_id(i);
-			crayon.drawImage(entitee.get_image(), entitee.get_x(), entitee.get_y(), entitee.get_width(), entitee.get_height(), null, null);
-
-			// show hitbox to debbug
-			if(!entitee.show_hitbox) {
-				crayon.setColor(Color.BLUE);
-				crayon.drawRect(entitee.hitbox.get_x(), entitee.hitbox.get_y(), entitee.hitbox.get_width(), entitee.hitbox.get_height());
-			}
-		}
+		entities.draw(crayon);
 
 		// dessine le joueur
-		Player player = entities.get_player();
 
-		if(true) {
-			crayon.setColor(Color.BLUE);
-			crayon.drawRect(player.hitbox.get_x(), player.hitbox.get_y(), player.hitbox.get_width(), player.hitbox.get_height());
-		}
-
-		crayon.translate(player.get_x()+player.get_width()/2, player.get_y()+player.get_height()/2);
-		crayon.rotate(player.get_angle());
-		crayon.translate(-player.get_width()/2,-player.get_height()/2);
-		crayon.drawImage(player.get_image(), 0, 0, player.get_width(), player.get_height(), null, null);
 		
 
 		crayon.dispose();
