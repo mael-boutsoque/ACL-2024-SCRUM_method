@@ -17,7 +17,7 @@ public class Main {
 		PacmanGame game = new PacmanGame("helpFilePacman.txt");
 		PacmanPainter painter = new PacmanPainter();
 		PacmanController controller = new PacmanController();
-		Entities gestion_enttities = new Entities();
+		Entities gestion_enttities = new Entities(painter.getWidth(),painter.getHeight());
 
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller,gestion_enttities);

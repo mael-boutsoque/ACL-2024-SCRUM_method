@@ -10,7 +10,7 @@ public class Entities {
     /*
      * the map is always the first entity
      */
-    public Entities(){
+    public Entities(int win_width,int win_height){
         liste = new ArrayList<Entity>() ;
         liste.add(new Map(0,0,1200*4,600*4));
         liste.add(new Entity(0,0,100,100));
@@ -29,7 +29,7 @@ public class Entities {
 
         //liste.add(new MonstreTest(700,300,110,110));
         //liste.add(new MonstreTest(500,0,20,20));
-        player = new Player( 1920/4 , 1080/4);
+        player = new Player( win_width/2 , win_height/2 );
         this.player.move(1902, 1080,this);
     }
 
