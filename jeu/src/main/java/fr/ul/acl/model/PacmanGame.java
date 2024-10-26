@@ -70,12 +70,6 @@ public class PacmanGame implements Game {
 			}
 		}
 
-		if(Math.abs(x)==1 && Math.abs(y)==1){
-			System.out.println("slow down");
-			x = (int) (0.5*x);
-			y = (int) (0.5*y);
-		}
-
 		int speed = entities.get_player().get_speed();
 		if (entities.get_player().can_move(0, y*speed, entities)){
 			entities.player_move(0, y*speed, entities);

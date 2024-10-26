@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fr.ul.acl.model.Entities;
-import fr.ul.acl.model.Gun;
+import fr.ul.acl.model.Player;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -58,7 +58,7 @@ public class GameEngineGraphical {
 	/**
 	 * permet de lancer le game
 	 */
-	public void run(Gun gun) throws InterruptedException {
+	public void run(Player player) throws InterruptedException {
 
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
@@ -73,7 +73,7 @@ public class GameEngineGraphical {
 			//this.gamePainter.set_pos(entities.get_player().get_x(),entities.get_player().get_y());
 			// affiche le game
 			this.gui.paint(this.game , entities);
-			this.gui.get_jframe().addMouseMotionListener(gun);
+			this.gui.get_jframe().addMouseMotionListener(player);
 			// met en attente
 			Thread.sleep(4);
 		}

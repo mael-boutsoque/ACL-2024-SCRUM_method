@@ -18,7 +18,6 @@ public class Entity {
     Hitbox hitbox;
     Hitbox hitboxTemp;
 
-
     // image
     protected String image_path;
     protected BufferedImage image;

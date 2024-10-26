@@ -1,8 +1,12 @@
 package fr.ul.acl.model;
 
-public class Player extends Entity {
+import java.awt.event.MouseEvent;
+
+import javax.swing.event.MouseInputListener;
+
+public class Player extends Entity implements MouseInputListener {
     private int speed;
-    private Gun gun;
+    private double angle = 1;
 
     Player(int x , int y){
         super(x - 30, y - 30 , 60 , 60);
@@ -13,7 +17,6 @@ public class Player extends Entity {
 
         // stats
         this.speed = 1;
-        this.gun = new Gun(this);
     }
 
     public void move(int x,int y,Entities entities){
@@ -28,7 +31,61 @@ public class Player extends Entity {
         return speed;
     }
 
-    public Gun getGun() {
-        return gun;
+    public double get_angle(){
+        return angle;
+    }
+
+    private void update_angle(MouseEvent e){
+        int mx= e.getX() - this.x - this.get_width()/2;
+        int my= e.getY() - this.y - this.get_height()/2;
+        angle = -Math.atan2(mx,my)-3 ;
+    }
+
+    private void shoot(){
+        System.out.println("tir");
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.update_angle(e);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        this.update_angle(e);
+        this.shoot();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // inutile
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }

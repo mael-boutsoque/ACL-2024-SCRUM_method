@@ -21,8 +21,8 @@ public class Main {
 
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller,gestion_enttities);
-		engine.run(gestion_enttities.get_player().getGun());// ajoute le pistolet aux classes a update pour avoir la position de la souri
-		engine.get_jframe().addMouseMotionListener(gestion_enttities.get_player().getGun());
+		engine.run(gestion_enttities.get_player());// ajoute le joueur aux classes a update pour avoir la position de la souri
+		engine.get_jframe().addMouseMotionListener(gestion_enttities.get_player());
 	}
 
 }
