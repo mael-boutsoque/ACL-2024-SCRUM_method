@@ -25,7 +25,7 @@ public class Entity {
     protected BufferedImage image;
 
     // debug
-    public boolean show_hitbox = true;
+    public boolean show_hitbox = false;
 
     Entity(int x,int y,int width,int height){
         this.x = x;
@@ -75,7 +75,7 @@ public class Entity {
 
     public void draw(Graphics2D crayon){
         crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
-        if(!this.show_hitbox) {
+        if(this.show_hitbox) {
             //crayon.setColor(Color.BLUE);
             crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
         }
