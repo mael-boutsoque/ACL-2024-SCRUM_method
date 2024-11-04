@@ -17,7 +17,7 @@ public class Player extends Entity implements MouseInputListener {
         //chargement image
         image_path = "src\\main\\resources\\player.png";
         this.load_image();
-        //this.show_hitbox = true;
+        this.show_hitbox = false;
 
         // stats
         this.speed = 2;
