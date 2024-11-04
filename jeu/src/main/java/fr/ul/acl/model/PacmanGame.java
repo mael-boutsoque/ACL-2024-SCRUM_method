@@ -19,6 +19,7 @@ import fr.ul.acl.engine.Game;
 public class PacmanGame implements Game {
 
 	private int entity_delay = 0;
+	private boolean game_is_close = false;
 
 	/**
 	 * constructeur avec fichier source pour le help
@@ -70,11 +71,6 @@ public class PacmanGame implements Game {
 			}
 		}
 
-		if(Math.abs(x)==1 && Math.abs(y)==1){
-			x = (int) (0.5*x);
-			y = (int) (0.5*y);
-		}
-
 		int speed = entities.get_player().get_speed();
 		if (entities.get_player().can_move(0, y*speed, entities)){
 			entities.player_move(0, y*speed, entities);
@@ -93,7 +89,10 @@ public class PacmanGame implements Game {
 			}
 		}
 		
+		entities.kill_dead_entities();
 		//fait évoluer les entitiés
+		entities.get_player().evolve(entities);
+
 		if(entity_delay>1){
 			entity_delay=0;
 
@@ -110,7 +109,7 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-		return false;
+		return game_is_close;
 	}
 
 }

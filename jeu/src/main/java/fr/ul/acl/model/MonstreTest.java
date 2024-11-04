@@ -3,7 +3,7 @@ package fr.ul.acl.model;
 public class MonstreTest extends Entity{
 	MonstreTest(int x,int y,int width,int height){
 		super(x,y,width,height);
-		   image_path = "images\\entity.png";
+		   image_path = "src\\main\\resources\\OuroudjSama.png";
 	        this.load_image();
 	}
 	
@@ -31,7 +31,7 @@ public class MonstreTest extends Entity{
         this.hitbox.move(this.get_x(),this.get_y());
     	}
     	else {
-    		this.kill(entities);
+    		this.is_dead = true;
     	}
     }
 	

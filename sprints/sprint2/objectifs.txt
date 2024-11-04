@@ -1,0 +1,19 @@
+VISION
+
+Mise en place d'un système de combat primitif monstre/joueur et modification de la carte
+
+OBJECTIFS
+
+Avoir des textures graphiques pour chaque éléments du jeu et l'adapter -> Théodore
+
+être capable de détruire une entitée -> Christophe
+
+faire une arme pour le joueur qui pointe vers la souris et qui peut tirer -> Mael
+
+mettre des colisions pour des éléments propres à la map (ex: délimiter les montagnes) -> Ouroudj
+
+les ennemis se déplacent vers le joueur -> Alexis
+
+détruire un ennemi lorsqu'il se fait tirer dessus -> Christophe
+
+pouvoir faire des zones d'appartitions de monstres et des vagues de monstres -> Théodore

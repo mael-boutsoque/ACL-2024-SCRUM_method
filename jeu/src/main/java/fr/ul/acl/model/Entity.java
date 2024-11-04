@@ -1,9 +1,10 @@
 package fr.ul.acl.model;
+
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class Entity {
@@ -15,9 +16,9 @@ public class Entity {
     protected int height = 100;
     protected int width = 100;
     protected boolean is_colidable = true;
+    protected boolean is_dead = false;
     Hitbox hitbox;
     Hitbox hitboxTemp;
-
 
     // image
     protected String image_path;
@@ -31,11 +32,15 @@ public class Entity {
         this.y = y;
         this.height = height;
         this.width = width;
-        image_path = "images\\entity.png";
+        image_path = "src\\main\\resources\\entity.png";
         load_image();
+        this.show_hitbox = true;
         this.load_hitbox();
     }
 
+    /*
+     * bouge le l'entitee sur la carte
+     */
     public void move(int x,int y,Entities entities){
     	if (this.can_move(x, y, entities)) {
         this.x += x;
@@ -44,12 +49,18 @@ public class Entity {
     	}
     }
 
+    /*
+     * bouge l'entitee en fonction de la position du joueur (utilisé dans )
+     */
     public void move_relative(int x,int y,Entities entities){
         this.x_relative += x;
         this.y_relative += y;
         this.hitbox.move(this.get_x(),this.get_y());
     }
     
+    /*
+     * test si l'entitee peut bouger d'un deplacement x,y
+     */
     public boolean can_move(int x, int y,Entities entities) {
     	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
 		for(int i=0;i<entities.size();i++) {
@@ -60,6 +71,14 @@ public class Entity {
 			}
 		}
     	return true;
+    }
+
+    public void draw(Graphics2D crayon){
+        crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
+        if(!this.show_hitbox) {
+            //crayon.setColor(Color.BLUE);
+            crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
+        }
     }
 
     private Hitbox get_hitbox() {
@@ -100,7 +119,7 @@ public class Entity {
     }
 
     public int get_speed() {
-        throw new UnsupportedOperationException("Unimplemented method 'get_speed'");
+        throw new UnsupportedOperationException("this entity have no speed");
     }
 
     public boolean colide(Entity entity2) {

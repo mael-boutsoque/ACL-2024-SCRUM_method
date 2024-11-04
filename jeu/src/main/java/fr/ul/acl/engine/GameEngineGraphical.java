@@ -2,7 +2,10 @@ package fr.ul.acl.engine;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fr.ul.acl.model.Entities;
+import fr.ul.acl.model.Player;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -55,7 +58,7 @@ public class GameEngineGraphical {
 	/**
 	 * permet de lancer le game
 	 */
-	public void run() throws InterruptedException {
+	public void run(Player player) throws InterruptedException {
 
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
@@ -70,9 +73,14 @@ public class GameEngineGraphical {
 			//this.gamePainter.set_pos(entities.get_player().get_x(),entities.get_player().get_y());
 			// affiche le game
 			this.gui.paint(this.game , entities);
+			this.gui.get_jframe().addMouseMotionListener(player);
 			// met en attente
-			Thread.sleep(3);
+			Thread.sleep(6);
 		}
+	}
+
+	public JFrame get_jframe(){
+		return gui.get_jframe();
 	}
 
 }

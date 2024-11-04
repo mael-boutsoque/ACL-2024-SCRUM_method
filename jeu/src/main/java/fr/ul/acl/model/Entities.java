@@ -1,11 +1,16 @@
 package fr.ul.acl.model;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 public class Entities {
     private ArrayList<Entity> liste;
+    private Player player;
 
-    public Entities(){
+    /*
+     * the map is always the first entity
+     */
+    public Entities(int win_width,int win_height){
         liste = new ArrayList<Entity>() ;
         liste.add(new Map(0,0,1200*4,630*4));
         liste.add(new Entity(0,0,100,100));
@@ -67,7 +72,8 @@ public class Entities {
 
         //liste.add(new MonstreTest(700,300,110,110));
         //liste.add(new MonstreTest(500,0,20,20));
-        liste.add(new Player( 30*4 , 60*4));
+        player = new Player( win_width/2 , win_height/2 , this);
+        this.player.move(1902, 1080,this);
     }
 
     public Entity get_by_id(int id){
@@ -81,17 +87,36 @@ public class Entities {
     	}
     }
 
+    public void add_entity(Entity entity){
+        liste.add(entity);
+    }
+
     public int size(){
         return liste.size();
     }
 
-    public Entity get_player(){
-        return liste.get(this.size()-1);
+    public Player get_player(){
+        return player;
     }
-
+    
     public void player_move(int x,int y,Entities entities){
         for(int i=0;i<this.size();i++){
             this.get_by_id(i).move_relative(-x, -y,entities);
+        }
+    }
+
+    public void draw(Graphics2D crayon){
+        for(int i=0;i<this.size();i++){
+			this.get_by_id(i).draw(crayon);
+        }
+        this.get_player().draw(crayon);
+    }
+
+    public void kill_dead_entities(){
+        for(int i=liste.size()-1 ; i>=0 ; i--){
+            if (liste.get(i).is_dead){
+                liste.remove(i);
+            }
         }
     }
 }

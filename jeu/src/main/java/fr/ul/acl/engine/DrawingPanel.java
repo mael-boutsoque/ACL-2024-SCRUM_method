@@ -6,6 +6,7 @@ package fr.ul.acl.engine;
  */
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -51,8 +52,11 @@ public class DrawingPanel extends JPanel {
 	 */
 	public DrawingPanel(GamePainter painter) {
 		super();
+		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		this.width = painter.getWidth();
 		this.height = painter.getHeight();
+		this.width = (int) dimension.getWidth();
+		this.height = (int) dimension.getHeight();
 		this.setPreferredSize(new Dimension(this.width, this.height));
 		this.painter=painter;
 

@@ -8,4 +8,4 @@ How to launch:
 
 4) run command : mvn exec:java
 
-5) use "z q s d" to move . 
+5) use "z q s d" to move and "Echap" to quit the game
