@@ -24,9 +24,9 @@ public class Entities {
         liste.add(new Invisible(1200*coef_carte, 0,10,630*coef_carte));//droite
 
         //Monstre
-        liste.add(new MonstreTest(700,300,110,110));
+        liste.add(new MonstreTest(700,300,110,110,2));
 
-        //Obstacle 
+        /*//Obstacle 
         //Bloc Gris
         liste.add(new Invisible(110*coef_carte,25*coef_carte,45*coef_carte,144*coef_carte));
         liste.add(new Invisible(206*coef_carte,25*coef_carte,70*coef_carte,96*coef_carte));
@@ -70,11 +70,12 @@ public class Entities {
         liste.add(new Invisible(806*coef_carte,389*coef_carte,39*coef_carte,41*coef_carte));
         liste.add(new Invisible(280*coef_carte,550*coef_carte,40*coef_carte,23*coef_carte));
         liste.add(new Invisible(1022*coef_carte,478*coef_carte,40*coef_carte,23*coef_carte));
-
-        //liste.add(new MonstreTest(700,300,110,110));
+*/
+        liste.add(new MonstreTest(1902,1200,100,100,1));
         //liste.add(new MonstreTest(500,0,20,20));
         player = new Player( win_width/2 , win_height/2 , this);
         this.player.move(1902, 1080,this);
+        
     }
 
     public Entity get_by_id(int id){
