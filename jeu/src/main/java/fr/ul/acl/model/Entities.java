@@ -25,8 +25,8 @@ public class Entities {
 
         //Monstre
         liste.add(new MonstreTest(700,300,110,110,2));
-
-        /*//Obstacle 
+/*
+        //Obstacle 
         //Bloc Gris
         liste.add(new Invisible(110*coef_carte,25*coef_carte,45*coef_carte,144*coef_carte));
         liste.add(new Invisible(206*coef_carte,25*coef_carte,70*coef_carte,96*coef_carte));

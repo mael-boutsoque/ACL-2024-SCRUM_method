@@ -17,6 +17,7 @@ public class Entity {
     protected int width = 100;
     protected boolean is_colidable = true;
     protected boolean is_dead = false;
+    protected int health;
     Hitbox hitbox;
     Hitbox hitboxTemp;
 
@@ -36,6 +37,7 @@ public class Entity {
         load_image();
         this.show_hitbox = true;
         this.load_hitbox();
+        this.health = 9999;
     }
 
     /*
