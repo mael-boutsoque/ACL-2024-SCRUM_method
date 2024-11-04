@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Entities {
     private ArrayList<Entity> liste;
     private Player player;
+    protected int nbMonstre = 0;
+    protected int nbMonstreMax = 10;
 
     /*
      * the map is always the first entity
@@ -14,8 +16,9 @@ public class Entities {
         final int coef_carte = 6;
         liste = new ArrayList<Entity>() ;
         liste.add(new Map(0,0,1200*coef_carte,630*coef_carte));
-        liste.add(new Entity(0,0,100,100));
-        liste.add(new Entity(300, 300,100,70));
+
+        //liste.add(new Entity(0,0,100,100));
+        //liste.add(new Entity(300, 300,100,70));
 
         //bord de map
         liste.add(new Invisible(0, -10,1200*coef_carte,10));//haut
@@ -24,8 +27,11 @@ public class Entities {
         liste.add(new Invisible(1200*coef_carte, 0,10,630*coef_carte));//droite
 
         //Monstre
-        liste.add(new MonstreTest(700,300,110,110,2));
-/*
+        //liste.add(new MonstreTest(700,300,110,110,2));
+
+        //Spawner
+        liste.add(new Spawner(1,1,110,110));
+
         //Obstacle 
         //Bloc Gris
         liste.add(new Invisible(110*coef_carte,25*coef_carte,45*coef_carte,144*coef_carte));
@@ -70,9 +76,7 @@ public class Entities {
         liste.add(new Invisible(806*coef_carte,389*coef_carte,39*coef_carte,41*coef_carte));
         liste.add(new Invisible(280*coef_carte,550*coef_carte,40*coef_carte,23*coef_carte));
         liste.add(new Invisible(1022*coef_carte,478*coef_carte,40*coef_carte,23*coef_carte));
-*/
-        liste.add(new MonstreTest(1902,1200,100,100,1));
-        //liste.add(new MonstreTest(500,0,20,20));
+
         player = new Player( win_width/2 , win_height/2 , this);
         this.player.move(1902, 1080,this);
         

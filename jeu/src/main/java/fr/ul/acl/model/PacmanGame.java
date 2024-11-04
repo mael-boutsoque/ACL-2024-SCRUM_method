@@ -96,7 +96,7 @@ public class PacmanGame implements Game {
 		if(entity_delay>1){
 			entity_delay=0;
 
-			for(int i =0;i<entities.size()-1;i++) {
+			for(int i =0;i<entities.size();i++) {
 				entities.get_by_id(i).evolve(entities);
 			}
 		}
