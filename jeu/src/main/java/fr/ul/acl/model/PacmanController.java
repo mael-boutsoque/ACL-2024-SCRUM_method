@@ -45,14 +45,19 @@ public class PacmanController implements GameController {
 		//gestion touches
 		//System.out.println(e.toString());
 			char keychar = e.getKeyChar();
+
 			if( keychar == 'z' && !commandeEnCours.contains(Cmd.UP)) this.commandeEnCours.add(Cmd.UP);
 			if( keychar == 's' && !commandeEnCours.contains(Cmd.DOWN)) this.commandeEnCours.add(Cmd.DOWN);
 			if( keychar == 'q' && !commandeEnCours.contains(Cmd.LEFT)) this.commandeEnCours.add(Cmd.LEFT);
 			if( keychar == 'd' && !commandeEnCours.contains(Cmd.RIGHT)) this.commandeEnCours.add(Cmd.RIGHT);
+			if (e.getKeyCode() == KeyEvent.VK_SPACE && !commandeEnCours.contains(Cmd.SHOOT)){this.commandeEnCours.add(Cmd.SHOOT);
+				System.out.println("space");
+			}
 			if( e.getKeyCode()==27) {
 				System.out.println("echap");
 				System.exit(0);
- 			}
+			}
+	
 	}
 
 	@Override

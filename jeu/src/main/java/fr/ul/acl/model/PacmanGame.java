@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 import fr.ul.acl.engine.Cmd;
 import fr.ul.acl.engine.Game;
 
@@ -49,6 +48,7 @@ public class PacmanGame implements Game {
 		//deplacement joueur
 		//System.out.println(commandes.toString());
 		int x=0,y=0;
+		boolean changes_shooting_state=false;
 		Cmd commande = Cmd.IDLE;
 		for(int i=0;i<commandes.size();i++){
 			commande = commandes.get(i);
@@ -68,10 +68,19 @@ public class PacmanGame implements Game {
 				case RIGHT:
 					x += 2;
 					break;
+				case SHOOT:
+					changes_shooting_state=true;
+					commandes.remove(Cmd.SHOOT);
+					break;
+
 			}
 		}
 
 		int speed = entities.get_player().get_speed();
+
+		if (changes_shooting_state){
+			entities.get_player().change_shooting_state();
+		}
 		if (entities.get_player().can_move(0, y*speed, entities)){
 			entities.player_move(0, y*speed, entities);
 		}

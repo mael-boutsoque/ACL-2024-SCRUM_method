@@ -2,6 +2,7 @@ package fr.ul.acl.model;
 
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+
 import javax.swing.event.MouseInputListener;
 
 public class Player extends Entity implements MouseInputListener {
@@ -9,6 +10,7 @@ public class Player extends Entity implements MouseInputListener {
     private double angle = 1;
     private Gun gun;
     private Entities entities;
+    private boolean is_shooting;
 
     Player(int x , int y , Entities entities){
         super(x - 70, y - 70 , 80 , 80);
@@ -46,6 +48,7 @@ public class Player extends Entity implements MouseInputListener {
     }
 
     public void evolve(Entities entities) {
+        if(is_shooting) this.shoot(this.entities);
     	this.gun.update();
     }
 
@@ -70,6 +73,10 @@ public class Player extends Entity implements MouseInputListener {
     public Gun get_gun(){
         return gun;
     }
+    
+    public void change_shooting_state(){
+         is_shooting=!is_shooting;
+    }
 
     @Override
     public void mouseMoved(MouseEvent e) {
@@ -79,39 +86,38 @@ public class Player extends Entity implements MouseInputListener {
     @Override
     public void mouseDragged(MouseEvent e) {
         this.update_angle(e);
-        this.shoot(this.entities);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // inutile
+//Inutile
     @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
+public void mousePressed(MouseEvent e) {
 }
+@Override
+public void mouseReleased(MouseEvent e) {
+}
+@Override
+public void mouseClicked(MouseEvent e) {
+}
+@Override
+public void mouseEntered(MouseEvent e) {
+}
+
+@Override
+public void mouseExited(MouseEvent e) {
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

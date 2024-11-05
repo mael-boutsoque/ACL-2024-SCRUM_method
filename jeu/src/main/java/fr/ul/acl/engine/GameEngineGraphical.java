@@ -74,6 +74,7 @@ public class GameEngineGraphical {
 			// affiche le game
 			this.gui.paint(this.game , entities);
 			this.gui.get_jframe().addMouseMotionListener(player);
+			this.gui.get_jframe().addMouseListener(player);
 			// met en attente
 			Thread.sleep(6);
 		}

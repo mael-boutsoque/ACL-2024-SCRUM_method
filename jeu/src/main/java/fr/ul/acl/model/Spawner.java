@@ -8,7 +8,7 @@ public class Spawner extends Entity {
     Spawner(int x,int y,int width,int height){
         super(x,y,width,height);
         this.is_colidable = false;
-        image_path = null;
+        image_path = "src\\main\\resources\\spawner_image.png";
         load_image();
     }
 
