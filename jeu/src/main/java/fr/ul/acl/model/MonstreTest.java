@@ -3,7 +3,7 @@ package fr.ul.acl.model;
 public class MonstreTest extends Entity{
 
 	int health;
-	MonstreTest(int x,int y,int width,int height,int health){
+	public MonstreTest(int x,int y,int width,int height,int health){
 		super(x,y,width,height);
 		this.health = health;
 		   image_path = "src\\main\\resources\\OuroudjSama.png";

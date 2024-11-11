@@ -6,6 +6,8 @@ How to launch:
 
 3) run command : mvn package
 
+3.optional) to run Test : mvn test -Dtest=My_test
+
 4) run command : mvn exec:java
 
 5) use "z q s d" to move and "Echap" to quit the game
