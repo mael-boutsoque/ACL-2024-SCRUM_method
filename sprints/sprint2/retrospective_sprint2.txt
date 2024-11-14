@@ -1,0 +1,9 @@
+##Rétrospective du sprint 2##
+
+#Echanges entre les membres du groupe
+- points positifs : En échangeant sur les difficultés que chacun rencontrait, on a identifié un point d'amélioration en s'accordant sur le fait de séparer les unités dites "vivantes" et les autres (les bordures, par exemple). Au global, le projet avance bien.
+
+- points négatifs : 
+
+#Décisions prises pour le sprint 3 : 
+- Conserver un échange réguliers sur les problèmes rencontrés par chaque membre du groupe, pour permettre une résolution plus rapide.

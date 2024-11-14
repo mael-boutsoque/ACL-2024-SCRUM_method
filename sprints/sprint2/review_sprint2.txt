@@ -1,0 +1,9 @@
+##Review du sprint 2##
+
+#Fonctionnalités mises en places :
+
+- Chaque élément possède une texture graphique
+- Les montres sont capables de se déplacer vers le joueur
+- Le joueur peut tirer sur un monstre et le détruire
+- Les montagnes sont plus difficiles d'accès (délimitées par des bordures) et certains obstacles sont maintenant infranchissables pour le joueur
+- Certains points de la carte font apparaître des monstres
