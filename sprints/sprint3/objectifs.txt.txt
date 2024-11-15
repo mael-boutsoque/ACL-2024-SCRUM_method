@@ -1,0 +1,13 @@
+VISION 
+
+Création d'un menu et du score du joueur
+
+OBJECTIFS
+
+Avoir un menu avec un bouton jouer
+
+avoir un système d'expérience pour pouvoir améliorer l'arme du joueur
+
+afficher la barre de vie des monstres ainsi que celle du joueur
+
+le joueur doit pouvoir prendre des dégâts et mourir
