@@ -26,6 +26,8 @@ public class Entity {
     protected String image_path;
     protected BufferedImage image;
 
+    protected int heal_bar_height = 10;
+
     // debug
     public boolean show_hitbox = false;
 
@@ -36,7 +38,7 @@ public class Entity {
         this.width = width;
         image_path = "src\\main\\resources\\entity.png";
         load_image();
-        this.show_hitbox = true;
+        this.show_hitbox = false;
         this.load_hitbox();
         this.health = 9999;
     }
@@ -45,11 +47,9 @@ public class Entity {
      * bouge le l'entitee sur la carte
      */
     public void move(int x,int y,Entities entities){
-    	if (this.can_move(x, y, entities)) {
         this.x += x;
         this.y += y;
         this.hitbox.move(this.get_x(),this.get_y());
-    	}
     }
 
     /*
@@ -60,21 +60,6 @@ public class Entity {
         this.y_relative += y;
         this.hitbox.move(this.get_x(),this.get_y());
     }
-    
-    /*
-     * test si l'entitee peut bouger d'un deplacement x,y
-     */
-    public boolean can_move(int x, int y,Entities entities) {
-    	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
-		for(int i=0;i<entities.size();i++) {
-			if(entities.get_by_id(i).get_hitbox().colide(hitboxTemp) && entities.get_by_id(i).is_colidable && entities.get_by_id(i) != this) {
-				//System.out.println(this.getClass().getName() + " " + entities.get_by_id(i).getClass().getName() + " colide");
-				this.on_collision(entities);
-                return false;
-			}
-		}
-    	return true;
-    }
 
     public void draw(Graphics2D crayon){
         crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
@@ -84,7 +69,7 @@ public class Entity {
         }
     }
 
-    private Hitbox get_hitbox() {
+    protected Hitbox get_hitbox() {
 		return this.hitbox;
 	}
 

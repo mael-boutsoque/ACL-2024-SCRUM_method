@@ -3,6 +3,7 @@ package fr.ul.acl.model;
 public class Gun {
     private int shoot_rate = 10;
     private int shoot_counter =0;
+    private int damage = 1;
 
     public void update(){
         if(shoot_counter<shoot_rate){
@@ -21,6 +22,6 @@ public class Gun {
         Player player = entities.get_player();
         int x = (int) (player.get_x()+player.get_width()/2 + 100*Math.cos(angle));
         int y = (int) (player.get_y()+player.get_height()/2 + 100*Math.sin(angle));
-        entities.add_entity(new Bullet(x,y,10,10,angle,12));
+        entities.add_projectile(new Bullet(x,y,10,10,angle,30,damage));
     }
 }
