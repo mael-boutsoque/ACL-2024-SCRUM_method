@@ -1,5 +1,7 @@
 afficher les pv et prendre dégats et mourir -> ouroudj
 prendre de l'xp et afficher la barre de niveau -> christophe
 selection des améliorations -> mael
-#prévision# mise en place de vagues de monstres
-alexis -> mise en place du pathfinding
+#prévision# mise en place de vagues de monstres -> théodore
+mise en place des tests -> alexis
+
++ Création du diagramme UML (important)
