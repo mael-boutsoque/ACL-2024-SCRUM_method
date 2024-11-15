@@ -12,8 +12,8 @@ public class Player extends Entity implements MouseInputListener {
     private Gun gun;
     private Entities entities;
     private boolean is_shooting;
-    private int xp=0;
-    private int xp_to_next_lvl = 100;
+    protected int xp = 0;
+    private int xp_to_next_lvl = 20;
 
     Player(int x , int y , Entities entities){
         super(x - 70, y - 70 , 80 , 80);
@@ -35,7 +35,6 @@ public class Player extends Entity implements MouseInputListener {
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 			crayon.drawRect(this.x, this.y, this.get_width(), this.get_height());
 		}
-        this.xp++;
 		crayon.setColor(Color.white);
 		crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);

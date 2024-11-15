@@ -171,6 +171,7 @@ public class Entities {
         for(int i=enemies.size()-1 ; i>=0 ; i--){
             if (enemies.get(i).is_dead){
                 enemies.remove(i);
+                player.xp += 2;
             }
         }
     }
