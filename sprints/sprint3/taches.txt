@@ -5,3 +5,4 @@ selection des améliorations -> mael
 mise en place des tests -> alexis
 
 + Création du diagramme UML (important)
++ Ranger les classes et sous classe dans des sous dossier en réadaptant les packages et en ajoutant les imports dans les autre fichier si nécessaire (peu important)
