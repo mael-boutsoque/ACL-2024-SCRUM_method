@@ -13,12 +13,12 @@ public class Spawner extends Entity {
     }
 
     public void spawn_monster(Entities entities){   
-        entities.add_entity(new MonstreTest(this.get_x(),this.get_y(),width,height,10));
+        entities.add_enemi(new MonstreTest(this.get_x(),this.get_y(),width,height,10));
 
     }
 
     public void evolve(Entities entities){
-        if (entities.nbMonstreMax>entities.nbMonstre && spawncounter>spawnrate){
+        if (spawncounter>spawnrate){
             entities.nbMonstre=entities.nbMonstre+1;
             this.spawncounter=0;
             this.spawn_monster(entities);
