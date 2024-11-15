@@ -1,0 +1,13 @@
+VISION 
+
+Systeme de progression du joueur qui augmente sa puissance quand il tue des monstres
+
+OBJECTIFS
+
+avoir un système d'expérience pour pouvoir améliorer certaines caractéristiques de l'arme du joueur(cadence de tir, dégat des balles , tailles des balles , ...)
+
+afficher la barre de vie des monstres ainsi que celle du joueur
+
+afficher la barre d'expérience du joueur
+
+le joueur doit pouvoir prendre des dégâts et mourir
