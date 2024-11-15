@@ -12,7 +12,7 @@ import fr.ul.acl.model.PacmanPainter;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-
+		
 		// creation du jeu particulier et de son afficheur
 		PacmanGame game = new PacmanGame("helpFilePacman.txt");
 		PacmanPainter painter = new PacmanPainter();

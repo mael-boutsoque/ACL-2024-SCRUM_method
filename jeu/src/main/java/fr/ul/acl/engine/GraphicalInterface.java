@@ -28,7 +28,7 @@ public class GraphicalInterface  {
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
 		f=new JFrame();
-		//f.setPreferredSize(new Dimension(400,800));
+		//f.setPreferredSize(new Dimension(1920,1080));
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// attacher le panel contenant l'afficheur du game
@@ -49,8 +49,8 @@ public class GraphicalInterface  {
 	 * mise a jour du dessin
 	 * @param game 
 	 */
-	public void paint(Game game , Entities entities) {
-		this.panel.drawGame(entities);	
+	public void paint(Game game , Entities entities , long FPS) {
+		this.panel.drawGame(entities , FPS);	
 	}
 
 	public JFrame get_jframe(){

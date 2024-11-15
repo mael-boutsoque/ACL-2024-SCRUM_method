@@ -55,8 +55,10 @@ public class DrawingPanel extends JPanel {
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		this.width = painter.getWidth();
 		this.height = painter.getHeight();
+		System.out.println("taille = ("+String.valueOf(width)+","+String.valueOf(height)+")");
 		this.width = (int) dimension.getWidth();
 		this.height = (int) dimension.getHeight();
+		System.out.println("taille = ("+String.valueOf(width)+","+String.valueOf(height)+")");
 		this.setPreferredSize(new Dimension(this.width, this.height));
 		this.painter=painter;
 
@@ -71,9 +73,9 @@ public class DrawingPanel extends JPanel {
 	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une
 	 * nouvelle image vide sur laquelle dessiner
 	 */
-	public void drawGame(Entities entities) {
+	public void drawGame(Entities entities , long FPS) {
 		// generer la nouvelle image
-		this.painter.draw(this.nextImage,entities);
+		this.painter.draw(this.nextImage,entities,FPS);
 
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.currentImage;

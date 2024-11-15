@@ -36,6 +36,10 @@ public class GameEngineGraphical {
 	 */
 	private GraphicalInterface gui;
 
+	private long previousTime = System.nanoTime();
+	private long TARGET_FPS = 200;
+	public long FPS = 0;
+
 	/**
 	 * construit un moteur
 	 * 
@@ -72,11 +76,23 @@ public class GameEngineGraphical {
 			this.game.evolve(c,entities);
 			//this.gamePainter.set_pos(entities.get_player().get_x(),entities.get_player().get_y());
 			// affiche le game
-			this.gui.paint(this.game , entities);
+			this.gui.paint(this.game , entities ,FPS);
 			this.gui.get_jframe().addMouseMotionListener(player);
 			this.gui.get_jframe().addMouseListener(player);
 			// met en attente
-			Thread.sleep(6);
+			long currentTime = System.nanoTime();
+            long elapsedTime = currentTime - previousTime;
+            previousTime = currentTime;
+			long waitTime = (1000000000 / TARGET_FPS) - elapsedTime;
+			FPS = 1000000000/waitTime;
+                if (waitTime > 0) {
+                    try {
+                        Thread.sleep(waitTime / 1000000);
+					}
+					catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+				}
 		}
 	}
 
