@@ -36,7 +36,7 @@ public class Entity {
         this.y = y;
         this.height = height;
         this.width = width;
-        image_path = "src\\main\\resources\\entity.png";
+        image_path = "src/main/resources/entity.png";
         load_image();
         this.show_hitbox = false;
         this.load_hitbox();

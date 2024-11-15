@@ -12,7 +12,7 @@ public class Monstre extends Entity{
 		super(x,y,width,height);
 		this.health0 = health;
 		this.health = health;
-		   image_path = "src\\main\\resources\\entity.png";
+		   image_path = "src/main/resources/entity.png";
 	        this.load_image();
 	}
 

@@ -6,7 +6,7 @@ public class MonstreTest extends Monstre{
 	public MonstreTest(int x,int y,int width,int height,int health){
 		super(x,y,width,height,health);
 		this.health = health;
-		   image_path = "src\\main\\resources\\OuroudjSama.png";
+		   image_path = "src/main/resources/OuroudjSama.png";
 	        this.load_image();
 	}
 	
