@@ -78,7 +78,12 @@ public class Player extends Entity implements MouseInputListener {
     private void update_angle(MouseEvent e){
         int mx= e.getX() - this.x - this.get_width()/2;
         int my= e.getY() - this.y - this.get_height()/2;
-        angle = -Math.atan2(mx,my)-3.2 ;
+        if(mx==0 && my<0){
+            angle=0;
+        }
+        else{
+            angle = -Math.atan2(mx,my)-3.2 ;
+        }
     }
 
     private void shoot(Entities entities){
