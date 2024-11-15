@@ -1,5 +1,6 @@
 package fr.ul.acl.model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -64,7 +65,7 @@ public class Entity {
     public void draw(Graphics2D crayon){
         crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
         if(this.show_hitbox) {
-            //crayon.setColor(Color.BLUE);
+            //crayon.setColor(Color.blue);
             crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
         }
     }

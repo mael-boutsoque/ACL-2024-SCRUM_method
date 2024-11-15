@@ -1,5 +1,6 @@
 package fr.ul.acl.model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
@@ -11,6 +12,8 @@ public class Player extends Entity implements MouseInputListener {
     private Gun gun;
     private Entities entities;
     private boolean is_shooting;
+    private int xp=0;
+    private int xp_to_next_lvl = 100;
 
     Player(int x , int y , Entities entities){
         super(x - 70, y - 70 , 80 , 80);
@@ -30,13 +33,25 @@ public class Player extends Entity implements MouseInputListener {
     public void draw(Graphics2D crayon){
         if(this.show_hitbox) {
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
+			crayon.drawRect(this.x, this.y, this.get_width(), this.get_height());
 		}
+        this.xp++;
+		crayon.setColor(Color.white);
+		crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
+        crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);
+        crayon.setColor(Color.green);
+        crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(), heal_bar_height, 10, 10);
+        crayon.fillRect(this.get_x()+1, this.get_y()-heal_bar_height+1, (int)(0.01*(this.get_width()-2)*(100*this.xp/this.xp_to_next_lvl)), heal_bar_height-2);
 
         int correction = 40;
 		crayon.translate(this.get_x()+this.get_width()/2, this.get_y()+this.get_height()/2);
 		crayon.rotate(this.get_angle());
 		crayon.translate(-(this.get_width()+correction)/2,-(this.get_height()+correction)/2);
 		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);
+		if(this.xp > this.xp_to_next_lvl) {
+			this.xp = 0;
+		}
+		
     }
 
     public boolean can_move(int x, int y,Entities entities) {
