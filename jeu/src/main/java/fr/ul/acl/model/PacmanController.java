@@ -53,6 +53,9 @@ public class PacmanController implements GameController {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE && !commandeEnCours.contains(Cmd.SHOOT)){this.commandeEnCours.add(Cmd.SHOOT);
 				System.out.println("space");
 			}
+			if(keychar == 'm' && !commandeEnCours.contains(Cmd.OPENMENU)){//OPENMENU
+				this.commandeEnCours.add(Cmd.OPENMENU);
+			}
 			if( e.getKeyCode()==27) {
 				System.out.println("echap");
 				System.exit(0);
@@ -70,6 +73,7 @@ public class PacmanController implements GameController {
 			if( keychar == 's' ) this.commandeEnCours.remove(Cmd.DOWN);
 			if( keychar == 'q' ) this.commandeEnCours.remove(Cmd.LEFT);
 			if( keychar == 'd' ) this.commandeEnCours.remove(Cmd.RIGHT);
+			if( keychar == 'm' ) this.commandeEnCours.remove(Cmd.OPENMENU);
 	}
 
 	@Override

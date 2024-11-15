@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import fr.ul.acl.model.Entities;
+import fr.ul.acl.model.upgrades.Menu;
 
 public class DrawingPanel extends JPanel {
 
@@ -73,9 +74,9 @@ public class DrawingPanel extends JPanel {
 	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une
 	 * nouvelle image vide sur laquelle dessiner
 	 */
-	public void drawGame(Entities entities , long FPS) {
+	public void drawGame(Entities entities , long FPS , Menu menu) {
 		// generer la nouvelle image
-		this.painter.draw(this.nextImage,entities,FPS);
+		this.painter.draw(this.nextImage,entities,FPS,menu);
 
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.currentImage;

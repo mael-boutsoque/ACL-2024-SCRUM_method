@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.awt.BasicStroke;
 
 import fr.ul.acl.engine.GamePainter;
+import fr.ul.acl.model.upgrades.Menu;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -38,7 +39,7 @@ public class PacmanPainter implements GamePainter {
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
 	@Override
-	public void draw(BufferedImage im , Entities entities , long FPS) {
+	public void draw(BufferedImage im , Entities entities , long FPS , Menu menu) {
 
 		// creation du crayon pour dessiner
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
@@ -47,7 +48,7 @@ public class PacmanPainter implements GamePainter {
 
 
 		// parcour les entities pour les dessiner
-		entities.draw(crayon);
+		entities.draw(crayon);		
 
 		crayon = null;
 		crayon = (Graphics2D) im.getGraphics();
@@ -55,6 +56,11 @@ public class PacmanPainter implements GamePainter {
 		crayon.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		crayon.setColor(Color.GREEN);
 		crayon.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+
+		if(menu.is_opened()){
+			// dessine le menu
+			menu.draw(crayon);
+		}
 
 		//dessine FPS
 		if(Math.abs(FPS)<1000 && fps_show_counter > 100){

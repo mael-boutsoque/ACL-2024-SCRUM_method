@@ -10,5 +10,6 @@ public enum Cmd {
 	 UP,
 	 DOWN,
 	 SHOOT,
+	 OPENMENU,
 	 IDLE; 
 }

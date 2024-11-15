@@ -3,6 +3,7 @@ package fr.ul.acl.engine;
 import java.util.ArrayList;
 
 import fr.ul.acl.model.Entities;
+import fr.ul.acl.model.upgrades.Menu;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -24,5 +25,7 @@ public interface Game {
 	 * @return true si et seulement si le jeu est fini
 	 */
 	public boolean isFinished();
+
+    public Menu getMenu();
 
 }

@@ -3,6 +3,7 @@ package fr.ul.acl.engine;
 import javax.swing.JFrame;
 
 import fr.ul.acl.model.Entities;
+import fr.ul.acl.model.upgrades.Menu;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -49,8 +50,8 @@ public class GraphicalInterface  {
 	 * mise a jour du dessin
 	 * @param game 
 	 */
-	public void paint(Game game , Entities entities , long FPS) {
-		this.panel.drawGame(entities , FPS);	
+	public void paint(Game game , Entities entities , long FPS , Menu menu) {
+		this.panel.drawGame(entities , FPS , menu);	
 	}
 
 	public JFrame get_jframe(){
