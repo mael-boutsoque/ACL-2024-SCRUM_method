@@ -1,10 +1,10 @@
 package fr.ul.acl.model;
 
-public class MonstreTest extends Entity{
+public class MonstreTest extends Monstre{
 
 	int health;
 	public MonstreTest(int x,int y,int width,int height,int health){
-		super(x,y,width,height);
+		super(x,y,width,height,health);
 		this.health = health;
 		   image_path = "src\\main\\resources\\OuroudjSama.png";
 	        this.load_image();
@@ -33,18 +33,6 @@ public class MonstreTest extends Entity{
         this.y += y;
         this.hitbox.move(this.get_x(),this.get_y());
     	}
-    	else {
-    		Damage(entities);
-    	}
-    }
-	
-	public void Damage(Entities entities) {
-		if (this.health <= 0) {
-			this.is_dead = true;
-		}
-		else
-			this.health--;
-	}
-	
+    }	
 		
 }

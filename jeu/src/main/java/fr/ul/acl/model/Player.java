@@ -39,6 +39,17 @@ public class Player extends Entity implements MouseInputListener {
 		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);
     }
 
+    public boolean can_move(int x, int y,Entities entities) {
+    	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
+		for(int i=0;i<entities.obstacles.size();i++) {
+			if(entities.obstacles.get(i).get_hitbox().colide(hitboxTemp) && entities.obstacles.get(i).is_colidable && entities.obstacles.get(i) != this) {
+				this.on_collision(entities);
+                return false;
+			}
+		}
+    	return true;
+    }
+
     public void move(int x,int y,Entities entities){
         this.move_relative(x, y, entities);
     }
@@ -52,6 +63,10 @@ public class Player extends Entity implements MouseInputListener {
     	this.gun.update();
     }
 
+    public void damage(int degats){
+        System.out.println("Pas de fonction Player.damage()");
+    }
+
     public int get_speed() {
         return speed;
     }
@@ -63,7 +78,7 @@ public class Player extends Entity implements MouseInputListener {
     private void update_angle(MouseEvent e){
         int mx= e.getX() - this.x - this.get_width()/2;
         int my= e.getY() - this.y - this.get_height()/2;
-        angle = -Math.atan2(mx,my)-3 ;
+        angle = -Math.atan2(mx,my)-3.2 ;
     }
 
     private void shoot(Entities entities){

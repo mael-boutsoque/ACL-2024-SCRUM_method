@@ -89,12 +89,9 @@ public class PacmanGame implements Game {
 		}
 
 		// show entities hitbox if collision to debug
-		for(int j=0;j<entities.size();j++){
-			entities.get_by_id(j).show_hitbox = false;
-		}
-		for(int i=0;i<entities.size();i++){
-			if(entities.get_by_id(i).colidable() && entities.get_player().colide(entities.get_by_id(i))){
-				entities.get_by_id(i).show_hitbox = true ;
+		for(int i=0;i<entities.enemies.size();i++){
+			if(entities.get_enemi(i).colidable() && entities.get_player().colide(entities.get_enemi(i))){
+				entities.get_enemi(i).show_hitbox = true ;
 			}
 		}
 		
@@ -105,8 +102,16 @@ public class PacmanGame implements Game {
 		if(entity_delay>1){
 			entity_delay=0;
 
-			for(int i =0;i<entities.size();i++) {
-				entities.get_by_id(i).evolve(entities);
+			for(int i =0;i<entities.enemies.size();i++) {
+				entities.get_enemi(i).evolve(entities);
+			}
+
+			for(int i =0;i<entities.projectiles.size();i++) {
+				entities.get_projectile(i).evolve(entities);
+			}
+
+			for(int i =0;i<entities.obstacles.size();i++) {
+				entities.get_obstacle(i).evolve(entities);
 			}
 		}
 		else entity_delay++;

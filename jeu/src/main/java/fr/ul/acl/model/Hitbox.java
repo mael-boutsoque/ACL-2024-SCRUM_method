@@ -5,7 +5,7 @@ public class Hitbox {
 	int y;
 	int width;
 	int height;
-	Hitbox(int x, int y, int width, int height){
+	public Hitbox(int x, int y, int width, int height){
 		this.x = x;
 		this.y = y;
 		this.width = width;
