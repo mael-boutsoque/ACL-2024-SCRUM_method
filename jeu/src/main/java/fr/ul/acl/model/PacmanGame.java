@@ -89,7 +89,6 @@ public class PacmanGame implements Game {
 		}
 
 		if(menu_upgrades.is_opened()){ // on fait evoluer le menu si il est ouvert
-			System.out.println("menu ouvert");
 		}
 
 		else{ // on fait evoluer le jeu si le menu n'est pas ouvert

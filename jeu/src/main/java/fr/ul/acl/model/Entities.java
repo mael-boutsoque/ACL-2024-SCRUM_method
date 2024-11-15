@@ -158,8 +158,6 @@ public class Entities {
     }
 
     public void kill_dead_entities(){
-        System.out.println("[obstacles : "+String.valueOf(obstacles.size())+" , monstres : "+String.valueOf(enemies.size())+" , balles : "+String.valueOf(projectiles.size())+"]");
-
         for(int i=projectiles.size()-1 ; i>=0 ; i--){
             if (projectiles.get(i).is_dead){
                 projectiles.remove(i);
@@ -175,5 +173,10 @@ public class Entities {
                 enemies.remove(i);
             }
         }
+    }
+
+    public String toString(){
+        return "[obstacles : "+String.valueOf(obstacles.size())+" , monstres : "+String.valueOf(enemies.size())+" , balles : "+String.valueOf(projectiles.size())+"]";
+
     }
 }
