@@ -7,7 +7,7 @@ import fr.ul.acl.model.upgrades.Upgrade;
 
 public class Degats extends Upgrade {
     public Degats(){
-        super("degats","augmente les dégats de 1",Color.red);
+        super("DEGATS","augmente les dégats de 1",Color.red);
     }
 
     public void update_player(Player player){

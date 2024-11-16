@@ -7,7 +7,7 @@ import fr.ul.acl.model.upgrades.Upgrade;
 
 public class Vitesse_attaque extends Upgrade {
     public Vitesse_attaque(){
-        super("vitesse_attaque","ajoute 50 vitesse d'attaque",Color.yellow);
+        super("VITESSE D'ATTAQUE","ajoute 50 vitesse d'attaque",Color.magenta);
     }
 
     public void update_player(Player player){

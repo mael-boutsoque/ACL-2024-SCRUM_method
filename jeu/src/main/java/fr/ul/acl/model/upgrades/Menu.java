@@ -35,7 +35,7 @@ public class Menu {
     public void draw(Graphics2D crayon){
         crayon.setColor(Color.BLUE);
         crayon.setFont(new Font("SansSerif", Font.PLAIN, 40));
-        crayon.drawString("Pour fermer le menu : 'm'", button_width, button_height/2);
+        crayon.drawString("[ | MENU |      selectionner avec les bouttons '1' '2' '3']", button_width, button_height/2);
         crayon.setFont(new Font("SansSerif", Font.PLAIN, 20));
 
         for(int i=0 ; i<3 ; i++){

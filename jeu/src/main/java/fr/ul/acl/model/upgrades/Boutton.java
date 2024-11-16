@@ -40,9 +40,9 @@ public class Boutton {
     public void draw(Graphics2D crayon){
         crayon.setColor(color);
         crayon.fillRect(x , y , width , height);
-        crayon.drawString(name, x, y);
         crayon.setColor(Color.white);
-        crayon.drawString(description, x, y+height);
+        crayon.drawString(name, x, y+20);
+        crayon.drawString(description, x, y+height/2);
     }
 
     public void on_clic(Player player){
