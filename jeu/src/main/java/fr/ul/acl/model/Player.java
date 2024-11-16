@@ -13,7 +13,9 @@ public class Player extends Entity implements MouseInputListener {
     private Entities entities;
     private boolean is_shooting;
     protected int xp = 0;
-    private int xp_to_next_lvl = 20;
+    private int xp_to_next_lvl = 5;
+    protected int lvl = 0;
+    private char[] affichage_lvl = {'l','v','l',' ','x'};
 
     Player(int x , int y , Entities entities){
         super(x - 70, y - 70 , 80 , 80);
@@ -36,6 +38,8 @@ public class Player extends Entity implements MouseInputListener {
 			crayon.drawRect(this.x, this.y, this.get_width(), this.get_height());
 		}
 		crayon.setColor(Color.white);
+		affichage_lvl[4] = this.intToChar(this.lvl);
+		crayon.drawChars(affichage_lvl,0,affichage_lvl.length,this.get_x()-30,this.get_y());
 		crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);
         crayon.setColor(Color.green);
@@ -49,8 +53,13 @@ public class Player extends Entity implements MouseInputListener {
 		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);
 		if(this.xp > this.xp_to_next_lvl) {
 			this.xp = 0;
+			this.lvl++;
 		}
 		
+    }
+    private char intToChar(int i){
+	    String s = ""+i;
+	    return s.charAt(0);
     }
 
     public boolean can_move(int x, int y,Entities entities) {
