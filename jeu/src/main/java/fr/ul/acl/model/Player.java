@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import javax.swing.event.MouseInputListener;
+import fr.ul.acl.model.upgrades.Menu;
 
 public class Player extends Entity implements MouseInputListener {
     private int speed;
@@ -50,12 +51,7 @@ public class Player extends Entity implements MouseInputListener {
 		crayon.translate(this.get_x()+this.get_width()/2, this.get_y()+this.get_height()/2);
 		crayon.rotate(this.get_angle());
 		crayon.translate(-(this.get_width()+correction)/2,-(this.get_height()+correction)/2);
-		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);
-		if(this.xp > this.xp_to_next_lvl) {
-			this.xp = 0;
-			this.lvl++;
-		}
-		
+		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);		
     }
     private char intToChar(int i){
 	    String s = ""+i;
@@ -81,9 +77,15 @@ public class Player extends Entity implements MouseInputListener {
     	entities.player_move(i, j, entities);
     }
 
-    public void evolve(Entities entities) {
+    public void evolve(Entities entities , Menu menu) {
         if(is_shooting) this.shoot(this.entities);
     	this.gun.update();
+
+        if(this.xp > this.xp_to_next_lvl) {
+			this.xp = 0;
+			this.lvl++;
+            menu.open();
+		}
     }
 
     public void damage(int degats){

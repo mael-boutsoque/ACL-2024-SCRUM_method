@@ -5,6 +5,11 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Random;
 
+import fr.ul.acl.model.Player;
+import fr.ul.acl.model.upgrades.upgrades_list.*;
+
+import java.awt.Font;
+
 public class Menu {
     private int width;
     private int height;
@@ -29,6 +34,10 @@ public class Menu {
 
     public void draw(Graphics2D crayon){
         crayon.setColor(Color.BLUE);
+        crayon.setFont(new Font("SansSerif", Font.PLAIN, 40));
+        crayon.drawString("Pour fermer le menu : 'm'", button_width, button_height/2);
+        crayon.setFont(new Font("SansSerif", Font.PLAIN, 20));
+
         for(int i=0 ; i<3 ; i++){
             bouttons.get(i).draw(crayon);
         }
@@ -47,10 +56,9 @@ public class Menu {
 
     private void load_upgrades(){
         upgrades.clear();
-        upgrades.add(new Upgrade("test 1", "descp 1", Color.blue));
-        upgrades.add(new Upgrade("test 2", "descp 2", Color.red));
-        upgrades.add(new Upgrade("test 3", "descp 3", Color.green));
-        upgrades.add(new Upgrade("test 4", "descp 4", Color.yellow));
+        upgrades.add(new Vitesse_attaque());
+        upgrades.add(new Degats());
+        upgrades.add(new Taille_des_balles());
     }
 
     private void load_rd_button(){
@@ -63,5 +71,10 @@ public class Menu {
             bouttons.add(new Boutton(dwidth*(1+i)-button_width/2, height/2-button_height/2, button_width, button_height,upgrades.get(indiceAleatoire)));
         }
 
+    }
+
+    public void select_augment(int choix , Player player){
+        bouttons.get(choix).on_clic(player);
+        this.close();
     }
 }

@@ -60,6 +60,8 @@ public class PacmanGame implements Game {
 			switch (commande) {
 				case IDLE:
 					break;
+
+				// joueur
 				case UP:
 					y += -2;
 					break;
@@ -77,13 +79,19 @@ public class PacmanGame implements Game {
 					commandes.remove(Cmd.SHOOT);
 					break;
 
+				// menu
 				case OPENMENU:
-					if(menu_upgrades.is_opened()){
-						menu_upgrades.close();
-					}
-					else{
-						menu_upgrades.open();
-					}
+					menu_upgrades.open();
+					break;
+				
+				case MENU_1:
+					if(menu_upgrades.is_opened()) menu_upgrades.select_augment(1 , entities.get_player());
+					break;
+				case MENU_2:
+					if(menu_upgrades.is_opened()) menu_upgrades.select_augment(2 , entities.get_player());
+					break;
+				case MENU_3:
+					if(menu_upgrades.is_opened()) menu_upgrades.select_augment(2 , entities.get_player());
 					break;
 			}
 		}
@@ -113,7 +121,7 @@ public class PacmanGame implements Game {
 			
 			entities.kill_dead_entities();
 			//fait évoluer les entitiés
-			entities.get_player().evolve(entities);
+			entities.get_player().evolve(entities , menu_upgrades);
 
 			if(entity_delay>1){
 				entity_delay=0;

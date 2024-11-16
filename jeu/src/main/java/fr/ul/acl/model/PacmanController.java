@@ -46,6 +46,7 @@ public class PacmanController implements GameController {
 		//System.out.println(e.toString());
 			char keychar = e.getKeyChar();
 
+			// controlle du joueur
 			if( keychar == 'z' && !commandeEnCours.contains(Cmd.UP)) this.commandeEnCours.add(Cmd.UP);
 			if( keychar == 's' && !commandeEnCours.contains(Cmd.DOWN)) this.commandeEnCours.add(Cmd.DOWN);
 			if( keychar == 'q' && !commandeEnCours.contains(Cmd.LEFT)) this.commandeEnCours.add(Cmd.LEFT);
@@ -53,9 +54,16 @@ public class PacmanController implements GameController {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE && !commandeEnCours.contains(Cmd.SHOOT)){this.commandeEnCours.add(Cmd.SHOOT);
 				System.out.println("space");
 			}
+
+			// controlle du menu d'amélioration
 			if(keychar == 'm' && !commandeEnCours.contains(Cmd.OPENMENU)){//OPENMENU
 				this.commandeEnCours.add(Cmd.OPENMENU);
 			}
+			if( keychar == '&' && !commandeEnCours.contains(Cmd.MENU_1)) this.commandeEnCours.add(Cmd.MENU_1);
+			if( keychar == 'é' && !commandeEnCours.contains(Cmd.MENU_2)) this.commandeEnCours.add(Cmd.MENU_2);
+			if( keychar == '"' && !commandeEnCours.contains(Cmd.MENU_3)) this.commandeEnCours.add(Cmd.MENU_3);
+
+			// fermer le jeu
 			if( e.getKeyCode()==27) {
 				System.out.println("echap");
 				System.exit(0);
@@ -69,11 +77,16 @@ public class PacmanController implements GameController {
 	 */
 	public void keyReleased(KeyEvent e) {
 		char keychar = e.getKeyChar();
+			// joueur
 			if( keychar == 'z' ) this.commandeEnCours.remove(Cmd.UP);
 			if( keychar == 's' ) this.commandeEnCours.remove(Cmd.DOWN);
 			if( keychar == 'q' ) this.commandeEnCours.remove(Cmd.LEFT);
 			if( keychar == 'd' ) this.commandeEnCours.remove(Cmd.RIGHT);
+			// menu
 			if( keychar == 'm' ) this.commandeEnCours.remove(Cmd.OPENMENU);
+			if( keychar == '&' ) this.commandeEnCours.remove(Cmd.MENU_1);
+			if( keychar == 'é' ) this.commandeEnCours.remove(Cmd.MENU_2);
+			if( keychar == '"' ) this.commandeEnCours.remove(Cmd.MENU_3);
 	}
 
 	@Override

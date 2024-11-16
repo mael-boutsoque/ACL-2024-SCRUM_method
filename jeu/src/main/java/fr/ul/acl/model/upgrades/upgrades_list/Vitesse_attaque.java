@@ -1,0 +1,16 @@
+package fr.ul.acl.model.upgrades.upgrades_list;
+
+import java.awt.Color;
+
+import fr.ul.acl.model.Player;
+import fr.ul.acl.model.upgrades.Upgrade;
+
+public class Vitesse_attaque extends Upgrade {
+    public Vitesse_attaque(){
+        super("vitesse_attaque","ajoute 50 vitesse d'attaque",Color.yellow);
+    }
+
+    public void update_player(Player player){
+        player.get_gun().add_shoot_rate(50);
+    }
+}

@@ -11,5 +11,8 @@ public enum Cmd {
 	 DOWN,
 	 SHOOT,
 	 OPENMENU,
+	 MENU_1,
+	 MENU_2,
+	 MENU_3,
 	 IDLE; 
 }
