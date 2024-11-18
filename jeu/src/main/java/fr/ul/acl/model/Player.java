@@ -89,7 +89,7 @@ public class Player extends Entity implements MouseInputListener {
     }
 
     public void damage(int degats){
-        System.out.println("Pas de fonction Player.damage()");
+        //System.out.println("Pas de fonction Player.damage()");
     }
 
     public int get_speed() {

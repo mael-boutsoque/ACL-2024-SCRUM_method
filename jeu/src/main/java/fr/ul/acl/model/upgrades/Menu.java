@@ -58,7 +58,12 @@ public class Menu {
         upgrades.clear();
         upgrades.add(new Vitesse_attaque());
         upgrades.add(new Degats());
+        upgrades.add(new Vitesse_attaque());
+        upgrades.add(new Degats());
+        upgrades.add(new Vitesse_attaque());
+        upgrades.add(new Degats());
         upgrades.add(new Taille_des_balles());
+        upgrades.add(new Vitesse_balle());
     }
 
     private void load_rd_button(){
@@ -74,7 +79,7 @@ public class Menu {
     }
 
     public void select_augment(int choix , Player player){
-        bouttons.get(choix).on_clic(player);
+        bouttons.get(choix-1).on_clic(player);
         this.close();
     }
 }
