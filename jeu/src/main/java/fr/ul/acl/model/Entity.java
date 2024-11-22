@@ -90,6 +90,7 @@ public class Entity {
             }
             catch(IOException e) {
             System.err.println("image not load for "+this.getClass().getName());
+            show_hitbox = true;
             }
         }
     }
