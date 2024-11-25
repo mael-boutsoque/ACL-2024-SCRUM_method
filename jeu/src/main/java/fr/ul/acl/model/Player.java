@@ -16,7 +16,7 @@ public class Player extends Entity implements MouseInputListener {
     protected int xp = 0;
     private int xp_to_next_lvl = 6-1;
     protected int lvl = 0;
-    private char[] affichage_lvl = {'L','v','l',' ','x'};
+    private char[] affichage_lvl = {'L','v','l',' ','x','y'};
     protected int health_p;
     protected int health0_p;
     protected int body_damage_p=1;
@@ -48,8 +48,9 @@ public class Player extends Entity implements MouseInputListener {
 		}
         //Expérience
 		crayon.setColor(Color.white);
-		affichage_lvl[4] = this.intToChar(this.lvl);
-		crayon.drawChars(affichage_lvl,0,affichage_lvl.length,this.get_x()-30,this.get_y());
+		affichage_lvl[4] = this.intToChar(this.lvl/10);
+        affichage_lvl[5] = this.intToChar(this.lvl%10);
+		crayon.drawChars(affichage_lvl,0,affichage_lvl.length,this.get_x()-40,this.get_y());
 		crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);
         crayon.setColor(Color.green);
