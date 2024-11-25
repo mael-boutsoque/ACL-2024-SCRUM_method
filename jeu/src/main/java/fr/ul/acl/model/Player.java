@@ -14,13 +14,21 @@ public class Player extends Entity implements MouseInputListener {
     private Entities entities;
     private boolean is_shooting;
     protected int xp = 0;
-    private int xp_to_next_lvl = 5;
+    private int xp_to_next_lvl = 6-1;
     protected int lvl = 0;
-    private char[] affichage_lvl = {'l','v','l',' ','x'};
+    private char[] affichage_lvl = {'L','v','l',' ','x'};
+    protected int health_p;
+    protected int health0_p;
+    protected int body_damage_p=1;
+    private char[] affichage_vie = {'V','i','e',' ','x','y'};
+    int compteur = 0;
 
-    Player(int x , int y , Entities entities){
+    Player(int x , int y , Entities entities , int health_p){
         super(x - 70, y - 70 , 80 , 80);
         this.entities = entities;
+
+        this.health_p = health_p;
+        this.health0_p = health_p;
 
         //chargement image
         image_path = "src/main/resources/player.png";
@@ -38,6 +46,7 @@ public class Player extends Entity implements MouseInputListener {
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 			crayon.drawRect(this.x, this.y, this.get_width(), this.get_height());
 		}
+        //Expérience
 		crayon.setColor(Color.white);
 		affichage_lvl[4] = this.intToChar(this.lvl);
 		crayon.drawChars(affichage_lvl,0,affichage_lvl.length,this.get_x()-30,this.get_y());
@@ -47,15 +56,30 @@ public class Player extends Entity implements MouseInputListener {
         crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height, this.get_width(), heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x()+1, this.get_y()-heal_bar_height+1, (int)(0.01*(this.get_width()-2)*(100*this.xp/this.xp_to_next_lvl)), heal_bar_height-2);
 
+        //Niveau de vie
+        crayon.setColor(Color.white);
+        affichage_vie[4] = this.intToChar(this.health_p/10);
+        affichage_vie[5] = this.intToChar(this.health_p%10);
+		crayon.drawChars(affichage_vie,0,affichage_vie.length,this.get_x()-40,this.get_y()-20);
+		crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height-20, this.get_width(),heal_bar_height, 10, 10);
+        crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height-20, this.get_width(), heal_bar_height);
+        crayon.setColor(Color.red);
+        crayon.drawRoundRect(this.get_x(), this.y-heal_bar_height-20, this.get_width(), heal_bar_height, 10, 10);
+        crayon.fillRect(this.get_x()+1, this.get_y()-heal_bar_height+1-20, (int)(0.01*(this.get_width()-2)*(100*this.health_p/this.health0_p)), heal_bar_height-2);
+
         int correction = 40;
 		crayon.translate(this.get_x()+this.get_width()/2, this.get_y()+this.get_height()/2);
 		crayon.rotate(this.get_angle());
 		crayon.translate(-(this.get_width()+correction)/2,-(this.get_height()+correction)/2);
-		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);		
+		crayon.drawImage(this.get_image(), 0, 0, this.get_width()+correction, this.get_height()+correction, null, null);	
     }
     private char intToChar(int i){
 	    String s = ""+i;
 	    return s.charAt(0);
+    }
+
+    public void damage(int degats){
+        //coder autre part
     }
 
     public boolean can_move(int x, int y,Entities entities) {
@@ -66,6 +90,16 @@ public class Player extends Entity implements MouseInputListener {
                 return false;
 			}
 		}
+        for (int i=0;i<entities.enemies.size();i++){
+            if(entities.enemies.get(i).get_hitbox().colide(hitboxTemp) && entities.enemies.get(i).is_colidable && entities.enemies.get(i) != this){
+                this.on_collision(entities);
+                compteur += 1;
+                if (compteur%10==0){
+                    this.health_p = this.health_p-1;
+                }
+                return false;
+            }
+        }
     	return true;
     }
 
@@ -88,8 +122,10 @@ public class Player extends Entity implements MouseInputListener {
 		}
     }
 
-    public void damage(int degats){
-        //System.out.println("Pas de fonction Player.damage()");
+    
+    public void add_life(int value) {
+        this.health_p += value;
+        System.out.println("Vie : [Vie = "+String.valueOf(this.health_p)+"]");
     }
 
     public int get_speed() {

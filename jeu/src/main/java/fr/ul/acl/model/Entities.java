@@ -16,11 +16,13 @@ public class Entities {
      */
     public Entities(int win_width,int win_height){
         final int coef_carte = 6;
+        final int carte_x = 1200;
+        final int carte_y = 630;
         obstacles = new ArrayList<Entity>() ;
         enemies = new ArrayList<Entity>() ;
         projectiles = new ArrayList<Entity>() ;
         
-        obstacles.add(new Map(0,0,1200*coef_carte,600*coef_carte,this));
+        obstacles.add(new Map(0,0,1200*coef_carte,630*coef_carte,this));
 
         //liste.add(new Entity(0,0,100,100));
         //liste.add(new Entity(300, 300,100,70));
@@ -31,7 +33,7 @@ public class Entities {
         //Spawner
         obstacles.add(new Spawner(2000,800,110,110));
 
-        player = new Player( win_width/2 , win_height/2 , this);
+        player = new Player( win_width/2 , win_height/2 ,this,3);
         this.player.move(1902, 1080,this);
 
         add_enemi(new MonstreTest(1000,1000,200,200,1000));

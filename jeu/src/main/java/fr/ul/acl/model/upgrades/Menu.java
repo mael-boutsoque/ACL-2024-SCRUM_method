@@ -64,6 +64,7 @@ public class Menu {
         upgrades.add(new Degats());
         upgrades.add(new Taille_des_balles());
         upgrades.add(new Vitesse_balle());
+        upgrades.add(new Bonus_de_vie());
     }
 
     private void load_rd_button(){

@@ -1,6 +1,6 @@
 package fr.ul.acl.model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Map extends Entity {
     Map(int x,int y,int width,int height, Entities entities){

@@ -3,11 +3,17 @@ package fr.ul.acl.model;
 public class MonstreTest extends Monstre{
 
 	int health;
+	private int speed;
+    private double angle = 1;
+    private Gun gun;
+    private boolean is_shooting;
 	public MonstreTest(int x,int y,int width,int height,int health){
 		super(x,y,width,height,health);
 		this.health = health;
-		   image_path = "src/main/resources/OuroudjSama.png";
-	        this.load_image();
+		image_path = "src/main/resources/OuroudjSama.png";
+	    this.load_image();
+
+		this.gun = new Gun();
 	}
 	
 	public void evolve(Entities entities) {
@@ -27,6 +33,7 @@ public class MonstreTest extends Monstre{
 		this.move(0,dy,entities);
 		
 	}
+	
 	public void move(int x,int y,Entities entities){
     	if (this.can_move(x, y, entities)) {
         this.x += x;

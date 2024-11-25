@@ -12,8 +12,8 @@ public class Monstre extends Entity{
 		super(x,y,width,height);
 		this.health0 = health;
 		this.health = health;
-		   image_path = "src/main/resources/entity.png";
-	        this.load_image();
+		image_path = "src/main/resources/entity.png";
+	    this.load_image();
 	}
 
 	public void draw(Graphics2D crayon){
@@ -45,8 +45,12 @@ public class Monstre extends Entity{
 		}
 		if(entities.get_player().get_hitbox().colide(hitboxTemp)){
 			this.on_collision(entities);
-			damage(1);
-			entities.get_player().damage(body_damage);
+			//damage(1);
+			//entities.get_player().damage(body_damage);
+			entities.get_player().compteur += 1;
+                if (entities.get_player().compteur%10==0){
+                    entities.get_player().health_p = entities.get_player().health_p-1;
+                }
 			return false;
 		}
     	return true;

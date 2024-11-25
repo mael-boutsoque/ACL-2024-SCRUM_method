@@ -34,7 +34,7 @@ public class Gun {
 
     public void add_shoot_rate(int value){
         shoot_rate += value;
-        shoot_delay = 5 + 100000/(10+shoot_rate*shoot_rate);
+        shoot_delay = 5 + 10000/(10+shoot_rate*shoot_rate);
         System.out.println("ATT_speed : [rate = "+String.valueOf(shoot_rate)+" , delay = "+String.valueOf(shoot_delay)+"]");
     }
 
