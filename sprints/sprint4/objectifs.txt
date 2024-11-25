@@ -1,0 +1,10 @@
+VISION 
+
+
+OBJECTIFS
+
+créer des zones d'apparition de monstres
+
+créer des zones de la carte à débloquer en fonction du nombre de monstres tués
+
+avoir différents types de monstres (tire à distance, se déplace plus rapidement, a plus de PV par exemple)
