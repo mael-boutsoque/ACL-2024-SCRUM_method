@@ -97,6 +97,7 @@ public class Player extends Entity implements MouseInputListener {
                 compteur += 1;
                 if (compteur%10==0){
                     this.health_p = this.health_p-1;
+                    System.out.println("health : [pv = +"+String.valueOf(this.health_p)+"]");
                 }
                 return false;
             }
@@ -113,6 +114,8 @@ public class Player extends Entity implements MouseInputListener {
     }
 
     public void evolve(Entities entities , Menu menu) {
+        if(this.health_p<=0) System.exit(0);
+        
         if(is_shooting) this.shoot(this.entities);
     	this.gun.update();
 

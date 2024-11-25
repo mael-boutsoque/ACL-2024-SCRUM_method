@@ -33,7 +33,7 @@ public class Entities {
         //Spawner
         obstacles.add(new Spawner(2000,800,110,110));
 
-        player = new Player( win_width/2 , win_height/2 ,this,3);
+        player = new Player( win_width/2 , win_height/2 ,this,10);
         this.player.move(1902, 1080,this);
 
         add_enemi(new MonstreTest(1000,1000,200,200,1000));
