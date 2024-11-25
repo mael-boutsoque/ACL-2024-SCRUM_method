@@ -96,10 +96,7 @@ public class PacmanGame implements Game {
 			}
 		}
 
-		if(menu_upgrades.is_opened()){ // on fait evoluer le menu si il est ouvert
-		}
-
-		else{ // on fait evoluer le jeu si le menu n'est pas ouvert
+		 // on fait evoluer le jeu si le menu n'est pas ouvert et s'il est ouvert aussi
 			int speed = entities.get_player().get_speed();
 
 			if (changes_shooting_state){
@@ -139,7 +136,6 @@ public class PacmanGame implements Game {
 				}
 			}
 			else entity_delay++;
-		}
 	}
 
 	/**

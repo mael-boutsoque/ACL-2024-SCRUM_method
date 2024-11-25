@@ -45,11 +45,9 @@ public class Monstre extends Entity{
 		}
 		if(entities.get_player().get_hitbox().colide(hitboxTemp)){
 			this.on_collision(entities);
-			//damage(1);
-			//entities.get_player().damage(body_damage);
 			entities.get_player().compteur += 1;
                 if (entities.get_player().compteur%10==0){
-                    entities.get_player().health_p = entities.get_player().health_p-1;
+                    entities.get_player().health_p = Math.max(entities.get_player().health_p-1,0);
                 }
 			return false;
 		}
