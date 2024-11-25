@@ -1,0 +1,11 @@
+##Rétrospective du sprint 3##
+
+#Echanges entre les membres du groupe
+
+- points positifs :  on a conservé un échange régulier entre les membres du groupe
+
+- points négatifs :
+
+#Décisions prises pour le sprint 3 : 
+- Conserver un échange réguliers sur les problèmes rencontrés par chaque membre du groupe, pour permettre une résolution plus rapide.
+- Avancer régulièrement pour finir le jeu au cours du dernier sprint.
