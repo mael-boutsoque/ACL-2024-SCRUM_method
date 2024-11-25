@@ -1,10 +1,19 @@
 VISION 
 
+Un personnage animé qui tire des projectiles pouvant être améliorés, ainsi qu'un système d'appartition de monstres complexes et d'une carte dynamique.
 
 OBJECTIFS
 
-créer des zones d'apparition de monstres
+créer des vagues d'apparition de monstres -> Théodore
 
-créer des zones de la carte à débloquer en fonction du nombre de monstres tués
+créer des zones de la carte à débloquer en fonction du nombre de monstres tués -> Théodore
 
-avoir différents types de monstres (tire à distance, se déplace plus rapidement, a plus de PV par exemple)
+avoir différents types de monstres (tire à distance, se déplace plus rapidement, a plus de PV) -> Mael
+
+afficher le menu en même temps que le jeu s'éxecute -> Ouroudj
+
+animer le personnage -> Christophe
+
+avoir des effets sonores pour les déplacements du joueur et lorsque les balles touchent les monstres -> Christophe
+
+des monstres qui contournent les obstacles tout en suivant le joueur -> Alexis
