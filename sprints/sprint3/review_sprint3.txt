@@ -1,0 +1,8 @@
+##Review du sprint 2##
+
+#Fonctionnalités mises en places :
+
+- Le joueur possède une barre de vie et d'expérience 
+- Les monstres possèdent une barre de vie
+- Le joueur peut mourir 
+- L'arme du joueur peut être améliorée en tuant des monstres
