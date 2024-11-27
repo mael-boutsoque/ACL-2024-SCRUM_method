@@ -33,11 +33,11 @@ public class Entities {
         //Spawner
         obstacles.add(new Spawner(2000,800,110,110));
 
-        player = new Player( win_width/2 , win_height/2 ,this,10);
+        player = new Player( 1536/2 , 864/2 ,this,10);
         this.player.move(1902, 1080,this);
 
-        add_enemi(new MonstreTest(1000,1000,200,200,1000));
-        add_enemi(new MonstreTest(1000,1200,100,100,100));
+        add_enemi(new Zombie(1000,1000,200,200,1000));
+        add_enemi(new Zombie(1000,1200,100,100,100));
         
     }
 
