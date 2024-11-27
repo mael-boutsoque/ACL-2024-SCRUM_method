@@ -1,19 +1,17 @@
 package fr.ul.acl.model;
 
-public class MonstreTest extends Monstre{
 
-	int health;
-	private int speed;
-    private double angle = 1;
-    private Gun gun;
-    private boolean is_shooting;
-	public MonstreTest(int x,int y,int width,int height,int health){
+public class Zombie extends Monstre{
+
+	int health0 = 10;
+	public Zombie(int x,int y,int width,int height,int health){
 		super(x,y,width,height,health);
 		this.health = health;
-		image_path = "src/main/resources/OuroudjSama.png";
+		image_path = "src/main/resources/zombie.png";
 	    this.load_image();
 
-		this.gun = new Gun();
+		this.health = health0;
+		this.body_damage = 3;
 	}
 	
 	public void evolve(Entities entities) {
@@ -40,6 +38,5 @@ public class MonstreTest extends Monstre{
         this.y += y;
         this.hitbox.move(this.get_x(),this.get_y());
     	}
-    }	
-		
+    }		
 }

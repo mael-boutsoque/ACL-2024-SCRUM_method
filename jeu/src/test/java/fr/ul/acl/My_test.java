@@ -8,11 +8,11 @@ import fr.ul.acl.model.*;
 
 
 public class My_test {
-    MonstreTest monstre;
+    Monstre monstre;
 
     @Before
     public void init(){
-        monstre = new MonstreTest(0,0,100,100,50);
+        monstre = new Zombie(0,0,100,100,50);
     }
 
     @Test
