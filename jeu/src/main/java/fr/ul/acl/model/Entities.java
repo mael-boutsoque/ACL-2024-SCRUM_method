@@ -31,9 +31,10 @@ public class Entities {
         //liste.add(new MonstreTest(700,300,110,110,2));
 
         //Spawner
-        obstacles.add(new Spawner(2000,800,110,110));
+        //obstacles.add(new Spawner(2000,800,110,110));
+        add_enemi(new Zombie_tireur(2000,900,40,40,1000));
 
-        player = new Player( 1536/2 , 864/2 ,this,10);
+        player = new Player( 1536/2 , 864/2 ,this,1000);
         this.player.move(1902, 1080,this);
 
         add_enemi(new Zombie(1000,1000,200,200,1000));
@@ -122,8 +123,10 @@ public class Entities {
         }
         for(int i=enemies.size()-1 ; i>=0 ; i--){
             if (enemies.get(i).is_dead){
+                if(!(enemies.get(i) instanceof Bullet_enemi)){
+                    player.xp += 2;
+                }
                 enemies.remove(i);
-                player.xp += 2;
             }
         }
     }

@@ -3,7 +3,6 @@ package fr.ul.acl.model;
 
 public class Zombie extends Monstre{
 
-	int health0 = 30;
 	public Zombie(int x,int y,int width,int height,int health){
 		super(x,y,width,height,health);
 		this.health = health;
@@ -11,6 +10,7 @@ public class Zombie extends Monstre{
 		image_path = "src/main/resources/zombie_big.png";
 	    this.load_image();
 
+		this.health0 = 30;
 		this.health = health0;
 		this.body_damage = 6;
 	}

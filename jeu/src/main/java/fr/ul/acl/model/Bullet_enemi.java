@@ -7,6 +7,7 @@ public class Bullet_enemi extends Monstre{
 	int health0 = 10;
 	int dir_x;
 	int dir_y;
+	boolean gonadie = false;
 	public Bullet_enemi(int x,int y,int width,int height,int health,int dir_x,int dir_y){
 		super(x,y,width,height,health);
 		this.dir_x = dir_x;
@@ -17,7 +18,7 @@ public class Bullet_enemi extends Monstre{
 
 		this.health = health0;
 		this.body_damage = 3;
-		this.speed=10;
+		this.speed=16;
 	}
 	
 	public void evolve(Entities entities) {
@@ -30,13 +31,16 @@ public class Bullet_enemi extends Monstre{
 	}
 	
 	public void move(int x,int y,Entities entities){
-    	if (this.can_move(x, y, entities)) {
-        this.x += x;
+		this.x += x;
         this.y += y;
         this.hitbox.move(this.get_x(),this.get_y());
+    	if (this.can_move(x, y, entities)) {
     	}
 		else{
-			this.is_dead = true;
+			if(gonadie){
+				this.is_dead = true;
+			}
+			gonadie = true;
 		}
     }
 	
