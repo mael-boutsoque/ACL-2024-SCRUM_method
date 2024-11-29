@@ -15,6 +15,7 @@ public class Spawner extends Entity {
     public void spawn_monster(Entities entities){   
         entities.add_enemi(new Zombie(this.get_x(),this.get_y(),width,height,20));
         entities.add_enemi(new Zombie_quick(this.get_x(),this.get_y(),width,height,10));
+        entities.add_enemi(new Zombie_tireur(this.get_x(),this.get_y(),width,height,10));
 
     }
 

@@ -17,7 +17,7 @@ public class Monstre extends Entity{
 	int health0;
 	int body_damage = 1;
 	ArrayList<BufferedImage> images;
-	int image_size = 10;
+	int image_size;
 	int image_id = 0 ;
 	int speed = 2;
 	int x_rd;
@@ -28,6 +28,7 @@ public class Monstre extends Entity{
 		this.health = health;
 		image_path = "src/main/resources/entity.png";
 		images = new ArrayList<BufferedImage>();
+		image_size = 64;
 	    this.load_image();
 
 		Random randomNumbers = new Random();
@@ -60,7 +61,7 @@ public class Monstre extends Entity{
         }
         else{
             try {
-                image = (ImageIO.read(new File(image_path)).getSubimage((image_id/10)*image_size,0, 80, 64));
+                image = (ImageIO.read(new File(image_path)).getSubimage((image_id/10)*image_size,0, 64, 64));
 				image_id++;
 				if(image_id>=7*10){
 					image_id = 0;
