@@ -2,9 +2,6 @@ package fr.ul.acl.engine;
 
 import java.awt.image.BufferedImage;
 
-import fr.ul.acl.model.Entities;
-import fr.ul.acl.model.upgrades.Menu;
-
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  * 
@@ -20,7 +17,7 @@ public interface GamePainter {
 	 * @param image
 	 *            image sur laquelle dessiner
 	 */
-	public abstract void draw(BufferedImage image , Entities entities , long FPS , Menu menu);
+	public abstract void draw(BufferedImage image , Game game , long fPS);
 
 	public abstract int getWidth();
 

@@ -22,6 +22,9 @@ public class PacmanGame implements Game {
 	private boolean game_is_close = false;
 	private Menu menu_upgrades;
 
+	private Entities entities;
+
+
 	/**
 	 * constructeur avec fichier source pour le help
 	 * 
@@ -39,6 +42,7 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 
+		this.entities = new Entities(width,height);
 		this.menu_upgrades = new Menu(width , height);
 	}
 
@@ -48,7 +52,7 @@ public class PacmanGame implements Game {
 	 * @param commande
 	 */
 	@Override
-	public void evolve(ArrayList<Cmd> commandes , Entities entities) {
+	public void evolve(ArrayList<Cmd> commandes) {
 		//deplacement joueur
 		//System.out.println(commandes.toString());
 		int x=0,y=0;
@@ -151,4 +155,11 @@ public class PacmanGame implements Game {
 		return menu_upgrades;
 	}
 
+	public Menu get_Menu(){
+		return this.menu_upgrades;
+	}
+
+	public Entities get_Entities(){
+		return this.entities;
+	}
 }

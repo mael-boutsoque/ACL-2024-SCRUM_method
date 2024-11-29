@@ -1,5 +1,6 @@
 package fr.ul.acl.engine;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import fr.ul.acl.model.Entities;
@@ -19,13 +20,15 @@ public interface Game {
 	 * @param userCmd
 	 *            commande utilisateur
 	 */
-	public void evolve(ArrayList<Cmd> userCmd , Entities entities);
+	public void evolve(ArrayList<Cmd> userCmd);
 
 	/**
 	 * @return true si et seulement si le jeu est fini
 	 */
 	public boolean isFinished();
 
-    public Menu getMenu();
+    public Menu get_Menu();
+
+	public Entities get_Entities();
 
 }
