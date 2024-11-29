@@ -39,6 +39,8 @@ public class Entities {
 
         add_enemi(new Zombie(1000,1000,200,200,1000));
         add_enemi(new Zombie(1000,1200,100,100,100));
+
+        add_enemi(new Boss(4500,2000,400,400,10000));
         
     }
 

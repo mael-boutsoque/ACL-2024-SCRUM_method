@@ -1,5 +1,6 @@
 package fr.ul.acl.model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Bullet_enemi extends Monstre{
@@ -45,6 +46,7 @@ public class Bullet_enemi extends Monstre{
     }
 	
 	public void draw(Graphics2D crayon){
+		crayon.setColor(Color.gray);
         crayon.fillOval(this.get_x(),this.get_y(),width,height);
     }
 }
