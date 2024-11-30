@@ -26,10 +26,10 @@ public class Monstre extends Entity{
 		super(x,y,width,height);
 		this.health0 = health;
 		this.health = health;
-		image_path = "src/main/resources/entity.png";
-		images = new ArrayList<BufferedImage>();
+		image_path = "src/main/resources/boss.png";
+		this.images = new ArrayList<BufferedImage>();
+		this.saved_images();
 		image_size = 64;
-	    this.load_image();
 
 		Random randomNumbers = new Random();
 		x_rd = 100-randomNumbers.nextInt(20);
@@ -37,7 +37,7 @@ public class Monstre extends Entity{
 	}
 
 	public void draw(Graphics2D crayon){
-		load_image();
+		image = this.next_image();
 		Image image_temp = get_image();
 		crayon.drawImage(image_temp, this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
 		if(this.show_hitbox) {
@@ -54,24 +54,35 @@ public class Monstre extends Entity{
         crayon.fillRect(this.get_x()+1, this.get_y()-heal_bar_height+1, (int)(0.01*(this.get_width()-2)*(100*this.health/this.health0)), heal_bar_height-2);
 	}
 	
-
-	public void load_image(){
-        if (image_path==null){
+	public void saved_images(){
+		BufferedImage temp = null;
+		if (image_path==null){
             images = null;
         }
         else{
+			images.clear();
+			for(int i = 0;i<=7;i++){
             try {
-                image = (ImageIO.read(new File(image_path)).getSubimage((image_id/10)*image_size,0, 64, 64));
-				image_id++;
-				if(image_id>=7*10){
-					image_id = 0;
-				}
-            }
+				
+                temp = (ImageIO.read(new File(this.image_path)).getSubimage(i*image_size,0, 64, 64));
+				images.add(temp);
+
+		}
             catch(IOException e) {
             System.err.println("image not load for "+this.getClass().getName());
             show_hitbox = true;
             }
         }
+	}
+	}
+
+	public BufferedImage next_image(){
+        
+		image_id++;
+		if(image_id>=7*10){
+			image_id = 0;
+			}
+		return images.get(image_id/10);
     }
 
 

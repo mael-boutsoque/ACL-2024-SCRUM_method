@@ -9,7 +9,7 @@ public class Zombie_tireur extends Monstre{
 		this.health = health;
 		image_size = 64;
 		image_path = "src/main/resources/tireur.png";
-	    this.load_image();
+	    this.saved_images();
 
 		this.speed = 8;
 		this.health0 = 10;

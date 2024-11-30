@@ -10,7 +10,7 @@ public class Zombie extends Monstre{
 		this.health = health;
 		image_size = 64;
 		image_path = "src/main/resources/zombie_big.png";
-	    this.load_image();
+	    this.saved_images();
 
 		this.health0 = 30;
 		this.health = health0;
