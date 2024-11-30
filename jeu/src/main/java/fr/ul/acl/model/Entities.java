@@ -32,7 +32,8 @@ public class Entities {
 
         //Spawner
         //obstacles.add(new Spawner(2000,800,110,110));
-        add_enemi(new Zombie_tireur(2000,900,40,40,1000));
+        add_enemi(new Zombie_tireur(2000,900,100,100,1000));
+        add_enemi(new Zombie_quick(100, 100, 100, 100, 100));
 
         player = new Player( 1536/2 , 864/2 ,this,1000);
         this.player.move(1902, 1080,this);

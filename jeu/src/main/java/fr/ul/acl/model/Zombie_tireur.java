@@ -22,12 +22,12 @@ public class Zombie_tireur extends Monstre{
 		int ply = entities.get_player().get_y();
 		int dx = 0 , dy = 0;
 
-		if(entities.get_player().get_x()+30>this.get_x()+0.5*width){
+		if(entities.get_player().get_x()>this.get_x()+0.5*width){
 			dx = speed*x_rd/100;
 		}
 		else dx = -speed*x_rd/100;
 
-		if(entities.get_player().get_y()+30>this.get_y()+0.5*height){
+		if(entities.get_player().get_y()>this.get_y()+0.5*height){
 			dy = speed*y_rd/100;
 		}
 		else dy = -speed*y_rd/100;
@@ -38,8 +38,8 @@ public class Zombie_tireur extends Monstre{
 			this.move(0,dy,entities);
 		}
 		else if(distance<400){
-			this.move(-dx,0,entities);
-			this.move(0,-dy,entities);
+			this.move((int) (-dx/(1+distance)),0,entities);
+			this.move(0,(int) (-dy/(1+distance)),entities);
 		}
 
 		if(counter>=counter_max){
@@ -47,7 +47,7 @@ public class Zombie_tireur extends Monstre{
 			int px = entities.get_player().get_x() - this.get_x();
 			int py = entities.get_player().get_y() - this.get_y();
 			double angle = -Math.atan2(px,py) + 3.14/2;
-			entities.add_enemi(new Bullet_enemi(this.get_x(),this.get_y(),20,20,1,(int)(Math.cos(angle)*100),(int)(Math.sin(angle)*100)));
+			entities.add_enemi(new Bullet_enemi(this.get_x()+this.get_width()/2,this.get_y()+this.get_height()/2,20,20,1,(int)(Math.cos(angle)*100),(int)(Math.sin(angle)*100)));
 		}
 		else counter++;
 	}

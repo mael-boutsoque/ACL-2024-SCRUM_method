@@ -20,12 +20,12 @@ public class Zombie_quick extends Monstre{
 	public void evolve(Entities entities) {
 		
 		int dx = 0 , dy = 0;
-		if(entities.get_player().get_x()+30>this.get_x()+0.5*width){
+		if(entities.get_player().get_x()>this.get_x()+0.5*width){
 			dx = speed*x_rd/100;
 		}
 		else dx = -speed*x_rd/100;
 
-		if(entities.get_player().get_y()+30>this.get_y()+0.5*height){
+		if(entities.get_player().get_y()>this.get_y()+0.5*height){
 			dy = speed*y_rd/100;
 		}
 		else dy = -speed*y_rd/100;
