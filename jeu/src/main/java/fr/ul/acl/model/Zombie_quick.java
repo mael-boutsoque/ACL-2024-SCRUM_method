@@ -8,7 +8,7 @@ public class Zombie_quick extends Monstre{
 		this.health = health;
 		image_size = 64;
 		image_path = "src/main/resources/zombie2.png";
-	    this.load_image();
+	    this.saved_images();
 
 		this.health0 = 10;
 		this.speed = 10;
