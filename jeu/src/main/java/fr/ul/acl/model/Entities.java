@@ -16,8 +16,6 @@ public class Entities {
      */
     public Entities(int win_width,int win_height){
         final int coef_carte = 6;
-        final int carte_x = 1200;
-        final int carte_y = 630;
         obstacles = new ArrayList<Entity>() ;
         enemies = new ArrayList<Entity>() ;
         projectiles = new ArrayList<Entity>() ;

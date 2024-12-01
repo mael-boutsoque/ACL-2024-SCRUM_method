@@ -2,29 +2,20 @@ package fr.ul.acl.model.upgrades;
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.*;
 import java.awt.*;
 
 import fr.ul.acl.model.Player;
 import fr.ul.acl.model.upgrades.upgrades_list.*;
 
 public class Menu {
-    private int width;
-    private int height;
-    private int dwidth;
     private int dheight;
-    private int button_width;
     private int button_height;
     private Boolean isOpen = false;
     private ArrayList<Boutton> bouttons;
     private ArrayList<Upgrade> upgrades;
 
     public Menu(int width , int height){
-        this.width = width;
-        this.dwidth = width/5;
         this.dheight = height/10;
-        this.height = height;
-        button_width = dwidth-10;
         button_height = dheight-10;
 
         upgrades = new ArrayList<>();

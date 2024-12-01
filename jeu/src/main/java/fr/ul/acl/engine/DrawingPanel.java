@@ -11,9 +11,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import fr.ul.acl.model.Entities;
-import fr.ul.acl.model.upgrades.Menu;
-
 public class DrawingPanel extends JPanel {
 
 	/**

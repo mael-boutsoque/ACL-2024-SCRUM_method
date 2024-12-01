@@ -20,7 +20,7 @@ public class Zombie extends Monstre{
 	public void evolve(Entities entities) {
 		int plx = entities.get_player().get_x();
 		int ply = entities.get_player().get_y();
-		double distance = Math.sqrt(Math.pow(plx-get_x()-get_width()/2, 2) + Math.pow(ply-get_y()-get_height()/2, 2));
+		double distance = Math.sqrt(Math.pow(plx+30-get_x()-get_width()/2, 2) + Math.pow(ply+30-get_y()-get_height()/2, 2));
 		int dx = 0 , dy = 0;
 		if(distance>300+get_width()/2){
 			can_dash = true;

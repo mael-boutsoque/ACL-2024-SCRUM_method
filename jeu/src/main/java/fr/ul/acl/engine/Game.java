@@ -1,6 +1,5 @@
 package fr.ul.acl.engine;
 
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import fr.ul.acl.model.Entities;
