@@ -23,6 +23,7 @@ public class PacmanGame implements Game {
 	private Menu menu_upgrades;
 
 	private Entities entities;
+	private int wave;
 
 
 	/**
@@ -44,6 +45,7 @@ public class PacmanGame implements Game {
 
 		this.entities = new Entities(width,height);
 		this.menu_upgrades = new Menu(width , height);
+		this.wave=1;
 	}
 
 	/**
@@ -161,5 +163,12 @@ public class PacmanGame implements Game {
 
 	public Entities get_Entities(){
 		return this.entities;
+	}
+	public int get_wave(){
+		return this.wave;
+	}
+
+	public void set_wave(int valeur){
+		this.wave = valeur;
 	}
 }
