@@ -162,11 +162,4 @@ public class PacmanGame implements Game {
 	public Entities get_Entities(){
 		return this.entities;
 	}
-	public int get_wave(){
-		return this.wave;
-	}
-
-	public void set_wave(int valeur){
-		this.wave = valeur;
-	}
 }
