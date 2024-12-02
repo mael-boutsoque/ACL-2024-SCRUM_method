@@ -23,7 +23,6 @@ public class PacmanGame implements Game {
 	private Menu menu_upgrades;
 
 	private Entities entities;
-	private int wave;
 
 
 	/**
@@ -45,7 +44,6 @@ public class PacmanGame implements Game {
 
 		this.entities = new Entities(width,height);
 		this.menu_upgrades = new Menu(width , height);
-		this.wave=1;
 	}
 
 	/**
@@ -123,6 +121,7 @@ public class PacmanGame implements Game {
 			}
 			
 			entities.kill_dead_entities();
+			entities.changeWave();
 			//fait évoluer les entitiés
 			entities.get_player().evolve(entities , menu_upgrades);
 
@@ -152,7 +151,6 @@ public class PacmanGame implements Game {
 		// le jeu n'est jamais fini
 		return game_is_close;
 	}
-
 	public Menu getMenu(){
 		return menu_upgrades;
 	}

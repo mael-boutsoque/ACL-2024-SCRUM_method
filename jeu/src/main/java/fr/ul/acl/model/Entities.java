@@ -8,8 +8,11 @@ public class Entities {
     public ArrayList<Entity> enemies;
     public ArrayList<Entity> projectiles;
     private Player player;
-    protected int nbMonstre = 0;
-    protected int nbMonstreMax = 10;
+    private int wave = 1;
+    private int nbMonstreApparu = 0;
+    private int nbMonstreMax = 10;
+    private boolean canGoNextWave =false;
+
 
     /*
      * the map is always the first entity
@@ -30,16 +33,16 @@ public class Entities {
 
 
 
-        add_enemi(new Zombie_tireur(2000,900,100,100,1));
-        add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
+        //add_enemi(new Zombie_tireur(2000,900,100,100,1));
+        //add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
 
         player = new Player( 1536/2 , 864/2 ,this,1000);
         this.player.move(1902, 1080,this);
 
-        add_enemi(new Zombie(1000,1000,200,200,1));
-        add_enemi(new Zombie(1000,1200,100,100,1));
+        //add_enemi(new Zombie(1000,1000,200,200,1));
+        //add_enemi(new Zombie(1000,1200,100,100,1));
 
-        add_enemi(new Boss(4500,2000,400,400,1));
+        //add_enemi(new Boss(4500,2000,400,400,1));
         
     }
 
@@ -84,6 +87,38 @@ public class Entities {
 
     public Player get_player(){
         return player;
+    }
+
+    public int get_nbMonstreMax(){
+        return this.nbMonstreMax;
+    }
+
+    public void set_nbMonstreMax(int wave){
+        this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
+    }
+
+    public int get_wave(){
+        return this.wave;
+    }
+
+    public void set_wave(int valeur){
+        this.wave=valeur;
+    }
+
+    public int get_nbMonstreApparu(){
+        return this.nbMonstreApparu;
+    }
+
+    public void set_nbMonstreApparu(int valeur){
+        this.nbMonstreApparu=valeur;
+    }
+
+    public boolean get_canGoNextWave(){
+        return this.canGoNextWave;
+    }
+
+    public void set_canGoNextWave(boolean valeur){
+        this.canGoNextWave=valeur;
     }
     
     public void player_move(int x,int y,Entities entities){
@@ -135,5 +170,14 @@ public class Entities {
     public String toString(){
         return "[obstacles : "+String.valueOf(obstacles.size())+" , monstres : "+String.valueOf(enemies.size())+" , balles : "+String.valueOf(projectiles.size())+"]";
 
+    }
+
+    public void changeWave(){
+        if(canGoNextWave && this.enemies.isEmpty()){
+        this.canGoNextWave=false;
+        this.wave++;
+        this.nbMonstreApparu=0;
+        set_nbMonstreMax(wave);
+        }
     }
 }

@@ -22,31 +22,36 @@ public class Spawner extends Entity {
     }
 
     public void spawn_monster(Entities entities){  
-        load_monstres(); 
         Random random = new Random();
+        int niveauAleatoire = random.nextInt(entities.get_wave()+1)+1;
+        load_monstres(niveauAleatoire); 
+
         int tailleListe = monstres.size();
         int indiceAleatoire = random.nextInt(tailleListe);
         entities.add_enemi(monstres.get(indiceAleatoire));
-
+        entities.set_nbMonstreApparu(entities.get_nbMonstreApparu()+1);
     }
 
-    public void evolve(Entities entities){
-        if(this.isActive){
+    @Override public void evolve(Entities entities){
+        if(this.isActive && !entities.get_canGoNextWave()){
             if (spawncounter>spawnrate){
-                entities.nbMonstre=entities.nbMonstre+1;
+                
                 this.spawncounter=0;
                 this.spawn_monster(entities);
             }
             else{
                 this.spawncounter=this.spawncounter+1;
             }
+            if(entities.get_nbMonstreApparu()==entities.get_nbMonstreMax()){
+                entities.set_canGoNextWave(true);
+            }
         }
     }
-    private void load_monstres(){
+    private void load_monstres(int level){
         monstres.clear();
-        monstres.add(new Zombie(this.get_x(),this.get_y(),width,height,20));
-        monstres.add(new Zombie_quick(this.get_x(),this.get_y(),width,height,10));
-        monstres.add(new Zombie_tireur(this.get_x(),this.get_y(),width,height,10));
+        monstres.add(new Zombie(this.get_x(),this.get_y(),width,height,level));
+        monstres.add(new Zombie_quick(this.get_x(),this.get_y(),width,height,level));
+        monstres.add(new Zombie_tireur(this.get_x(),this.get_y(),width,height,level));
     }
     public boolean get_isActive(){
         return this.isActive;
