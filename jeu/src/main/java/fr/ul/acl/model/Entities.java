@@ -29,8 +29,8 @@ public class Entities {
         //liste.add(new MonstreTest(700,300,110,110,2));
 
         //Spawner
-        //obstacles.add(new Spawner(2000,800,110,110));
-        
+        obstacles.add(new Spawner(2000,800,110,110));
+
         add_enemi(new Zombie_tireur(2000,900,100,100,1000));
         add_enemi(new Zombie_quick(100, 100, 100, 100, 100));
 

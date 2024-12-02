@@ -17,6 +17,7 @@ public class Spawner extends Entity {
         this.is_colidable = false;
         image_path = "src/main/resources/spawner_image.png";
         load_image();
+        monstres = new ArrayList<>();
     }
 
     public void spawn_monster(Entities entities){  
