@@ -33,6 +33,7 @@ public class Spawner extends Entity {
     }
 
     @Override public void evolve(Entities entities){
+        spawnrate = 200/entities.get_wave();
         if(this.isActive && !entities.get_canGoNextWave()){
             if (spawncounter>spawnrate){
                 

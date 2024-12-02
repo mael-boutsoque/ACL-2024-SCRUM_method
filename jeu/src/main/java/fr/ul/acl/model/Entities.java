@@ -43,6 +43,10 @@ public class Entities {
         //add_enemi(new Zombie(1000,1200,100,100,1));
 
         //add_enemi(new Boss(4500,2000,400,400,1));
+
+        add_obstacle(new Spawner(2000,800,110,110,true));
+        add_obstacle(new Spawner(2100,2100,110,110,true));
+        add_obstacle(new Spawner(4000,1100,110,110,true));
         
     }
 

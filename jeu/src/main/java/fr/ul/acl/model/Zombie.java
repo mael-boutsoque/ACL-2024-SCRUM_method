@@ -74,7 +74,7 @@ public class Zombie extends Monstre{
 		if(entities.get_player().get_hitbox().colide(hitboxTemp)){
 			this.on_collision(entities);
 			if(!can_dash){
-				entities.get_player().move(x, y, entities);
+				if(entities.get_player().can_move(x, y, entities))entities.get_player().move(x, y, entities);
 			}
 			entities.get_player().compteur += 1;
                 if (entities.get_player().compteur%10==0){
