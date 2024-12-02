@@ -3,9 +3,10 @@ package fr.ul.acl.model;
 
 public class Boss extends Monstre{
 
-	public Boss(int x,int y,int width,int height,int health){
-		super(x,y,width,height,health);
-		this.health = health;
+	public Boss(int x,int y,int width,int height,int level){
+		super(x,y,width,height,level);
+		this.level= level;
+		this.health=(int) Math.round(25*Math.log(level)+1000);
 		image_size = 64;
 		image_path = "src/main/resources/bossr.png";
 	    this.saved_images();

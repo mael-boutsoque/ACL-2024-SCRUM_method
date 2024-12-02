@@ -28,19 +28,18 @@ public class Entities {
         //Monstre
         //liste.add(new MonstreTest(700,300,110,110,2));
 
-        //Spawner
-        obstacles.add(new Spawner(2000,800,110,110));
 
-        add_enemi(new Zombie_tireur(2000,900,100,100,1000));
-        add_enemi(new Zombie_quick(100, 100, 100, 100, 100));
+
+        add_enemi(new Zombie_tireur(2000,900,100,100,1));
+        add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
 
         player = new Player( 1536/2 , 864/2 ,this,1000);
         this.player.move(1902, 1080,this);
 
-        add_enemi(new Zombie(1000,1000,200,200,1000));
-        add_enemi(new Zombie(1000,1200,100,100,100));
+        add_enemi(new Zombie(1000,1000,200,200,1));
+        add_enemi(new Zombie(1000,1200,100,100,1));
 
-        add_enemi(new Boss(4500,2000,400,400,10000));
+        add_enemi(new Boss(4500,2000,400,400,1));
         
     }
 

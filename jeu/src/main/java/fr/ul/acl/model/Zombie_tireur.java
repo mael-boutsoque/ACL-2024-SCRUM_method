@@ -4,9 +4,10 @@ public class Zombie_tireur extends Monstre{
 
 	int counter = 0;
 	int counter_max = 30;
-	public Zombie_tireur(int x,int y,int width,int height,int health){
-		super(x,y,width,height,health);
-		this.health = health;
+	public Zombie_tireur(int x,int y,int width,int height,int level){
+		super(x,y,width,height,level);
+		this.level= level;
+		this.health=(int) Math.round(25*Math.log(level)+10);
 		image_size = 64;
 		image_path = "src/main/resources/tireur.png";
 	    this.saved_images();

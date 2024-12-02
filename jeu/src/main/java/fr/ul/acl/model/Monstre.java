@@ -22,10 +22,13 @@ public class Monstre extends Entity{
 	int speed = 2;
 	int x_rd;
 	int y_rd;
-	public Monstre(int x,int y,int width,int height,int health){
+	int level;
+	
+	public Monstre(int x,int y,int width,int height,int level){
 		super(x,y,width,height);
-		this.health0 = health;
-		this.health = health;
+		this.level=level;
+		this.health0 = (int) Math.round(25*Math.log(level)+5);
+		this.health = this.health0;
 		image_path = "src/main/resources/boss.png";
 		this.images = new ArrayList<BufferedImage>();
 		this.saved_images();

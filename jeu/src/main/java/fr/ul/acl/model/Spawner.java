@@ -12,12 +12,13 @@ public class Spawner extends Entity {
     private ArrayList<Monstre> monstres;
     private boolean isActive;
 
-    Spawner(int x,int y,int width,int height){
+    Spawner(int x,int y,int width,int height,boolean isActive){
         super(x,y,width,height);
         this.is_colidable = false;
         image_path = "src/main/resources/spawner_image.png";
         load_image();
-        monstres = new ArrayList<>();
+        this.monstres = new ArrayList<>();
+        this.isActive = isActive;
     }
 
     public void spawn_monster(Entities entities){  
@@ -30,15 +31,16 @@ public class Spawner extends Entity {
     }
 
     public void evolve(Entities entities){
-        if (spawncounter>spawnrate){
-            entities.nbMonstre=entities.nbMonstre+1;
-            this.spawncounter=0;
-            this.spawn_monster(entities);
+        if(this.isActive){
+            if (spawncounter>spawnrate){
+                entities.nbMonstre=entities.nbMonstre+1;
+                this.spawncounter=0;
+                this.spawn_monster(entities);
+            }
+            else{
+                this.spawncounter=this.spawncounter+1;
+            }
         }
-        else{
-            this.spawncounter=this.spawncounter+1;
-        }
-
     }
     private void load_monstres(){
         monstres.clear();

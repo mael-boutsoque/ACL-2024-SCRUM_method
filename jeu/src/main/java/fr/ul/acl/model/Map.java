@@ -62,6 +62,9 @@ public class Map extends Entity {
         entities.obstacles.add(new Invisible(806*coef_carte,389*coef_carte,39*coef_carte,41*coef_carte));
         entities.obstacles.add(new Invisible(280*coef_carte,550*coef_carte,40*coef_carte,23*coef_carte));
         entities.obstacles.add(new Invisible(1022*coef_carte,478*coef_carte,40*coef_carte,23*coef_carte));
+        //Spawner
+        entities.obstacles.add(new Spawner(2000,800,110,110,true));
+        
     }
 }
 
