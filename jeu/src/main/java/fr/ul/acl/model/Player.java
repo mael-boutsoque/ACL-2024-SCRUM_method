@@ -24,7 +24,8 @@ public class Player extends Entity implements MouseInputListener {
     int compteur = 0;
 
     Player(int x , int y , Entities entities , int health_p){
-        super(x - 70, y - 70 , 80 , 80);
+        super(x, y, 80 , 80);
+        //super(x - 70, y - 70 , 80 , 80);
         this.entities = entities;
 
         this.health_p = health_p;
@@ -36,7 +37,7 @@ public class Player extends Entity implements MouseInputListener {
         this.show_hitbox = false;
 
         // stats
-        this.speed = 2;
+        this.speed = 10;
 
         this.gun = new Gun();
     }

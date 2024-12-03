@@ -1,5 +1,6 @@
 package fr.ul.acl.model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -29,16 +30,15 @@ public class Entity {
     protected int heal_bar_height = 10;
 
     // debug
-    public boolean show_hitbox = false;
+    public boolean show_hitbox = true;
 
-    Entity(int x,int y,int width,int height){
+    public Entity(int x,int y,int width,int height){
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
         image_path = "src/main/resources/entity.png";
         load_image();
-        this.show_hitbox = false;
         this.load_hitbox();
         this.health = 9999;
     }
@@ -64,11 +64,18 @@ public class Entity {
     public void draw(Graphics2D crayon){
         crayon.drawImage(this.get_image(), this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
         if(this.show_hitbox) {
-            //crayon.setColor(Color.blue);
+            crayon.setColor(Color.blue);
             crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
         }
     }
-
+    
+    //calcule la distance entre deux entités
+    public float distance_to(Entity entity) {
+		double a = Math.pow(this.x - entity.x, 2);
+		double b = Math.pow(this.y - entity.y, 2);
+		return (float) Math.sqrt(a+b);
+	}
+    
     protected Hitbox get_hitbox() {
 		return this.hitbox;
 	}
