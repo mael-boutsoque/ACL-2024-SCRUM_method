@@ -19,12 +19,14 @@ public class PacmanController implements GameController {
 	 * commande en cours
 	 */
 	private ArrayList<Cmd> commandeEnCours;
+	public static boolean isKeyPressed;
 	
 	/**
 	 * construction du controleur par defaut le controleur n'a pas de commande
 	 */
 	public PacmanController() {
 		this.commandeEnCours = new ArrayList<Cmd>();
+		isKeyPressed = false;
 	}
 
 	/**
@@ -68,6 +70,7 @@ public class PacmanController implements GameController {
 				System.out.println("echap");
 				System.exit(0);
 			}
+			isKeyPressed = true;
 	
 	}
 
@@ -87,6 +90,7 @@ public class PacmanController implements GameController {
 			if( keychar == '&' ) this.commandeEnCours.remove(Cmd.MENU_1);
 			if( keychar == 'é' ) this.commandeEnCours.remove(Cmd.MENU_2);
 			if( keychar == '"' ) this.commandeEnCours.remove(Cmd.MENU_3);
+			isKeyPressed = false;
 	}
 
 	@Override

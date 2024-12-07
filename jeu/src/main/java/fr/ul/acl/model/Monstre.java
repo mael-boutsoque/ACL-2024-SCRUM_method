@@ -134,7 +134,6 @@ public class Monstre extends Entity{
     }
 	
 	public void setFile(int i){
-        System.out.println(soundURL[i]);
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();

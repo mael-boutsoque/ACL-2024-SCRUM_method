@@ -3,7 +3,6 @@ package fr.ul.acl.model;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
-import java.io.File;
 
 import javax.swing.event.MouseInputListener;
 import fr.ul.acl.model.upgrades.Menu;
@@ -12,6 +11,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
 import java.net.URL;
+
 
 public class Player extends Entity implements MouseInputListener {
     private int speed;
@@ -50,8 +50,8 @@ public class Player extends Entity implements MouseInputListener {
         this.gun = new Gun();
 
         // Sound effects
-        //sound_path = "/lvl_up_sound.wav";
         soundURL[0] = getClass().getResource("/lvl_up_sound.wav");
+        soundURL[1] = getClass().getResource("/footsteps.wav");
         setFile(0);
 
     }
@@ -114,6 +114,7 @@ public class Player extends Entity implements MouseInputListener {
                     this.health_p = this.health_p-1;
                     System.out.println("health : [pv = +"+String.valueOf(this.health_p)+"]");
                 }
+
                 //return false;
             }
         }
@@ -141,6 +142,10 @@ public class Player extends Entity implements MouseInputListener {
 			this.lvl++;
             menu.open();
 		}
+
+        if (PacmanController.isKeyPressed && !clip.isActive()){
+            PlayMusic(1);
+        }
     }
 
     
@@ -208,7 +213,7 @@ public void mouseEntered(MouseEvent e) {
 public void mouseExited(MouseEvent e) {
 }
     public void setFile(int i){
-        System.out.println(soundURL[i]);
+        //System.out.println(soundURL[i]);
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
@@ -222,6 +227,13 @@ public void mouseExited(MouseEvent e) {
     public void PlayMusic(int i){
         setFile(i);
         clip.start();
+    }
+
+    public void loop(int i){
+        setFile(i);
+        System.out.println(clip);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
 }
