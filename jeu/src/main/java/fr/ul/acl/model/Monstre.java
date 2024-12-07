@@ -6,10 +6,17 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import java.net.URL;
 
 public class Monstre extends Entity{
 
@@ -23,6 +30,9 @@ public class Monstre extends Entity{
 	int x_rd;
 	int y_rd;
 	int level;
+
+	Clip clip;
+    URL soundURL[] = new URL[20];
 	
 	public Monstre(int x,int y,int width,int height,int level){
 		super(x,y,width,height);
@@ -37,6 +47,10 @@ public class Monstre extends Entity{
 		Random randomNumbers = new Random();
 		x_rd = 100-randomNumbers.nextInt(20);
 		y_rd = 100-randomNumbers.nextInt(20);
+
+		soundURL[0] = getClass().getResource("/damage_monstre.wav");
+        soundURL[1] = getClass().getResource("/death.wav");
+		setFile(0);
 	}
 
 	public void draw(Graphics2D crayon){
@@ -92,8 +106,10 @@ public class Monstre extends Entity{
 	public void damage(int degats) {
 		if (this.health <= 0) {
 			this.is_dead = true;
+			PlayMusic(1);
 		}
 		else
+			PlayMusic(0);
 			this.health -= degats;
 	}
 
@@ -117,5 +133,21 @@ public class Monstre extends Entity{
     	return true;
     }
 	
+	public void setFile(int i){
+        System.out.println(soundURL[i]);
+        try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+        }catch(Exception e){
+            System.out.println("error 99");
+        }
+
+    }
+
+    public void PlayMusic(int i){
+        setFile(i);
+        clip.start();
+    }
 		
 }

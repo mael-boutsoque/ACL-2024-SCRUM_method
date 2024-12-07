@@ -29,9 +29,8 @@ public class Player extends Entity implements MouseInputListener {
     private char[] affichage_vie = {'V','i','e',' ','x','y'};
     int compteur = 0;
 
-    private String sound_path;
     Clip clip;
-    URL soundURL[] = new URL[20];
+    URL soundURL[] = new URL[5];
 
 
     Player(int x , int y , Entities entities , int health_p){
@@ -51,8 +50,8 @@ public class Player extends Entity implements MouseInputListener {
         this.gun = new Gun();
 
         // Sound effects
-        sound_path = "/lvl_up_sound.wav";
-        soundURL[0] = getClass().getResource(sound_path);
+        //sound_path = "/lvl_up_sound.wav";
+        soundURL[0] = getClass().getResource("/lvl_up_sound.wav");
         setFile(0);
 
     }
