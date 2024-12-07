@@ -3,9 +3,15 @@ package fr.ul.acl.model;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.event.MouseInputListener;
 import fr.ul.acl.model.upgrades.Menu;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import java.net.URL;
 
 public class Player extends Entity implements MouseInputListener {
     private int speed;
@@ -23,6 +29,11 @@ public class Player extends Entity implements MouseInputListener {
     private char[] affichage_vie = {'V','i','e',' ','x','y'};
     int compteur = 0;
 
+    private String sound_path;
+    Clip clip;
+    URL soundURL[] = new URL[20];
+
+
     Player(int x , int y , Entities entities , int health_p){
         super(x - 70, y - 70 , 80 , 80);
         this.entities = entities;
@@ -37,8 +48,13 @@ public class Player extends Entity implements MouseInputListener {
 
         // stats
         this.speed = 2;
-
         this.gun = new Gun();
+
+        // Sound effects
+        sound_path = "/lvl_up_sound.wav";
+        soundURL[0] = getClass().getResource(sound_path);
+        setFile(0);
+
     }
 
     public void draw(Graphics2D crayon){
@@ -120,6 +136,8 @@ public class Player extends Entity implements MouseInputListener {
     	this.gun.update();
 
         if(this.xp > this.xp_to_next_lvl) {
+            clip.stop();
+            PlayMusic(0);
 			this.xp = 0;
 			this.lvl++;
             menu.open();
@@ -190,6 +208,23 @@ public void mouseEntered(MouseEvent e) {
 @Override
 public void mouseExited(MouseEvent e) {
 }
+    public void setFile(int i){
+        System.out.println(soundURL[i]);
+        try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+        }catch(Exception e){
+            System.out.println("error 99");
+        }
+
+    }
+
+    public void PlayMusic(int i){
+        setFile(i);
+        clip.start();
+    }
+
 }
 
 
