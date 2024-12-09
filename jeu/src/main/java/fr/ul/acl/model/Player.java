@@ -37,7 +37,7 @@ public class Player extends Entity implements MouseInputListener {
         this.show_hitbox = false;
 
         // stats
-        this.speed = 10;
+        this.speed = 2;
 
         this.gun = new Gun();
     }

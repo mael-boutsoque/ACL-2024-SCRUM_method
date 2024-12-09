@@ -54,7 +54,7 @@ public class Map extends Entity {
         entities.obstacles.add(new Invisible(1139*coef_carte,265*coef_carte,1*coef_carte,42*coef_carte));
         //Gazon
         entities.obstacles.add(new Invisible(151*coef_carte,483*coef_carte,61*coef_carte,51*coef_carte));
-        entities.obstacles.add(new Invisible(200*coef_carte,385*coef_carte,51*coef_carte,102*coef_carte));
+        entities.obstacles.add(new Invisible(200*coef_carte,400*coef_carte,51*coef_carte,85*coef_carte));
         //Cactus
         //entities.obstacles.add(new Invisible(350*coef_carte,28*coef_carte,45*coef_carte,42*coef_carte));
         //entities.obstacles.add(new Invisible(182*coef_carte,556*coef_carte,39*coef_carte,38*coef_carte));
@@ -72,46 +72,47 @@ public class Map extends Entity {
     	entities.pathfinder = new GraphePathfinding(entities.obstacles);
     	
     	//bord gauche
-    	entities.pathfinder.add_waypoint(20*coef_carte, 10*coef_carte);
+    	entities.pathfinder.add_waypoint(80*coef_carte, 5*coef_carte);
     	entities.pathfinder.add_waypoint(20*coef_carte, 300*coef_carte);
-    	entities.pathfinder.add_waypoint(100*coef_carte, 200*coef_carte);
+    	entities.pathfinder.add_waypoint(90*coef_carte, 200*coef_carte);
     	
     	//bord superieur
-    	entities.pathfinder.add_waypoint(175*coef_carte, 10*coef_carte);
+    	entities.pathfinder.add_waypoint(175*coef_carte, 5*coef_carte);
     	entities.pathfinder.add_waypoint(175*coef_carte, 130*coef_carte);
-    	entities.pathfinder.add_waypoint(300*coef_carte, 10*coef_carte);
+    	entities.pathfinder.add_waypoint(300*coef_carte, 5*coef_carte);
     	entities.pathfinder.add_waypoint(300*coef_carte, 130*coef_carte);
-    	entities.pathfinder.add_waypoint(750*coef_carte, 10*coef_carte);
+    	entities.pathfinder.add_waypoint(750*coef_carte, 5*coef_carte);
+    	entities.pathfinder.add_waypoint(500*coef_carte, 130*coef_carte);
     	entities.pathfinder.add_waypoint(650*coef_carte, 130*coef_carte);
-    	entities.pathfinder.add_waypoint(1155*coef_carte, 10*coef_carte);
+    	entities.pathfinder.add_waypoint(1155*coef_carte, 5*coef_carte);
     	
     	//Bloc gris avec escalier
     	entities.pathfinder.add_waypoint(325*coef_carte, 360*coef_carte);
-    	entities.pathfinder.add_waypoint(240*coef_carte, 360*coef_carte);
-    	entities.pathfinder.add_waypoint(240*coef_carte, 280*coef_carte);
+    	entities.pathfinder.add_waypoint(232*coef_carte, 360*coef_carte);
+    	entities.pathfinder.add_waypoint(232*coef_carte, 280*coef_carte);
     	entities.pathfinder.add_waypoint(180*coef_carte, 200*coef_carte);
     	entities.pathfinder.add_waypoint(400*coef_carte, 200*coef_carte);
+    	entities.pathfinder.add_waypoint(400*coef_carte, 300*coef_carte);
     	
     	//Bloc gris 2 etages
     	entities.pathfinder.add_waypoint(1155*coef_carte, 350*coef_carte);
     	entities.pathfinder.add_waypoint(1155*coef_carte, 600*coef_carte);
-    	entities.pathfinder.add_waypoint(820*coef_carte, 350*coef_carte);
-    	entities.pathfinder.add_waypoint(820*coef_carte, 280*coef_carte);
+    	entities.pathfinder.add_waypoint(810*coef_carte, 350*coef_carte);
+    	entities.pathfinder.add_waypoint(720*coef_carte, 350*coef_carte);
+    	entities.pathfinder.add_waypoint(810*coef_carte, 280*coef_carte);
     	entities.pathfinder.add_waypoint(750*coef_carte, 280*coef_carte);
     	entities.pathfinder.add_waypoint(1100*coef_carte, 280*coef_carte);
-    	entities.pathfinder.add_waypoint(890*coef_carte, 280*coef_carte);
-    	entities.pathfinder.add_waypoint(890*coef_carte, 150*coef_carte);
+    	entities.pathfinder.add_waypoint(880*coef_carte, 280*coef_carte);
+    	entities.pathfinder.add_waypoint(880*coef_carte, 150*coef_carte);
 
-    	
-    	
     	//Lac bleu
     	entities.pathfinder.add_waypoint(130*coef_carte, 340*coef_carte);
     	entities.pathfinder.add_waypoint(20*coef_carte, 500*coef_carte);
     	entities.pathfinder.add_waypoint(20*coef_carte, 600*coef_carte);
     	entities.pathfinder.add_waypoint(150*coef_carte, 600*coef_carte);
     	entities.pathfinder.add_waypoint(500*coef_carte, 600*coef_carte);
-    	entities.pathfinder.add_waypoint(300*coef_carte, 500*coef_carte);
-    	entities.pathfinder.add_waypoint(500*coef_carte, 200*coef_carte);
+    	entities.pathfinder.add_waypoint(310*coef_carte, 500*coef_carte);
+    	//entities.pathfinder.add_waypoint(500*coef_carte, 200*coef_carte);
     	entities.pathfinder.add_waypoint(500*coef_carte, 350*coef_carte);
     	entities.pathfinder.add_waypoint(500*coef_carte, 500*coef_carte);
     	

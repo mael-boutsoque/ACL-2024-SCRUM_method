@@ -73,6 +73,7 @@ public class GraphePathfinding extends Hitscanner{
 			
 			for (GrapheWaypoint current_node : this.shortest_path_map.keySet()) {
 				for (int i=0; i < this.graphe_map.get(current_node).size(); i++) {
+					
 					float distance_to_source = this.distance_to_source_map.get(current_node) + this.graphe_distance_map.get(current_node).get(i);
 					if (distance_to_source < smallest_distance && !(this.shortest_path_map.containsKey(this.graphe_map.get(current_node).get(i)))) {
 						marked_node = current_node;

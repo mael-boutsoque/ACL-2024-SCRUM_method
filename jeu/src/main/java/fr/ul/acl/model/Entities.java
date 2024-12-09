@@ -11,6 +11,7 @@ public class Entities {
     public GraphePathfinding pathfinder;
     private Player player;
     private GrapheWaypoint closest_node_to_player;
+    private int t = 0;
     protected Map map;
     protected int nbMonstre = 0;
     protected int nbMonstreMax = 10;
@@ -36,21 +37,24 @@ public class Entities {
         //liste.add(new Entity(300, 300,100,70));
 
         //Monstre
-        //liste.add(new MonstreTest(700,300,110,110,2));
 
         //Spawner
         //obstacles.add(new Spawner(2000,800,110,110));
-
-        player = new Player( 1536/2 , 864/2 ,this,10);
-
-        this.player.move(500*coef_carte, 500*coef_carte,this);
-       
-        this.pathfinder.locate_player(this);
-        this.pathfinder.generate_path_to_player();
-
-        //add_enemi(new Zombie(1000,1000,200,200,1000));
-        //add_enemi(new Zombie(1000,1200,100,100,100));
         
+        //add_enemi(new Zombie(520 *coef_carte, 300*coef_carte,100,100,100, this));
+        add_enemi(new Zombie(500 *coef_carte, 300*coef_carte,100,100,100, this));
+        
+        player = new Player( 1536/2 , 864/2 ,this,10);
+        
+        this.player.move(500 *coef_carte, 300*coef_carte,this);
+       
+        try {
+        	this.pathfinder.locate_player(this);
+        	this.pathfinder.generate_path_to_player();
+        }
+        catch (Exception e) {
+        	throw new NullPointerException("Cannot spawn player inside of a wall");
+        }
     }
 
     public void supp_entities(Entity entity) {
@@ -96,19 +100,6 @@ public class Entities {
         return player;
     }
     
-    public void calculate_paths_to_player() {
-    	
-    	
-    	/*
-    	GrapheWaypoint p1 = this.pathfinder.get_player_pos();
-    	this.pathfinder.locate_player(this);
-    	GrapheWaypoint p2 = this.pathfinder.get_player_pos();
-    	
-    	if (!p1.equals(p2)){
-    		this.pathfinder.generate_path_to_player();
-    	}
-    	*/
-    }
     
     public void player_move(int x,int y,Entities entities){
         for(int i=0;i<projectiles.size();i++){
@@ -124,12 +115,23 @@ public class Entities {
     		g.move_relative(-x, -y,entities);
     	}
     }
-
+    public void locate_player() {
+    	if (this.t<20){t++;}
+        else {
+        	this.pathfinder.locate_player(this);
+        	this.pathfinder.generate_path_to_player();
+        	t = 0;
+        }
+        this.closest_node_to_player= this.pathfinder.get_player_pos();
+    }
+    
+    
     public void draw(Graphics2D crayon){
     	
         for(int i=0;i<obstacles.size();i++){
 			obstacles.get(i).draw(crayon);
         }
+        
         for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
     		g.draw(crayon);
     		crayon.setColor(Color.RED);
@@ -143,10 +145,23 @@ public class Entities {
     			crayon.drawLine(x1, y1, x2, y2);
     		}
     	}
-        this.pathfinder.locate_player(this);
-        GrapheWaypoint p1 = this.pathfinder.get_player_pos();
+        
+        for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
+        	GrapheWaypoint g2 = pathfinder.get_shortest_path_map().get(g);
+        	int x1 = g.get_x();
+    		int y1 = g.get_y();
+    		int x2 = g.get_x();
+    		int y2 = g.get_y();
+			crayon.setColor(Color.GREEN);
+			if (g2 != null) {
+				x2 = g2.get_x();
+				y2 = g2.get_y();
+				crayon.drawLine(x1, y1, x2, y2);
+			}
+        }
+
         crayon.setColor(Color.GREEN);
-        crayon.drawOval(p1.get_x(), p1.get_y(), 20, 20);
+        crayon.drawOval(this.closest_node_to_player.get_x(), this.closest_node_to_player.get_y(), 20, 20);
         
         
         for(int i=0;i<enemies.size();i++){

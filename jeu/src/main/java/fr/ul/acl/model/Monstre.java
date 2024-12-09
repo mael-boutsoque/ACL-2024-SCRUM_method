@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -19,20 +18,23 @@ public class Monstre extends Entity{
 	ArrayList<BufferedImage> images;
 	int image_size = 10;
 	int image_id = 0 ;
-	int speed = 2;
+	public double speed;
 	int x_rd;
 	int y_rd;
-	public Monstre(int x,int y,int width,int height,int health){
+	int t = 0;
+	Entity target;
+
+	
+	public Monstre(int x,int y,int width,int height,int health, Entities entities){
 		super(x,y,width,height);
 		this.health0 = health;
 		this.health = health;
+		
 		image_path = "src/main/resources/entity.png";
 		images = new ArrayList<BufferedImage>();
 	    this.load_image();
-
-		Random randomNumbers = new Random();
-		x_rd = 100-randomNumbers.nextInt(20);
-		y_rd = 100-randomNumbers.nextInt(20);
+		
+		this.target = entities.pathfinder.locate_closest_node_init(this);
 	}
 
 	public void draw(Graphics2D crayon){
@@ -81,7 +83,8 @@ public class Monstre extends Entity{
 		else
 			this.health -= degats;
 	}
-
+	
+	/*
 	public boolean can_move(int x, int y,Entities entities) {
     	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
 
@@ -101,6 +104,54 @@ public class Monstre extends Entity{
 		}
     	return true;
     }
+	*/
 	
+	public void evolve(Entities entities) {
 		
+		Entity next_target;
+		int d = (int) this.distance_to(target);
+		//System.out.println(d);
+		entities.pathfinder.set_current_pos(x, y);
+		entities.pathfinder.set_target_pos(-entities.map.get_x() + 768, -entities.map.get_y() + 432);
+
+		if (target == entities.get_player()) {
+			if (t<20) {t++;}
+			else {
+				t = 0;
+				if (entities.pathfinder.test_all()) {
+					next_target = entities.pathfinder.locate_closest_node_init(this);
+					entities.pathfinder.set_target_pos(next_target.x, next_target.y);
+					if (entities.pathfinder.test_all()) {
+						target = next_target;
+					}
+					else {
+						target = entities.pathfinder.get_shortest_path_map().get(next_target);
+					}
+				}
+			}
+		}
+		
+		if (d<30) {
+			next_target = entities.pathfinder.get_shortest_path_map().get(target);
+		
+			if (!entities.pathfinder.test_all()) {
+				next_target = entities.get_player();
+			}
+			
+			if (next_target != null){target = next_target;}
+		}
+		
+		if (target == null || (target.x == 0 && target.y ==0)) {target = entities.pathfinder.locate_closest_node_init(this);}
+		
+		int dx = 0 , dy = 0;
+		double x = this.get_x()+0.5*width;
+		double y = this.get_y()+0.5*height;
+		double px = target.get_x()+30;
+		double py = target.get_y()+30;
+		double angle = Math.atan2(px-x, py-y);
+		dx = (int) (speed*Math.sin(angle));
+		dy = (int) (speed*Math.cos(angle));
+				
+		this.move(dx,dy,entities);
+	}
 }

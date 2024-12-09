@@ -116,6 +116,9 @@ public class PacmanGame implements Game {
 				}
 			}
 			
+			//mettre a jour les chemins vers le joueur
+			entities.locate_player();
+			
 			entities.kill_dead_entities();
 			//fait évoluer les entitiés
 			entities.get_player().evolve(entities , menu_upgrades);

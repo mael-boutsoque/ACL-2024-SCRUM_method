@@ -44,7 +44,7 @@ public class Entity {
     }
 
     /*
-     * bouge le l'entitee sur la carte
+     * bouge l'entitee sur la carte
      */
     public void move(int x,int y,Entities entities){
         this.x += x;

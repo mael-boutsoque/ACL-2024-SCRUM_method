@@ -5,8 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -57,8 +55,8 @@ public class test_GraphePathfinder {
 	
 	@Test
 	public void verify_distance() {
-		node1 = new GrapheWaypoint(4, 3);
-		node2 = new GrapheWaypoint(2, 1);
+		node1 = new GrapheWaypoint(-4, -3);
+		node2 = new GrapheWaypoint(-2, -1);
 		graphe.add_waypoint(node1);
 		graphe.add_waypoint(node2);
 		graphe.generate_edjes();
@@ -172,6 +170,6 @@ public class test_GraphePathfinder {
 		Entity entity = new Entity(4, 4, 0, 0);
 		GrapheWaypoint closest_node = graphe.locate_closest_node(entity);
 		assertEquals(closest_node, node1);
+	
 	}
-
 }
