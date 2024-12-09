@@ -7,4 +7,11 @@ public class Mur_v extends Entity {
         image_path = "src/main/resources/mur_v.png";
         load_image();
     }
+    Mur_v(int x,int y,int width,int height,int wave){
+        super(x,y,width,height);
+        this.wave = wave;
+        this.is_colidable = true;
+        image_path = "src/main/resources/mur_v.png";
+        load_image();
+    }
 }

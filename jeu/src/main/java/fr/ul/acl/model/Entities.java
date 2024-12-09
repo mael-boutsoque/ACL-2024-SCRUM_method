@@ -17,6 +17,7 @@ public class Entities {
     /*
      * the map is always the first entity
      */
+    // SI VOUS VOULEZ RAJOUTER DES OBSTACLES, FAITES LE DANS MAP, SINON ILS N'APPARAISSENT PAS
     public Entities(int win_width,int win_height){
         final int coef_carte = 6;
         obstacles = new ArrayList<Entity>() ;
@@ -37,17 +38,13 @@ public class Entities {
         //add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
 
         player = new Player( 1536/2 , 864/2 ,this,1000);
-        this.player.move(1902, 1080,this);
+        this.player.move(-160, -160,this);
+        //this.player.move(1902, 1080,this);
 
         //add_enemi(new Zombie(1000,1000,200,200,1));
         //add_enemi(new Zombie(1000,1200,100,100,1));
 
-        //add_enemi(new Boss(4500,2000,400,400,1));
-
-        add_obstacle(new Spawner(2000,800,110,110,true));
-        add_obstacle(new Spawner(2100,2100,110,110,true));
-        add_obstacle(new Spawner(4000,1100,110,110,true));
-        
+        //add_enemi(new Boss(4500,2000,400,400,1));       
     }
 
     public void supp_entities(Entity entity) {
@@ -98,6 +95,7 @@ public class Entities {
     }
 
     public void set_nbMonstreMax(int wave){
+        //this.nbMonstreMax= 1;
         this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
     }
 
@@ -139,7 +137,7 @@ public class Entities {
 
     public void draw(Graphics2D crayon){
         for(int i=0;i<obstacles.size();i++){
-			obstacles.get(i).draw(crayon);
+			obstacles.get(obstacles.size()-1-i).draw(crayon);
         }
         for(int i=0;i<enemies.size();i++){
 			enemies.get(i).draw(crayon);
@@ -179,6 +177,16 @@ public class Entities {
     public void changeWave(){
         if(canGoNextWave && this.enemies.isEmpty()){
         this.canGoNextWave=false;
+        for(int i=obstacles.size()-1 ; i>=0 ; i--){
+            if ( obstacles.get(i).wave==wave ){
+                if(!(obstacles.get(i) instanceof Spawner)){
+                obstacles.get(i).is_dead=true;
+                }
+                else{
+                    obstacles.get(i).isActive=true;
+                }
+            }
+        }
         this.wave++;
         this.nbMonstreApparu=0;
         set_nbMonstreMax(wave);
