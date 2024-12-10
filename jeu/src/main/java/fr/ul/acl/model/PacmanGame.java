@@ -103,6 +103,10 @@ public class PacmanGame implements Game {
 		 // on fait evoluer le jeu si le menu n'est pas ouvert et s'il est ouvert aussi
 			int speed = entities.get_player().get_speed();
 
+			if(x!=0 || y!=0){
+				System.out.println("bruits de pass");
+			}
+
 			if (changes_shooting_state){
 				entities.get_player().change_shooting_state();
 			}
