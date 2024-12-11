@@ -51,7 +51,7 @@ public class Player extends Entity implements MouseInputListener {
 
         // Sound effects
         soundURL[0] = getClass().getResource("/lvl_up_sound.wav");
-        soundURL[1] = getClass().getResource("/footsteps.wav");
+
         setFile(0);
 
     }
@@ -143,9 +143,6 @@ public class Player extends Entity implements MouseInputListener {
             menu.open();
 		}
 
-        if (PacmanController.isKeyPressed && !clip.isActive()){
-            PlayMusic(1);
-        }
     }
 
     
