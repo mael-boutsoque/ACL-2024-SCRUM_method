@@ -27,9 +27,11 @@ public class Monstre extends Entity{
 	int image_size;
 	int image_id = 0 ;
 	int speed = 2;
+	int speed0 = speed;
 	int x_rd;
 	int y_rd;
 	int level;
+	int k = 0;
 
 	Clip clip;
     URL soundURL[] = new URL[20];
@@ -51,6 +53,19 @@ public class Monstre extends Entity{
 		soundURL[0] = getClass().getResource("/damage_monstre.wav");
         soundURL[1] = getClass().getResource("/death.wav");
 		setFile(0);
+	}
+
+	public void immobile() {
+		this.speed = 0;
+	}
+
+	public void bouge() {
+		this.speed = this.speed0;
+	}
+
+	public void feux(int value) {
+		this.speed = this.speed-value;
+		this.health = this.health-value;
 	}
 
 	public void draw(Graphics2D crayon){

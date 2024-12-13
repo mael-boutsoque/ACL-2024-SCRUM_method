@@ -62,8 +62,20 @@ public class Map extends Entity {
         entities.obstacles.add(new Invisible(806*coef_carte,389*coef_carte,39*coef_carte,41*coef_carte));
         entities.obstacles.add(new Invisible(280*coef_carte,550*coef_carte,40*coef_carte,23*coef_carte));
         entities.obstacles.add(new Invisible(1022*coef_carte,478*coef_carte,40*coef_carte,23*coef_carte));
+        //Murs qui bloquent à chaque vagues (incluent)
+        //Jusque Vague 2
+        entities.obstacles.add(new Mur_h(0, 280*coef_carte,160*coef_carte,16*coef_carte,2));
+        entities.obstacles.add(new Mur_v(393*coef_carte, 0,16*coef_carte,168*coef_carte,2));
+        //Jusque Vague 3
+        entities.obstacles.add(new Mur_h(413*coef_carte, 175*coef_carte,326*coef_carte,16*coef_carte,3));
+        entities.obstacles.add(new Mur_v(360*coef_carte, 310*coef_carte,16*coef_carte,320*coef_carte,3));
+        //Jusque Vague 5
+        entities.obstacles.add(new Mur_v(740*coef_carte, 0*coef_carte,16*coef_carte,630*coef_carte,5));
+        //Jusque Vague 9
+        entities.obstacles.add(new Mur_v(1038*coef_carte, 491*coef_carte,16*coef_carte,139*coef_carte,9));
+        entities.obstacles.add(new Mur_h(1038*coef_carte, 491*coef_carte,160*coef_carte,16*coef_carte,9));
         //Spawner
-        entities.obstacles.add(new Spawner(2000,800,110,110,true));
+        entities.obstacles.add(new Spawner(2000,800,110,110,0,true));
         
     }
 }

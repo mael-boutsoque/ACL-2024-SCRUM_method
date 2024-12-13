@@ -10,13 +10,14 @@ public class Spawner extends Entity {
     protected int spawnrate = 100;
     protected int spawncounter = 0;
     private ArrayList<Monstre> monstres;
-    private boolean isActive;
+    protected boolean isActive;
 
-    Spawner(int x,int y,int width,int height,boolean isActive){
+    Spawner(int x,int y,int width,int height,int wave, boolean isActive){
         super(x,y,width,height);
         this.is_colidable = false;
         image_path = "src/main/resources/spawner_image.png";
         load_image();
+        this.wave=wave;
         this.monstres = new ArrayList<>();
         this.isActive = isActive;
     }
@@ -54,11 +55,5 @@ public class Spawner extends Entity {
         monstres.add(new Zombie_quick(this.get_x(),this.get_y(),width,height,level));
         monstres.add(new Zombie_tireur(this.get_x(),this.get_y(),width,height,level));
     }
-    public boolean get_isActive(){
-        return this.isActive;
-    }
 
-    public void set_isActive(boolean valeur){
-        this.isActive = valeur;
-    }
 } 
