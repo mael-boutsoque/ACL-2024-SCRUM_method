@@ -1,4 +1,5 @@
 package fr.ul.acl.model;
+import java.util.Random;
 
 public class Gun {
     private int shoot_delay;
@@ -7,6 +8,10 @@ public class Gun {
     private int damage = 1;
     private int bullet_size = 10 ;
     private int bullet_speed = 20;
+    protected int xp_effet = 0;
+    private int xp_to_next_lvl_effet = 6-1;
+    private String effet = "Normal";
+
 
     public Gun(){
         add_shoot_rate(shoot_rate);
@@ -25,11 +30,50 @@ public class Gun {
         }
     }
 
+    private String choice_effet(){
+        Random random = new Random();
+        int choice = random.nextInt(2) + 1;
+        if (choice == 1){
+            return "Glace";
+        }
+        else {
+            return "Glace";
+        }
+    }
+
+    public void envolve_effet(Entities entities){
+        if(this.xp_effet > this.xp_to_next_lvl_effet) {
+			this.xp_effet = 0;
+			//this.lvl++;
+
+		}
+    }
+
     private void shoot(double angle , Entities entities){
         Player player = entities.get_player();
         int x = (int) (player.get_x()+player.get_width()/2 + 100*Math.cos(angle));
         int y = (int) (player.get_y()+player.get_height()/2 + 100*Math.sin(angle));
-        entities.add_projectile(new Bullet(x,y,bullet_size,bullet_size,angle,bullet_speed,damage));
+        entities.add_projectile(new Bullet(x,y,bullet_size,bullet_size,angle,bullet_speed,damage,"Normal"));   
+        this.effet = choice_effet();
+        System.err.println("compteur = "+entities.compteur);
+        System.err.println("compteur_0 = "+entities.compteur_0);
+        if (this.xp_effet>this.xp_to_next_lvl_effet){
+            if (entities.compteur_0 == 0){
+                entities.compteur_0 = entities.compteur;
+            }
+            if (entities.compteur_projectile(20*(player.lvl+1)) == 1){
+                this.xp_effet = 0;
+                entities.compteur = 0;
+                entities.compteur_0 = 0;
+            }
+            
+            /*if (choice_effet().equals("Glace") || choice_effet().equals("Feux")){
+                entities.add_projectile(new Bullet(x,y,bullet_size,bullet_size,angle,bullet_speed,damage,"Normal"));    
+            }*/
+            entities.add_projectile(new Bullet(x,y,bullet_size,bullet_size,angle,bullet_speed,damage,this.effet));
+            
+        }
+        
     }
 
     public void add_shoot_rate(int value){

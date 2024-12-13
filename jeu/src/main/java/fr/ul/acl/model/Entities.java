@@ -12,6 +12,8 @@ public class Entities {
     private int nbMonstreApparu = 0;
     private int nbMonstreMax = 10;
     private boolean canGoNextWave =false;
+    public int compteur = 0;
+    public int compteur_0 = 0;
 
 
     /*
@@ -83,7 +85,16 @@ public class Entities {
         return (Bullet) projectiles.get(id);
     }
     public void add_projectile(Bullet projectile){
+        this.compteur++;
         projectiles.add(projectile);
+    }
+    public int compteur_projectile(int limite){
+        if (this.compteur - this.compteur_0 < limite){
+            return 0;
+        }
+        else {
+            return 1;
+        }
     }
 
     public Player get_player(){
@@ -163,6 +174,7 @@ public class Entities {
             if (enemies.get(i).is_dead){
                 if(!(enemies.get(i) instanceof Bullet_enemi)){
                     player.xp += 2;
+                    player.get_gun().xp_effet += 2;
                 }
                 enemies.remove(i);
             }
