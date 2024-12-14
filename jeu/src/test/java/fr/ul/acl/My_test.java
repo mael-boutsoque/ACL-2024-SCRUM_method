@@ -12,7 +12,7 @@ public class My_test {
 
     @Before
     public void init(){
-        monstre = new Zombie(0,0,100,100,50);
+        monstre = new Zombie(0,0,100,100,50, new Entities(0, 0));
     }
 
     @Test

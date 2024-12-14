@@ -107,31 +107,32 @@ public class Monstre extends Entity{
 	*/
 	
 	public void evolve(Entities entities) {
-		
+
 		Entity next_target;
 		int d = (int) this.distance_to(target);
 		//System.out.println(d);
-		entities.pathfinder.set_current_pos(x, y);
+		entities.pathfinder.set_current_pos(x + (this.height/2), y + (this.width/2));
 		entities.pathfinder.set_target_pos(-entities.map.get_x() + 768, -entities.map.get_y() + 432);
 
 		if (target == entities.get_player()) {
-			if (t<20) {t++;}
+			if (t<50) {t++;}
 			else {
 				t = 0;
 				if (entities.pathfinder.test_all()) {
-					next_target = entities.pathfinder.locate_closest_node_init(this);
+					next_target = entities.get_player_node();
 					entities.pathfinder.set_target_pos(next_target.x, next_target.y);
-					if (entities.pathfinder.test_all()) {
+					if (!entities.pathfinder.test_all()) {
 						target = next_target;
 					}
 					else {
-						target = entities.pathfinder.get_shortest_path_map().get(next_target);
+						target = entities.pathfinder.locate_closest_node_init(this);
 					}
 				}
 			}
 		}
 		
-		if (d<30) {
+		if (d<40) {
+			
 			next_target = entities.pathfinder.get_shortest_path_map().get(target);
 		
 			if (!entities.pathfinder.test_all()) {

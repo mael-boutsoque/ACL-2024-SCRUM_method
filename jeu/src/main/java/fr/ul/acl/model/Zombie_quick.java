@@ -13,6 +13,6 @@ public class Zombie_quick extends Monstre{
 
 		this.health = health0;
 		this.body_damage = 2;
-		this.speed = 20;
+		this.speed = 10;
 	}		
 }

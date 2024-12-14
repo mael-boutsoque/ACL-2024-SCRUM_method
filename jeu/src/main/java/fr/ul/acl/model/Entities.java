@@ -39,10 +39,10 @@ public class Entities {
         //Monstre
 
         //Spawner
-        //obstacles.add(new Spawner(2000,800,110,110));
+        obstacles.add(new Spawner(2000,800,110,110));
         
         //add_enemi(new Zombie(520 *coef_carte, 300*coef_carte,100,100,100, this));
-        add_enemi(new Zombie(500 *coef_carte, 300*coef_carte,100,100,100, this));
+        //add_enemi(new Zombie(500 *coef_carte, 300*coef_carte,100,100,100, this));
         
         player = new Player( 1536/2 , 864/2 ,this,10);
         
@@ -99,7 +99,9 @@ public class Entities {
     public Player get_player(){
         return player;
     }
-    
+     public GrapheWaypoint get_player_node() {
+    	 return closest_node_to_player;
+     }
     
     public void player_move(int x,int y,Entities entities){
         for(int i=0;i<projectiles.size();i++){
@@ -116,7 +118,7 @@ public class Entities {
     	}
     }
     public void locate_player() {
-    	if (this.t<20){t++;}
+    	if (this.t<50){t++;}
         else {
         	this.pathfinder.locate_player(this);
         	this.pathfinder.generate_path_to_player();
@@ -131,7 +133,7 @@ public class Entities {
         for(int i=0;i<obstacles.size();i++){
 			obstacles.get(i).draw(crayon);
         }
-        
+        /*
         for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
     		g.draw(crayon);
     		crayon.setColor(Color.RED);
@@ -162,7 +164,7 @@ public class Entities {
 
         crayon.setColor(Color.GREEN);
         crayon.drawOval(this.closest_node_to_player.get_x(), this.closest_node_to_player.get_y(), 20, 20);
-        
+        */
         
         for(int i=0;i<enemies.size();i++){
 			enemies.get(i).draw(crayon);

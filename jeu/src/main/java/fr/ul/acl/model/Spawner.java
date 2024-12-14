@@ -2,8 +2,8 @@ package fr.ul.acl.model;
 
 public class Spawner extends Entity {
 
-    protected int spawnrate = 100;
-    protected int spawncounter = 0;
+    protected int spawnrate = 1000;
+    protected int spawncounter = 9900;
 
     Spawner(int x,int y,int width,int height){
         super(x,y,width,height);
@@ -13,8 +13,13 @@ public class Spawner extends Entity {
     }
 
     public void spawn_monster(Entities entities){   
-        entities.add_enemi(new Zombie(this.get_x(),this.get_y(),width,height,20, entities));
-        entities.add_enemi(new Zombie_quick(this.get_x(),this.get_y(),width,height,10, entities));
+    	Zombie z = new Zombie(this.x,this.y,width,height,20, entities);
+    	z.move_relative(this.x_relative, this.y_relative, entities);
+        entities.add_enemi(z);
+        
+        Zombie_quick z2 = new Zombie_quick(this.x,this.y, width,height,20, entities);
+    	z2.move_relative(this.x_relative, this.y_relative, entities);
+        entities.add_enemi(z2);
 
     }
 

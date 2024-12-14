@@ -73,7 +73,7 @@ public class Map extends Entity {
     	
     	//bord gauche
     	entities.pathfinder.add_waypoint(80*coef_carte, 5*coef_carte);
-    	entities.pathfinder.add_waypoint(20*coef_carte, 300*coef_carte);
+    	entities.pathfinder.add_waypoint(20*coef_carte, 350*coef_carte);
     	entities.pathfinder.add_waypoint(90*coef_carte, 200*coef_carte);
     	
     	//bord superieur
