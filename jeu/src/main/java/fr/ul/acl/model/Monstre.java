@@ -27,7 +27,7 @@ public class Monstre extends Entity{
 	int image_size;
 	int image_id = 0 ;
 	int speed = 2;
-	int speed0 = speed;
+	int speed0 = 0;
 	int x_rd;
 	int y_rd;
 	int level;
@@ -45,6 +45,7 @@ public class Monstre extends Entity{
 		this.images = new ArrayList<BufferedImage>();
 		this.saved_images();
 		image_size = 64;
+		this.speed0 = this.speed;
 
 		Random randomNumbers = new Random();
 		x_rd = 100-randomNumbers.nextInt(20);
@@ -65,7 +66,12 @@ public class Monstre extends Entity{
 
 	public void feux(int value) {
 		this.speed = this.speed-value;
-		this.health = this.health-value;
+		//this.health = this.health-value;
+		for (int i=0; i<100; i++){
+			if (i%10==0){
+				damage(1);
+			}
+		}
 	}
 
 	public void draw(Graphics2D crayon){
@@ -76,8 +82,6 @@ public class Monstre extends Entity{
 			//crayon.setColor(Color.blue);
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 		}
-
-
 		crayon.setColor(Color.white);
 		//crayon.drawRoundRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);

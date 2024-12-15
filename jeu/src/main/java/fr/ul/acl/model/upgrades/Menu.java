@@ -34,7 +34,6 @@ public class Menu {
         int txt_y = 50 + ((80 -  metrics.getHeight())/2) + metrics.getAscent();
         crayon.drawString(texte, txt_x, txt_y);
         crayon.setFont(new Font("Arial", Font.PLAIN, 20));
-
         for(int i=0 ; i<3 ; i++){
             bouttons.get(i).draw(crayon);
         }

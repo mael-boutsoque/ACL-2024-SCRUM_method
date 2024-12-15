@@ -58,6 +58,10 @@ public class Bullet extends Entity {
         boutton = null;
     }
 
+    public String get_element(){
+        return this.element;
+    }
+
     public void evolve(Entities entities) {
     	int dx = (int) (this.speed*Math.cos(angle));
         int dy = (int) (this.speed*Math.sin(angle));
@@ -76,13 +80,15 @@ public class Bullet extends Entity {
         for(int i=0;i<entities.enemies.size();i++) {
 			if(entities.enemies.get(i).get_hitbox().colide(hitboxTemp) && entities.enemies.get(i).is_colidable && entities.enemies.get(i) != this) {
                 this.on_collision(entities);
-                entities.get_enemi(i).damage(power);
                 this.is_dead = true;
                 if (element.equals("Glace")){
                     entities.get_enemi(i).immobile();
                 }
 				else if (element.equals("Feux")){
                     entities.get_enemi(i).feux(entities.get_enemi(i).level);
+                }
+                else {
+                    entities.get_enemi(i).damage(power);
                 }
                 return false;
 			}

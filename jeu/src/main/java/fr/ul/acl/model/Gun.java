@@ -10,7 +10,7 @@ public class Gun {
     private int bullet_speed = 20;
     protected int xp_effet = 0;
     private int xp_to_next_lvl_effet = 6-1;
-    private String effet = "Normal";
+    protected String effet = "Normal";
 
 
     public Gun(){
@@ -37,7 +37,7 @@ public class Gun {
             return "Glace";
         }
         else {
-            return "Glace";
+            return "Feux";
         }
     }
 
@@ -54,17 +54,29 @@ public class Gun {
         int x = (int) (player.get_x()+player.get_width()/2 + 100*Math.cos(angle));
         int y = (int) (player.get_y()+player.get_height()/2 + 100*Math.sin(angle));
         entities.add_projectile(new Bullet(x,y,bullet_size,bullet_size,angle,bullet_speed,damage,"Normal"));   
-        this.effet = choice_effet();
+        
         System.err.println("compteur = "+entities.compteur);
         System.err.println("compteur_0 = "+entities.compteur_0);
         if (this.xp_effet>this.xp_to_next_lvl_effet){
             if (entities.compteur_0 == 0){
                 entities.compteur_0 = entities.compteur;
+                this.effet = choice_effet();
             }
-            if (entities.compteur_projectile(20*(player.lvl+1)) == 1){
-                this.xp_effet = 0;
-                entities.compteur = 0;
-                entities.compteur_0 = 0;
+            if (choice_effet().equals("Feux")){
+                if (entities.compteur_projectile(10*(player.lvl+1)) == 1){
+                    this.xp_effet = 0;
+                    entities.compteur = 0;
+                    entities.compteur_0 = 0;
+                    this.effet = "Normal";
+                }
+            }
+            else {
+                if (entities.compteur_projectile(15*(player.lvl+1)) == 1){
+                    this.xp_effet = 0;
+                    entities.compteur = 0;
+                    entities.compteur_0 = 0;
+                    this.effet = "Normal";
+                }
             }
             
             /*if (choice_effet().equals("Glace") || choice_effet().equals("Feux")){
