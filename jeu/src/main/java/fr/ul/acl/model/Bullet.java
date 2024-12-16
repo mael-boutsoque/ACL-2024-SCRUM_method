@@ -1,8 +1,9 @@
 package fr.ul.acl.model;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Random;
 
 import fr.ul.acl.model.upgrades.Boutton;
 
@@ -81,13 +82,13 @@ public class Bullet extends Entity {
 			if(entities.enemies.get(i).get_hitbox().colide(hitboxTemp) && entities.enemies.get(i).is_colidable && entities.enemies.get(i) != this) {
                 this.on_collision(entities);
                 this.is_dead = true;
-                if (element.equals("Glace")){
+                if (element.equals("Glace") && !(entities.get_enemi(i) instanceof Bullet_enemi)){
                     entities.get_enemi(i).immobile();
                 }
-				else if (element.equals("Feux")){
+				else if (element.equals("Feux")&& !(entities.get_enemi(i) instanceof Bullet_enemi)){
                     entities.get_enemi(i).feux(entities.get_enemi(i).level);
                 }
-                else {
+                else if( !(entities.get_enemi(i) instanceof Bullet_enemi)){
                     entities.get_enemi(i).damage(power);
                 }
                 return false;

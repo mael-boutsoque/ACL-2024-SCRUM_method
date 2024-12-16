@@ -16,7 +16,7 @@ public class Entities {
     protected Map map;
     private int wave = 1;
     private int nbMonstreApparu = 0;
-    private int nbMonstreMax = 2;
+    private int nbMonstreMax = 10;
     private boolean canGoNextWave =false;
     public int compteur = 0;
     public int compteur_0 = 0;
@@ -126,8 +126,8 @@ public class Entities {
     }
 
     public void set_nbMonstreMax(int wave){
-        this.nbMonstreMax= 2;
-        //this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
+        //this.nbMonstreMax= 2;
+        this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
     }
 
     public int get_wave(){

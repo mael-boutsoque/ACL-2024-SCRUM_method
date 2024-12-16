@@ -80,11 +80,7 @@ public class Monstre extends Entity{
 	public void feux(int value) {
 		this.speed = this.speed-value;
 		//this.health = this.health-value;
-		for (int i=0; i<100; i++){
-			if (i%10==0){
-				damage(1);
-			}
-		}
+		damage(5);
 	}
 
 	public void draw(Graphics2D crayon){

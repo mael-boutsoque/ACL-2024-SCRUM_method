@@ -63,16 +63,16 @@ public class Gun {
                 this.effet = choice_effet();
             }
             if (choice_effet().equals("Feux")){
-                if (entities.compteur_projectile(6*entities.get_wave()) == 1){
+                if (entities.compteur_projectile(6) == 1){
                     this.xp_effet = 0;
                     entities.compteur = 0;
                     entities.compteur_0 = 0;
                     this.effet = "Normal";
-                    /*for (int i=0; i<entities.enemies.size(); i++){
+                    for (int i=0; i<entities.enemies.size(); i++){
                         if (entities.get_enemi(i).speed == 0){
                             entities.get_enemi(i).bouge();
                         }
-                    }*/
+                    }
                 }
             }
             else {
@@ -81,11 +81,11 @@ public class Gun {
                     entities.compteur = 0;
                     entities.compteur_0 = 0;
                     this.effet = "Normal";
-                    /*for (int i=0; i<entities.enemies.size(); i++){
+                    for (int i=0; i<entities.enemies.size(); i++){
                         if (entities.get_enemi(i).speed == 0){
                             entities.get_enemi(i).bouge();
                         }
-                    }*/
+                    }
                 }
             }
             
