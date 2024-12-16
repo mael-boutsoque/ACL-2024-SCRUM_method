@@ -76,6 +76,11 @@ public class Map extends Entity {
         entities.obstacles.add(new Mur_h(1038*coef_carte, 491*coef_carte,160*coef_carte,16*coef_carte,9));
         //Spawner
         entities.obstacles.add(new Spawner(2000,800,110,110,0,true));
+        entities.obstacles.add(new Spawner(539*coef_carte,38*coef_carte,110,110,2,false));
+        entities.obstacles.add(new Spawner(210*coef_carte,371*coef_carte,110,110,2,false));
+        entities.obstacles.add(new Spawner(539*coef_carte,330*coef_carte,110,110,3,false));
+        entities.obstacles.add(new Spawner(680*coef_carte,528*coef_carte,110,110,3,false));
+        entities.obstacles.add(new Spawner(1136*coef_carte,414*coef_carte,110,110,5,false));
         
     }
 }

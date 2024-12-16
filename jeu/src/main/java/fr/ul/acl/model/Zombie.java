@@ -9,13 +9,13 @@ public class Zombie extends Monstre{
 		super(x,y,width,height,level);
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
+		this.health0 = this.health;
 		image_size = 64;
 		image_path = "src/main/resources/zombie_big.png";
 	    this.saved_images();
 
-		this.health0 = 30;
-		this.health = health0;
-		this.body_damage = 6;
+
+		this.body_damage = (int) Math.round(10*Math.log(level)+6);
 		this.speed0 = this.speed;
 	}
 	
@@ -27,14 +27,14 @@ public class Zombie extends Monstre{
 		if(distance>300+get_width()/2){
 			can_dash = true;
 			if(entities.get_player().get_x()>this.get_x()+0.5*width){
-				dx = speed*x_rd/100;
+				dx = speed*x_rd/50;
 			}
-			else dx = -speed*x_rd/100;
+			else dx = -speed*x_rd/50;
 
 			if(entities.get_player().get_y()>this.get_y()+0.5*height){
-				dy = speed*y_rd/100;
+				dy = speed*y_rd/50;
 			}
-			else dy = -speed*y_rd/100;
+			else dy = -speed*y_rd/50;
 		}
 		else{
 			if(can_dash){

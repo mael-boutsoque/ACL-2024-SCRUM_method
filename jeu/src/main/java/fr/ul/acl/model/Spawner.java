@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Spawner extends Entity {
 
-    protected int spawnrate = 100;
+    protected int spawnrate = 50;
     protected int spawncounter = 0;
     private ArrayList<Monstre> monstres;
     protected boolean isActive;
@@ -24,7 +24,7 @@ public class Spawner extends Entity {
 
     public void spawn_monster(Entities entities){  
         Random random = new Random();
-        int niveauAleatoire = random.nextInt(entities.get_wave()+1)+1;
+        int niveauAleatoire = random.nextInt(entities.get_wave())+1;
         load_monstres(niveauAleatoire); 
 
         int tailleListe = monstres.size();
@@ -54,6 +54,9 @@ public class Spawner extends Entity {
         monstres.add(new Zombie(this.get_x(),this.get_y(),width,height,level));
         monstres.add(new Zombie_quick(this.get_x(),this.get_y(),width,height,level));
         monstres.add(new Zombie_tireur(this.get_x(),this.get_y(),width,height,level));
+    }
+    @Override public void set_isActive(boolean value){
+        this.isActive=value;
     }
 
 } 

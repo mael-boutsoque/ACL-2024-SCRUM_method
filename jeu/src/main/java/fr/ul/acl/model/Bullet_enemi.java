@@ -18,7 +18,7 @@ public class Bullet_enemi extends Monstre{
 	    this.load_image();
 
 		this.health = health0;
-		this.body_damage = 3;
+		this.body_damage = (int) Math.round(15*Math.log(level)+3);
 		this.speed=16;
 	}
 	

@@ -22,11 +22,11 @@ public class Player extends Entity implements MouseInputListener {
     private Entities entities;
     private boolean is_shooting;
     protected int xp = 0;
-    private int xp_to_next_lvl = 6-1;
+    private int xp_to_next_lvl = 5;
     protected int lvl = 0;
     private char[] affichage_lvl = {'L','v','l',' ','x','y'};
-    protected int health_p;
-    protected int health0_p;
+    protected int health_p=20;
+    protected int health0_p=20;
     protected int body_damage_p=1;
     private char[] affichage_vie = {'V','i','e',' ','x','y'};
     int compteur = 0;
@@ -105,13 +105,7 @@ public class Player extends Entity implements MouseInputListener {
             crayon.setFont(new Font("SansSerif", Font.PLAIN, 20));
             effet_txt = "FEUX";
         }
-        else if (this.gun.effet.equals("Normal")){
-            crayon.setColor(Color.black);
-            crayon.fillRect(50, 750, 150, 50);
-            crayon.setColor(Color.white);
-            crayon.setFont(new Font("SansSerif", Font.PLAIN, 20));
-            effet_txt = "METAL";
-        }
+
         FontMetrics effet_metrics = crayon.getFontMetrics();
         int effet_txt_x = 50 + (150 -  effet_metrics.stringWidth(effet_txt))/2;
         int effet_txt_y = 750 + ((50 -  effet_metrics.getHeight())/2) + effet_metrics.getAscent();
@@ -174,7 +168,9 @@ public class Player extends Entity implements MouseInputListener {
             PlayMusic(0);
 			this.xp = 0;
 			this.lvl++;
+            resetPlayer();
             menu.open();
+            
 		}
 
     }
@@ -224,6 +220,13 @@ public class Player extends Entity implements MouseInputListener {
     @Override
     public void mouseDragged(MouseEvent e) {
         this.update_angle(e);
+    }
+
+    //REINITIALISER ET AUGMENTER LES STATS POUR CHAQUE VAGUES
+    public void resetPlayer(){
+        this.xp_to_next_lvl = (int) Math.round(20*Math.log(this.lvl)+5);
+        this.health_p = (int) Math.round(15*Math.log(this.lvl)+20);
+        this.health0_p = this.health;
     }
 
 //Inutile

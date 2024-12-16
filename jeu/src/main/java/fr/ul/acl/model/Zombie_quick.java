@@ -7,16 +7,16 @@ public class Zombie_quick extends Monstre{
 		super(x,y,width,height,level);
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
+		this.health0 = this.health;
+		this.speed = (int) Math.round(10*Math.log(level)+10);;
+		this.speed = 6;
+		this.speed0 = this.speed;
+		
 		image_size = 64;
 		image_path = "src/main/resources/zombie2.png";
 	    this.saved_images();
 
-		this.health0 = 10;
-		this.speed = 10;
-		this.health = health0;
-		this.body_damage = 2;
-		this.speed = 6;
-		this.speed0 = this.speed;
+
 	}
 	
 	public void evolve(Entities entities) {

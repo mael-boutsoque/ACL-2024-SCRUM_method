@@ -11,18 +11,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-
-
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.net.URL;
 
 public class Monstre extends Entity{
 
 	int health;
 	int health0;
-	int body_damage = 1;
+	int body_damage = 2;
 	ArrayList<BufferedImage> images;
 	int image_size;
 	int image_id = 0 ;
@@ -46,6 +43,7 @@ public class Monstre extends Entity{
 		this.saved_images();
 		image_size = 64;
 		this.speed0 = this.speed;
+		int body_damage = (int) Math.round(5*Math.log(level)+2);
 
 		Random randomNumbers = new Random();
 		x_rd = 100-randomNumbers.nextInt(20);
@@ -63,6 +61,10 @@ public class Monstre extends Entity{
 
 	public int get_speed() {
 		return this.speed;
+	}
+
+	@Override public int get_level(){
+		return this.level;
 	}
 
 	public void bouge() {

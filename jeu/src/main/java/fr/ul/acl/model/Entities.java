@@ -10,7 +10,7 @@ public class Entities {
     private Player player;
     private int wave = 1;
     private int nbMonstreApparu = 0;
-    private int nbMonstreMax = 10;
+    private int nbMonstreMax = 2;
     private boolean canGoNextWave =false;
     public int compteur = 0;
     public int compteur_0 = 0;
@@ -39,7 +39,7 @@ public class Entities {
         //add_enemi(new Zombie_tireur(2000,900,100,100,1));
         //add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
 
-        player = new Player( 1536/2 , 864/2 ,this,1000);
+        player = new Player( 1536/2 , 864/2 ,this,20);
         this.player.move(-160, -160,this);
         //this.player.move(1902, 1080,this);
 
@@ -106,8 +106,8 @@ public class Entities {
     }
 
     public void set_nbMonstreMax(int wave){
-        //this.nbMonstreMax= 1;
-        this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
+        this.nbMonstreMax= 2;
+        //this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
     }
 
     public int get_wave(){
@@ -174,7 +174,7 @@ public class Entities {
             if (enemies.get(i).is_dead){
                 if(!(enemies.get(i) instanceof Bullet_enemi)){
                     player.xp += 2;
-                    player.get_gun().xp_effet += 2;
+                    player.get_gun().xp_effet += (int) Math.round(20*Math.log(enemies.get(i).get_level())+5);
                 }
                 enemies.remove(i);
             }
@@ -195,7 +195,7 @@ public class Entities {
                 obstacles.get(i).is_dead=true;
                 }
                 else{
-                    obstacles.get(i).isActive=true;
+                    obstacles.get(i).set_isActive(true);
                 }
             }
         }
