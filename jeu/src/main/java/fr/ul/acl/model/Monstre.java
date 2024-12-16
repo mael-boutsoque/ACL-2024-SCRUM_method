@@ -33,9 +33,9 @@ public class Monstre extends Entity{
 	int y_rd;
 	int level;
 	int k = 0;
-
 	int t = 0;
 	Entity target;
+
 
 	Clip clip;
     URL soundURL[] = new URL[20];
@@ -57,6 +57,7 @@ public class Monstre extends Entity{
 
 		soundURL[0] = getClass().getResource("/damage_monstre.wav");
         soundURL[1] = getClass().getResource("/death.wav");
+		soundURL[2] = getClass().getResource("/damage_ice");
 		setFile(0);
 
 		this.target = entities.pathfinder.locate_closest_node_init(this);
@@ -64,6 +65,10 @@ public class Monstre extends Entity{
 
 	public void immobile() {
 		this.speed = 0;
+	}
+
+	public int get_speed() {
+		return this.speed;
 	}
 
 	public void bouge() {

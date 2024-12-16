@@ -16,6 +16,7 @@ public class Zombie_quick extends Monstre{
 		this.health = health0;
 		this.body_damage = 2;
 		this.speed = 6;
+		this.speed0 = this.speed;
 	}
 	
 	public void evolve(Entities entities) {

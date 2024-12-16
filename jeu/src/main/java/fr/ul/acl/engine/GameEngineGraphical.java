@@ -80,16 +80,9 @@ public class GameEngineGraphical {
             previousTime = currentTime;
 			//Thread.sleep(5);
 			long min_wait = 5;
+			Thread.sleep(FPS);
 			long waitTime = 1000000000 / TARGET_FPS - elapsedTime;
 			FPS = Math.max(min_wait,waitTime / 1000000);
-                if (waitTime > 0) {
-                    try {
-                        Thread.sleep(FPS);
-					}
-					catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-				}
 		}
 	}
 
