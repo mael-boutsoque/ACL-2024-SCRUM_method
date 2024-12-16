@@ -8,7 +8,7 @@ public class Zombie extends Monstre{
 	public Zombie(int x,int y,int width,int height,int level, Entities entities){
 		super(x,y,width,height,level, entities);
 		this.level= level;
-		this.health=(int) Math.round(25*Math.log(level)+10);
+		this.health=(int) Math.round(25*Math.log(level)+5);
 		this.health0 = this.health;
 		image_size = 64;
 		image_path = "src/main/resources/zombie_big.png";

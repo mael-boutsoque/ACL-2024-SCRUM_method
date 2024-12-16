@@ -11,6 +11,6 @@ public class Degats extends Upgrade {
     }
 
     public void update_player(Player player){
-        player.get_gun().add_damages(1);
+        player.get_gun().add_damages(5);
     }
 }
