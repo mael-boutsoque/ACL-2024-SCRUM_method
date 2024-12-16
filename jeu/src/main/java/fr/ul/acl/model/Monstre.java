@@ -31,6 +31,7 @@ public class Monstre extends Entity{
 	int x_rd;
 	int y_rd;
 	int level;
+	int k = 0;
 
 
 	Clip clip;
