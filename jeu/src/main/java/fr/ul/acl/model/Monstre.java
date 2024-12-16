@@ -31,7 +31,7 @@ public class Monstre extends Entity{
 	int x_rd;
 	int y_rd;
 	int level;
-	int k = 0;
+
 
 	Clip clip;
     URL soundURL[] = new URL[20];
@@ -53,11 +53,16 @@ public class Monstre extends Entity{
 
 		soundURL[0] = getClass().getResource("/damage_monstre.wav");
         soundURL[1] = getClass().getResource("/death.wav");
+		soundURL[2] = getClass().getResource("/damage_ice");
 		setFile(0);
 	}
 
 	public void immobile() {
 		this.speed = 0;
+	}
+
+	public int get_speed() {
+		return this.speed;
 	}
 
 	public void bouge() {

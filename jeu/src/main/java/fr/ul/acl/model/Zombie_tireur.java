@@ -16,6 +16,7 @@ public class Zombie_tireur extends Monstre{
 		this.health0 = 10;
 		this.health = health0;
 		this.body_damage = 2;
+		this.speed0 = this.speed;
 	}
 	
 	public void evolve(Entities entities) {
