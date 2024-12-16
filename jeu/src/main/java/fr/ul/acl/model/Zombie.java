@@ -9,13 +9,13 @@ public class Zombie extends Monstre{
 		super(x,y,width,height,level, entities);
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
+		this.health0 = this.health;
 		image_size = 64;
 		image_path = "src/main/resources/zombie_big.png";
 	    this.saved_images();
 
-		this.health0 = 30;
-		this.health = health0;
-		this.body_damage = 6;
+
+		this.body_damage = (int) Math.round(10*Math.log(level)+6);
 		this.speed0 = this.speed;
 	}
 	
@@ -24,9 +24,9 @@ public class Zombie extends Monstre{
 		int ply = entities.get_player().get_y();
 		double distance = Math.sqrt(Math.pow(plx+30-get_x()-get_width()/2, 2) + Math.pow(ply+30-get_y()-get_height()/2, 2));
 		int dx = 0 , dy = 0;
-		if(distance>300+get_width()/2){
-			
+		if(distance>300+get_width()/2){		
 			this.move_using_graphe(entities);
+			can_dash = true;
 		}
 		else{
 			if(can_dash){

@@ -125,6 +125,13 @@ public class Entity {
         return true;
     }
 
+    public int get_level() {
+        throw new UnsupportedOperationException("this entity have no level");
+    }
+    public void set_isActive(boolean value) {
+        throw new UnsupportedOperationException("this entity have no level");
+    }
+
     public boolean colide(Entity entity2) {
     	return this.hitbox.colide(entity2.hitbox);
     }

@@ -4,19 +4,23 @@ public class Zombie_tireur extends Monstre{
 
 	int counter = 0;
 	int counter_max = 30;
+
 	public Zombie_tireur(int x,int y,int width,int height,int level, Entities entities){
 		super(x,y,width,height,level, entities);
+
+
+		//STATS
+
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
+		this.health0 = this.health;
+		this.speed = 8;
+		this.speed0 = this.speed;
+
 		image_size = 64;
 		image_path = "src/main/resources/tireur.png";
 	    this.saved_images();
 
-		this.speed = 8;
-		this.health0 = 10;
-		this.health = health0;
-		this.body_damage = 2;
-		this.speed0 = this.speed;
 	}
 	
 	public void evolve(Entities entities) {
