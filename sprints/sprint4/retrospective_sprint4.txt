@@ -4,4 +4,4 @@
 
 - points positifs : le jeu final est proche de ce qu'on voulait obtenir au départ et les rôles ont été bien répartis
 
-- points négatifs :
+- points négatifs : le code est parfois écrasé lors des pushs
