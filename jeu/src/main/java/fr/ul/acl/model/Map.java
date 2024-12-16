@@ -21,7 +21,7 @@ public class Map extends Entity {
         entities.obstacles.add(new Mur_v(1200*coef_carte, -13*coef_carte,12*coef_carte,(630+13)*coef_carte));//droite
         //Obstacle 
         //Bloc Gris
-        entities.obstacles.add(new Invisible(110*coef_carte,25*coef_carte,45*coef_carte,144*coef_carte));
+        entities.obstacles.add(new Invisible(110*coef_carte,30*coef_carte,50*coef_carte,144*coef_carte));
         entities.obstacles.add(new Invisible(206*coef_carte,25*coef_carte,70*coef_carte,96*coef_carte));
         entities.obstacles.add(new Invisible(374*coef_carte,337*coef_carte,70*coef_carte,120*coef_carte));
         
@@ -68,6 +68,9 @@ public class Map extends Entity {
         entities.obstacles.add(new Invisible(806*coef_carte,389*coef_carte,39*coef_carte,41*coef_carte));
         entities.obstacles.add(new Invisible(280*coef_carte,550*coef_carte,40*coef_carte,23*coef_carte));
         entities.obstacles.add(new Invisible(1022*coef_carte,478*coef_carte,40*coef_carte,23*coef_carte));
+        
+        this.load_graphe_pathfinding(coef_carte, entities);
+        
         //Murs qui bloquent à chaque vagues (incluent)
         //Jusque Vague 2
         entities.obstacles.add(new Mur_h(0, 280*coef_carte,160*coef_carte,16*coef_carte,2));
@@ -134,5 +137,6 @@ public class Map extends Entity {
     	entities.pathfinder.add_waypoint(500*coef_carte, 500*coef_carte);
     	
     	entities.pathfinder.generate_edjes();
+    }
 }
 

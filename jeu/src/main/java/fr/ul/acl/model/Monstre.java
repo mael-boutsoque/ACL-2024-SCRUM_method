@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -39,7 +40,7 @@ public class Monstre extends Entity{
 	Clip clip;
     URL soundURL[] = new URL[20];
 	
-	public Monstre(int x,int y,int width,int height,int level){
+	public Monstre(int x,int y,int width,int height,int level, Entities entities){
 		super(x,y,width,height);
 		this.level=level;
 		this.health0 = (int) Math.round(25*Math.log(level)+5);
@@ -205,7 +206,7 @@ public class Monstre extends Entity{
 		dx = (int) (speed*Math.sin(angle));
 		dy = (int) (speed*Math.cos(angle));
 				
-		this.move(dx,dy,entities);
+		this.move(dx,  dy, entities);
 	}
 
 	public void setFile(int i){

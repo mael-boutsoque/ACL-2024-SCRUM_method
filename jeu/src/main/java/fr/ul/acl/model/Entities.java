@@ -20,7 +20,8 @@ public class Entities {
     private boolean canGoNextWave =false;
     public int compteur = 0;
     public int compteur_0 = 0;
-
+    final int carte_x = 1200;
+    final int carte_y = 630;
 
     /*
      * the map is always the first entity
@@ -35,7 +36,6 @@ public class Entities {
         map = new Map(0,0,carte_x*coef_carte,carte_y*coef_carte,this);
         obstacles.add(map);
         map.load_map(coef_carte, this);
-        map.load_graphe_pathfinding(coef_carte, this);
 
         //liste.add(new Entity(0,0,100,100));
         //liste.add(new Entity(300, 300,100,70));
@@ -46,7 +46,7 @@ public class Entities {
         //add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
 
         player = new Player( 1536/2 , 864/2 ,this,1000);
-        this.player.move(-160, -160,this);
+        this.player.move(-200, -200,this);
         //this.player.move(1902, 1080,this);
         try {
         	this.pathfinder.locate_player(this);
@@ -180,9 +180,9 @@ public class Entities {
     public void draw(Graphics2D crayon){
     	
         for(int i=0;i<obstacles.size();i++){
-			obstacles.get(obstacles.size()-1-i).draw(crayon);
+			obstacles.get(i).draw(crayon);
         }
-        /*
+        
         for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
     		g.draw(crayon);
     		crayon.setColor(Color.RED);
@@ -213,7 +213,8 @@ public class Entities {
 
         crayon.setColor(Color.GREEN);
         crayon.drawOval(this.closest_node_to_player.get_x(), this.closest_node_to_player.get_y(), 20, 20);
-        */
+        
+
         
         for(int i=0;i<enemies.size();i++){
 			enemies.get(i).draw(crayon);
@@ -221,6 +222,8 @@ public class Entities {
         for(int i=0;i<projectiles.size();i++){
 			projectiles.get(i).draw(crayon);
         }
+        
+        
         this.get_player().draw(crayon);
     }
 

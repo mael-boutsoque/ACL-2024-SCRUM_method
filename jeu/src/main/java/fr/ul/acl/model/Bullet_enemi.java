@@ -9,8 +9,8 @@ public class Bullet_enemi extends Monstre{
 	int dir_x;
 	int dir_y;
 	boolean gonadie = false;
-	public Bullet_enemi(int x,int y,int width,int height,int health,int dir_x,int dir_y){
-		super(x,y,width,height,health);
+	public Bullet_enemi(int x,int y,int width,int height,int health,int dir_x,int dir_y, Entities entities){
+		super(x,y,width,height,health, entities);
 		this.dir_x = dir_x;
 		this.dir_y = dir_y;
 		this.health = health;
@@ -24,7 +24,8 @@ public class Bullet_enemi extends Monstre{
 	
 	public void evolve(Entities entities) {
 		
-		int dx = dir_x*speed/100 , dy = dir_y*speed/100 ;
+		int dx = (int) (dir_x*speed/100);
+		int dy = (int) (dir_y*speed/100);
 
 		this.move(dx,0,entities);
 		this.move(0,dy,entities);

@@ -5,8 +5,8 @@ public class Zombie extends Monstre{
 
 	double angle = 0;
 	boolean can_dash =true;
-	public Zombie(int x,int y,int width,int height,int level){
-		super(x,y,width,height,level);
+	public Zombie(int x,int y,int width,int height,int level, Entities entities){
+		super(x,y,width,height,level, entities);
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
 		image_size = 64;
@@ -24,16 +24,8 @@ public class Zombie extends Monstre{
 		double distance = Math.sqrt(Math.pow(plx+30-get_x()-get_width()/2, 2) + Math.pow(ply+30-get_y()-get_height()/2, 2));
 		int dx = 0 , dy = 0;
 		if(distance>300+get_width()/2){
-			can_dash = true;
-			if(entities.get_player().get_x()>this.get_x()+0.5*width){
-				dx = speed*x_rd/100;
-			}
-			else dx = -speed*x_rd/100;
-
-			if(entities.get_player().get_y()>this.get_y()+0.5*height){
-				dy = speed*y_rd/100;
-			}
-			else dy = -speed*y_rd/100;
+			
+			this.move_using_graphe(entities);
 		}
 		else{
 			if(can_dash){

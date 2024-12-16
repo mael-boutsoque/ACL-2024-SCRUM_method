@@ -25,7 +25,7 @@ public class Spawner extends Entity {
     public void spawn_monster(Entities entities){  
         Random random = new Random();
         int niveauAleatoire = random.nextInt(entities.get_wave()+1)+1;
-        load_monstres(niveauAleatoire); 
+        load_monstres(niveauAleatoire, entities); 
 
         int tailleListe = monstres.size();
         int indiceAleatoire = random.nextInt(tailleListe);
@@ -49,11 +49,19 @@ public class Spawner extends Entity {
             }
         }
     }
-    private void load_monstres(int level){
+    private void load_monstres(int level, Entities entities){
         monstres.clear();
-        monstres.add(new Zombie(this.get_x(),this.get_y(),width,height,level));
-        monstres.add(new Zombie_quick(this.get_x(),this.get_y(),width,height,level));
-        monstres.add(new Zombie_tireur(this.get_x(),this.get_y(),width,height,level));
+        Zombie z = new Zombie(this.x,this.y,width,height,20, entities);
+    	z.move_relative(this.x_relative, this.y_relative, entities);
+        monstres.add(z);
+        
+        Zombie_quick z2 = new Zombie_quick(this.x,this.y, width,height,20, entities);
+    	z2.move_relative(this.x_relative, this.y_relative, entities);
+    	monstres.add(z2);
+        
+        Zombie_tireur z3 = new Zombie_tireur(this.x,this.y, width,height,20, entities);
+    	z3.move_relative(this.x_relative, this.y_relative, entities);
+    	 monstres.add(z3);
     }
 
 } 

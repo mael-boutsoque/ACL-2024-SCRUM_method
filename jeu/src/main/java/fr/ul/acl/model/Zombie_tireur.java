@@ -4,8 +4,8 @@ public class Zombie_tireur extends Monstre{
 
 	int counter = 0;
 	int counter_max = 30;
-	public Zombie_tireur(int x,int y,int width,int height,int level){
-		super(x,y,width,height,level);
+	public Zombie_tireur(int x,int y,int width,int height,int level, Entities entities){
+		super(x,y,width,height,level, entities);
 		this.level= level;
 		this.health=(int) Math.round(25*Math.log(level)+10);
 		image_size = 64;
@@ -24,40 +24,46 @@ public class Zombie_tireur extends Monstre{
 		int dx = 0 , dy = 0;
 
 		if(entities.get_player().get_x()>this.get_x()+0.5*width){
-			dx = speed*x_rd/100;
+			dx = (int) speed*x_rd/100;
 		}
-		else dx = -speed*x_rd/100;
+		else dx = (int) -speed*x_rd/100;
 
 		if(entities.get_player().get_y()>this.get_y()+0.5*height){
-			dy = speed*y_rd/100;
+			dy = (int) speed*y_rd/100;
 		}
-		else dy = -speed*y_rd/100;
+		else dy = (int) -speed*y_rd/100;
 
 		double distance = Math.sqrt(Math.pow(plx-get_x(), 2) + Math.pow(ply-get_y(), 2));
-		if(distance>500){
-			this.move(dx,0,entities);
-			this.move(0,dy,entities);
-		}
-		else if(distance<400){
-			this.move((int) (-dx/(1+distance)),0,entities);
-			this.move(0,(int) (-dy/(1+distance)),entities);
+		
+		
+		if(distance>500 || !this.can_shoot(entities)){
+			this.move_using_graphe(entities);
 		}
 
-		if(counter>=counter_max){
-			counter = 0;
-			int px = entities.get_player().get_x() - this.get_x();
-			int py = entities.get_player().get_y() - this.get_y();
-			double angle = -Math.atan2(px,py) + 3.14/2;
-			entities.add_enemi(new Bullet_enemi(this.get_x()+this.get_width()/2,this.get_y()+this.get_height()/2,20,20,1,(int)(Math.cos(angle)*100),(int)(Math.sin(angle)*100)));
+		else { 
+			if(counter>=counter_max){
+				counter = 0;
+				int px = entities.get_player().get_x() - this.get_x();
+				int py = entities.get_player().get_y() - this.get_y();
+				double angle = -Math.atan2(px,py) + 3.14/2;
+				entities.add_enemi(new Bullet_enemi(this.get_x()+this.get_width()/2,this.get_y()+this.get_height()/2,20,20,1,(int)(Math.cos(angle)*100),(int)(Math.sin(angle)*100), entities));
+			}
+			else counter++;
 		}
-		else counter++;
 	}
 	
 	public void move(int x,int y,Entities entities){
     	if (this.can_move(x, y, entities)) {
-        this.x += x;
-        this.y += y;
-        this.hitbox.move(this.get_x(),this.get_y());
+    		this.x += x;
+    		this.y += y;
+    		this.hitbox.move(this.get_x(),this.get_y());
     	}
-    }		
+    }
+	
+	private boolean can_shoot(Entities entities) {
+		entities.pathfinder.set_current_pos(x + (this.height/2), y + (this.width/2));
+		entities.pathfinder.set_target_pos(-entities.map.get_x() + 768, -entities.map.get_y() + 432);
+		return !entities.pathfinder.test_all();
+
+	}
 }
