@@ -1,0 +1,7 @@
+##Rétrospective du sprint 4##
+
+#Echanges entre les membres du groupe
+
+- points positifs : le jeu final est proche de ce qu'on voulait obtenir au départ et les rôles ont été bien répartis
+
+- points négatifs : le code est parfois écrasé lors des pushs

@@ -1,0 +1,9 @@
+##Review du sprint 4##
+
+#Fonctionnalités mises en places :
+
+- avoir 3 types de monstres (1 rapide, 1 avec beaucoup de vie, 1 qui tire des projectiles) animés
+- ajout d'effets sonores lors du passage de niveau et qu'il se déplace, lorsqu'un monstre meurt ou prend des dégâts
+- la carte se débloque en fonction du nombre de monstres tués, et des vagues d'ennemis sont crées
+- le menu d'amélioration s'affiche sans arrêter la partie
+- les monstres évitent les obstacles de manière plus fluide pour se déplacer vers le joueur
