@@ -20,6 +20,8 @@ public class Entity {
     protected boolean is_colidable = true;
     protected boolean is_dead = false;
     protected int health;
+    protected int wave;
+    protected boolean isActive;
     Hitbox hitbox;
     Hitbox hitboxTemp;
 
@@ -41,6 +43,7 @@ public class Entity {
         load_image();
         this.load_hitbox();
         this.health = 9999;
+        this.wave=0;
     }
 
     /*
@@ -118,6 +121,10 @@ public class Entity {
         throw new UnsupportedOperationException("this entity have no speed");
     }
 
+    public boolean get_isActive(){
+        return true;
+    }
+
     public boolean colide(Entity entity2) {
     	return this.hitbox.colide(entity2.hitbox);
     }
@@ -125,6 +132,7 @@ public class Entity {
     public boolean colidable(){
         return is_colidable;
     }
+
     public void load_hitbox() {
     	this.hitbox = new Hitbox(this.get_x(),this.get_y(),this.get_width(),this.get_height());
     }

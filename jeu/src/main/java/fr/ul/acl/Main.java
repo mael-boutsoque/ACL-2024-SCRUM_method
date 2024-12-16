@@ -1,7 +1,6 @@
 package fr.ul.acl;
 
 import fr.ul.acl.engine.GameEngineGraphical;
-import fr.ul.acl.model.Entities;
 import fr.ul.acl.model.PacmanController;
 import fr.ul.acl.model.PacmanGame;
 import fr.ul.acl.model.PacmanPainter;
@@ -17,12 +16,12 @@ public class Main {
 		PacmanPainter painter = new PacmanPainter();
 		PacmanGame game = new PacmanGame("helpFilePacman.txt" , painter.getWidth(),painter.getHeight());
 		PacmanController controller = new PacmanController();
-		Entities gestion_enttities = new Entities(painter.getWidth(),painter.getHeight());
+		
 
 		// classe qui lance le moteur de jeu generique
-		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller,gestion_enttities);
-		engine.run(gestion_enttities.get_player());// ajoute le joueur aux classes a update pour avoir la position de la souri
-		engine.get_jframe().addMouseMotionListener(gestion_enttities.get_player());
+		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
+		engine.run(game);// ajoute le joueur aux classes a update pour avoir la position de la souri
+		engine.get_jframe().addMouseMotionListener(game.get_Entities().get_player());
 		//engine.get_jframe().addMouseListener(gestion_enttities.get_player());
 	}
 

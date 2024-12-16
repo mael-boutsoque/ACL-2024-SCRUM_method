@@ -10,20 +10,24 @@ public class Entities {
     public ArrayList<Entity> projectiles;
     public GraphePathfinding pathfinder;
     private Player player;
+
     private GrapheWaypoint closest_node_to_player;
     private int t = 0;
     protected Map map;
-    protected int nbMonstre = 0;
-    protected int nbMonstreMax = 10;
-	
+    private int wave = 1;
+    private int nbMonstreApparu = 0;
+    private int nbMonstreMax = 10;
+    private boolean canGoNextWave =false;
+    public int compteur = 0;
+    public int compteur_0 = 0;
+
 
     /*
      * the map is always the first entity
      */
+    // SI VOUS VOULEZ RAJOUTER DES OBSTACLES, FAITES LE DANS MAP, SINON ILS N'APPARAISSENT PAS
     public Entities(int win_width,int win_height){
         final int coef_carte = 6;
-        final int carte_x = 1200;
-        final int carte_y = 630;
         obstacles = new ArrayList<Entity>() ;
         enemies = new ArrayList<Entity>() ;
         projectiles = new ArrayList<Entity>() ;
@@ -38,16 +42,12 @@ public class Entities {
 
         //Monstre
 
-        //Spawner
-        obstacles.add(new Spawner(2000,800,110,110));
-        
-        //add_enemi(new Zombie(520 *coef_carte, 300*coef_carte,100,100,100, this));
-        //add_enemi(new Zombie(500 *coef_carte, 300*coef_carte,100,100,100, this));
-        
-        player = new Player( 1536/2 , 864/2 ,this,10);
-        
-        this.player.move(500 *coef_carte, 300*coef_carte,this);
-       
+        //add_enemi(new Zombie_tireur(2000,900,100,100,1));
+        //add_enemi(new Zombie_quick(100, 100, 100, 100, 1));
+
+        player = new Player( 1536/2 , 864/2 ,this,1000);
+        this.player.move(-160, -160,this);
+        //this.player.move(1902, 1080,this);
         try {
         	this.pathfinder.locate_player(this);
         	this.pathfinder.generate_path_to_player();
@@ -55,6 +55,12 @@ public class Entities {
         catch (Exception e) {
         	throw new NullPointerException("Cannot spawn player inside of a wall");
         }
+
+        //add_enemi(new Zombie(1000,1000,200,200,1));
+        //add_enemi(new Zombie(1000,1200,100,100,1));
+
+        //add_enemi(new Boss(4500,2000,400,400,1));       
+
     }
 
     public void supp_entities(Entity entity) {
@@ -93,15 +99,58 @@ public class Entities {
         return (Bullet) projectiles.get(id);
     }
     public void add_projectile(Bullet projectile){
+        this.compteur++;
         projectiles.add(projectile);
+    }
+    public int compteur_projectile(int limite){
+        if (this.compteur - this.compteur_0 < limite){
+            return 0;
+        }
+        else {
+            return 1;
+        }
     }
 
     public Player get_player(){
         return player;
     }
+
      public GrapheWaypoint get_player_node() {
     	 return closest_node_to_player;
      }
+
+    public int get_nbMonstreMax(){
+        return this.nbMonstreMax;
+    }
+
+    public void set_nbMonstreMax(int wave){
+        //this.nbMonstreMax= 1;
+        this.nbMonstreMax= (int) Math.round(5*Math.pow(2,wave));
+    }
+
+    public int get_wave(){
+        return this.wave;
+    }
+
+    public void set_wave(int valeur){
+        this.wave=valeur;
+    }
+
+    public int get_nbMonstreApparu(){
+        return this.nbMonstreApparu;
+    }
+
+    public void set_nbMonstreApparu(int valeur){
+        this.nbMonstreApparu=valeur;
+    }
+
+    public boolean get_canGoNextWave(){
+        return this.canGoNextWave;
+    }
+
+    public void set_canGoNextWave(boolean valeur){
+        this.canGoNextWave=valeur;
+    }
     
     public void player_move(int x,int y,Entities entities){
         for(int i=0;i<projectiles.size();i++){
@@ -131,7 +180,7 @@ public class Entities {
     public void draw(Graphics2D crayon){
     	
         for(int i=0;i<obstacles.size();i++){
-			obstacles.get(i).draw(crayon);
+			obstacles.get(obstacles.size()-1-i).draw(crayon);
         }
         /*
         for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
@@ -188,8 +237,11 @@ public class Entities {
         }
         for(int i=enemies.size()-1 ; i>=0 ; i--){
             if (enemies.get(i).is_dead){
+                if(!(enemies.get(i) instanceof Bullet_enemi)){
+                    player.xp += 2;
+                    player.get_gun().xp_effet += 2;
+                }
                 enemies.remove(i);
-                player.xp += 2;
             }
         }
     }
@@ -197,5 +249,24 @@ public class Entities {
     public String toString(){
         return "[obstacles : "+String.valueOf(obstacles.size())+" , monstres : "+String.valueOf(enemies.size())+" , balles : "+String.valueOf(projectiles.size())+"]";
 
+    }
+
+    public void changeWave(){
+        if(canGoNextWave && this.enemies.isEmpty()){
+        this.canGoNextWave=false;
+        for(int i=obstacles.size()-1 ; i>=0 ; i--){
+            if ( obstacles.get(i).wave==wave ){
+                if(!(obstacles.get(i) instanceof Spawner)){
+                obstacles.get(i).is_dead=true;
+                }
+                else{
+                    obstacles.get(i).isActive=true;
+                }
+            }
+        }
+        this.wave++;
+        this.nbMonstreApparu=0;
+        set_nbMonstreMax(wave);
+        }
     }
 }

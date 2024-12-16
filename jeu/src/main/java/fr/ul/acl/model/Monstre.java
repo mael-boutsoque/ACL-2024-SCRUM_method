@@ -6,9 +6,16 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import java.net.URL;
 
 public class Monstre extends Entity{
 
@@ -16,37 +23,70 @@ public class Monstre extends Entity{
 	int health0;
 	int body_damage = 1;
 	ArrayList<BufferedImage> images;
-	int image_size = 10;
+	int image_size;
 	int image_id = 0 ;
-	public double speed;
+
+	double speed = 2;
+	double speed0 = 0;
 	int x_rd;
 	int y_rd;
+	int level;
+	int k = 0;
+
 	int t = 0;
 	Entity target;
 
+	Clip clip;
+    URL soundURL[] = new URL[20];
 	
-	public Monstre(int x,int y,int width,int height,int health, Entities entities){
+	public Monstre(int x,int y,int width,int height,int level){
 		super(x,y,width,height);
-		this.health0 = health;
-		this.health = health;
-		
-		image_path = "src/main/resources/entity.png";
-		images = new ArrayList<BufferedImage>();
-	    this.load_image();
-		
+		this.level=level;
+		this.health0 = (int) Math.round(25*Math.log(level)+5);
+		this.health = this.health0;
+		image_path = "src/main/resources/boss.png";
+		this.images = new ArrayList<BufferedImage>();
+		this.saved_images();
+		image_size = 64;
+		this.speed0 = this.speed;
+
+		Random randomNumbers = new Random();
+		x_rd = 100-randomNumbers.nextInt(20);
+		y_rd = 100-randomNumbers.nextInt(20);
+
+		soundURL[0] = getClass().getResource("/damage_monstre.wav");
+        soundURL[1] = getClass().getResource("/death.wav");
+		setFile(0);
+
 		this.target = entities.pathfinder.locate_closest_node_init(this);
 	}
 
+	public void immobile() {
+		this.speed = 0;
+	}
+
+	public void bouge() {
+		this.speed = this.speed0;
+	}
+
+	public void feux(int value) {
+		this.speed = this.speed-value;
+		//this.health = this.health-value;
+		for (int i=0; i<100; i++){
+			if (i%10==0){
+				damage(1);
+			}
+		}
+	}
+
 	public void draw(Graphics2D crayon){
-		load_image();
+		image = this.next_image();
 		Image image_temp = get_image();
 		crayon.drawImage(image_temp, this.get_x(), this.get_y(), this.get_width(), this.get_height(), null, null);
 		if(this.show_hitbox) {
 			//crayon.setColor(Color.blue);
 			crayon.drawRect(this.hitbox.get_x(), this.hitbox.get_y(), this.hitbox.get_width(), this.hitbox.get_height());
 		}
-
-
 		crayon.setColor(Color.white);
 		//crayon.drawRoundRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(),heal_bar_height, 10, 10);
         crayon.fillRect(this.get_x(), this.get_y()-heal_bar_height, this.get_width(), heal_bar_height);
@@ -55,36 +95,49 @@ public class Monstre extends Entity{
         crayon.fillRect(this.get_x()+1, this.get_y()-heal_bar_height+1, (int)(0.01*(this.get_width()-2)*(100*this.health/this.health0)), heal_bar_height-2);
 	}
 	
-
-	public void load_image(){
-        if (image_path==null){
+	public void saved_images(){
+		BufferedImage temp = null;
+		if (image_path==null){
             images = null;
         }
         else{
+			images.clear();
+			for(int i = 0;i<=7;i++){
             try {
-                image = (ImageIO.read(new File(image_path)).getSubimage((image_id/10)*image_size,0, 80, 64));
-				image_id++;
-				if(image_id>=7*10){
-					image_id = 0;
-				}
-            }
+				
+                temp = (ImageIO.read(new File(this.image_path)).getSubimage(i*image_size,0, 64, 64));
+				images.add(temp);
+
+		}
             catch(IOException e) {
             System.err.println("image not load for "+this.getClass().getName());
             show_hitbox = true;
             }
         }
+	}
+	}
+
+	public BufferedImage next_image(){
+        
+		image_id++;
+		if(image_id>=7*10){
+			image_id = 0;
+			}
+		return images.get(image_id/10);
     }
 
 
 	public void damage(int degats) {
 		if (this.health <= 0) {
 			this.is_dead = true;
+			PlayMusic(1);
 		}
 		else
+			PlayMusic(0);
 			this.health -= degats;
 	}
 	
-	/*
+	
 	public boolean can_move(int x, int y,Entities entities) {
     	hitboxTemp = new Hitbox(this.get_x()+x, this.get_y()+y , this.get_width(), this.get_height());
 
@@ -104,9 +157,8 @@ public class Monstre extends Entity{
 		}
     	return true;
     }
-	*/
-	
-	public void evolve(Entities entities) {
+
+	public void move_using_graphe(Entities entities) {
 
 		Entity next_target;
 		int d = (int) this.distance_to(target);
@@ -130,7 +182,7 @@ public class Monstre extends Entity{
 				}
 			}
 		}
-		
+
 		if (d<40) {
 			
 			next_target = entities.pathfinder.get_shortest_path_map().get(target);
@@ -155,4 +207,20 @@ public class Monstre extends Entity{
 				
 		this.move(dx,dy,entities);
 	}
+
+	public void setFile(int i){
+       	 try {
+        AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
+          clip = AudioSystem.getClip();
+          clip.open(ais);
+        }catch(Exception e){
+            System.out.println("error 99");
+        }
+
+    }
+
+    public void PlayMusic(int i){
+        setFile(i);
+        clip.start();
+    }
 }

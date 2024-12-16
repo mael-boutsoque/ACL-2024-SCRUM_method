@@ -7,7 +7,7 @@ import org.junit.Before;
 import fr.ul.acl.model.*;
 
 
-public class My_test {
+public class Test1 {
     Monstre monstre;
 
     @Before

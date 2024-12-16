@@ -1,35 +1,37 @@
 package fr.ul.acl.model;
 
 
-public class Zombie extends Monstre{
+public class Boss extends Monstre{
 
-	int health0 = 10;
-	public Zombie(int x,int y,int width,int height,int health){
-		super(x,y,width,height,health);
-		this.health = health;
-		image_path = "src/main/resources/zombie.png";
-	    this.load_image();
+	public Boss(int x,int y,int width,int height,int level){
+		super(x,y,width,height,level);
+		this.level= level;
+		this.health=(int) Math.round(25*Math.log(level)+1000);
+		image_size = 64;
+		image_path = "src/main/resources/bossr.png";
+	    this.saved_images();
 
+		this.health0 = 10000;
 		this.health = health0;
-		this.body_damage = 3;
+		this.body_damage = 100;
+		this.speed = 2;
 	}
 	
 	public void evolve(Entities entities) {
 		
 		int dx = 0 , dy = 0;
 		if(entities.get_player().get_x()+30>this.get_x()+0.5*width){
-			dx = 1;
+			dx = speed*x_rd/100;
 		}
-		else dx = -1;
+		else dx = -speed*x_rd/100;
 
 		if(entities.get_player().get_y()+30>this.get_y()+0.5*height){
-			dy = 1;
+			dy = speed*y_rd/100;
 		}
-		else dy = -1;
+		else dy = -speed*y_rd/100;
 
 		this.move(dx,0,entities);
 		this.move(0,dy,entities);
-		
 	}
 	
 	public void move(int x,int y,Entities entities){

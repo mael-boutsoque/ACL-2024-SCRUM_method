@@ -7,8 +7,8 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.BasicStroke;
 
+import fr.ul.acl.engine.Game;
 import fr.ul.acl.engine.GamePainter;
-import fr.ul.acl.model.upgrades.Menu;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -39,7 +39,7 @@ public class PacmanPainter implements GamePainter {
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
 	@Override
-	public void draw(BufferedImage im , Entities entities , long FPS , Menu menu) {
+	public void draw(BufferedImage im , Game game , long FPS) {
 
 		// creation du crayon pour dessiner
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
@@ -48,7 +48,7 @@ public class PacmanPainter implements GamePainter {
 
 
 		// parcour les entities pour les dessiner
-		entities.draw(crayon);		
+		game.get_Entities().draw(crayon);		
 
 		crayon = null;
 		crayon = (Graphics2D) im.getGraphics();
@@ -57,9 +57,9 @@ public class PacmanPainter implements GamePainter {
 		crayon.setColor(Color.GREEN);
 		crayon.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-		if(menu.is_opened()){
+		if(game.get_Menu().is_opened()){
 			// dessine le menu
-			menu.draw(crayon);
+			game.get_Menu().draw(crayon);
 		}
 
 		//dessine FPS

@@ -19,12 +19,14 @@ public class PacmanController implements GameController {
 	 * commande en cours
 	 */
 	private ArrayList<Cmd> commandeEnCours;
+	public static boolean isKeyPressed;
 	
 	/**
 	 * construction du controleur par defaut le controleur n'a pas de commande
 	 */
 	public PacmanController() {
 		this.commandeEnCours = new ArrayList<Cmd>();
+		isKeyPressed = false;
 	}
 
 	/**
@@ -47,10 +49,10 @@ public class PacmanController implements GameController {
 			char keychar = e.getKeyChar();
 
 			// controlle du joueur
-			if( keychar == 'z' && !commandeEnCours.contains(Cmd.UP)) this.commandeEnCours.add(Cmd.UP);
-			if( keychar == 's' && !commandeEnCours.contains(Cmd.DOWN)) this.commandeEnCours.add(Cmd.DOWN);
-			if( keychar == 'q' && !commandeEnCours.contains(Cmd.LEFT)) this.commandeEnCours.add(Cmd.LEFT);
-			if( keychar == 'd' && !commandeEnCours.contains(Cmd.RIGHT)) this.commandeEnCours.add(Cmd.RIGHT);
+			if( (keychar == 'z' || keychar == 'w') && !commandeEnCours.contains(Cmd.UP)) this.commandeEnCours.add(Cmd.UP);
+			if( (keychar == 's') && !commandeEnCours.contains(Cmd.DOWN)) this.commandeEnCours.add(Cmd.DOWN);
+			if( (keychar == 'q' || keychar == 'a') && !commandeEnCours.contains(Cmd.LEFT)) this.commandeEnCours.add(Cmd.LEFT);
+			if( (keychar == 'd') && !commandeEnCours.contains(Cmd.RIGHT)) this.commandeEnCours.add(Cmd.RIGHT);
 			if (e.getKeyCode() == KeyEvent.VK_SPACE && !commandeEnCours.contains(Cmd.SHOOT)){this.commandeEnCours.add(Cmd.SHOOT);
 				System.out.println("space");
 			}
@@ -59,15 +61,16 @@ public class PacmanController implements GameController {
 			if(keychar == 'm' && !commandeEnCours.contains(Cmd.OPENMENU)){//OPENMENU
 				this.commandeEnCours.add(Cmd.OPENMENU);
 			}
-			if( keychar == '&' && !commandeEnCours.contains(Cmd.MENU_1)) this.commandeEnCours.add(Cmd.MENU_1);
-			if( keychar == 'é' && !commandeEnCours.contains(Cmd.MENU_2)) this.commandeEnCours.add(Cmd.MENU_2);
-			if( keychar == '"' && !commandeEnCours.contains(Cmd.MENU_3)) this.commandeEnCours.add(Cmd.MENU_3);
+			if( (keychar == '&' || keychar == 'i') && !commandeEnCours.contains(Cmd.MENU_1)) this.commandeEnCours.add(Cmd.MENU_1);
+			if( (keychar == 'é' || keychar == 'o') && !commandeEnCours.contains(Cmd.MENU_2)) this.commandeEnCours.add(Cmd.MENU_2);
+			if( (keychar == '"' || keychar == 'p') && !commandeEnCours.contains(Cmd.MENU_3)) this.commandeEnCours.add(Cmd.MENU_3);
 
 			// fermer le jeu
 			if( e.getKeyCode()==27) {
 				System.out.println("echap");
 				System.exit(0);
 			}
+			isKeyPressed = true;
 	
 	}
 
@@ -78,15 +81,16 @@ public class PacmanController implements GameController {
 	public void keyReleased(KeyEvent e) {
 		char keychar = e.getKeyChar();
 			// joueur
-			if( keychar == 'z' ) this.commandeEnCours.remove(Cmd.UP);
+			if( (keychar == 'z' || keychar == 'w') ) this.commandeEnCours.remove(Cmd.UP);
 			if( keychar == 's' ) this.commandeEnCours.remove(Cmd.DOWN);
-			if( keychar == 'q' ) this.commandeEnCours.remove(Cmd.LEFT);
+			if( (keychar == 'q' || keychar == 'a') ) this.commandeEnCours.remove(Cmd.LEFT);
 			if( keychar == 'd' ) this.commandeEnCours.remove(Cmd.RIGHT);
 			// menu
 			if( keychar == 'm' ) this.commandeEnCours.remove(Cmd.OPENMENU);
-			if( keychar == '&' ) this.commandeEnCours.remove(Cmd.MENU_1);
-			if( keychar == 'é' ) this.commandeEnCours.remove(Cmd.MENU_2);
-			if( keychar == '"' ) this.commandeEnCours.remove(Cmd.MENU_3);
+			if( keychar == '&' || keychar == 'i' ) this.commandeEnCours.remove(Cmd.MENU_1);
+			if( keychar == 'é' || keychar == 'o' ) this.commandeEnCours.remove(Cmd.MENU_2);
+			if( keychar == '"' || keychar == 'p' ) this.commandeEnCours.remove(Cmd.MENU_3);
+			isKeyPressed = false;
 	}
 
 	@Override

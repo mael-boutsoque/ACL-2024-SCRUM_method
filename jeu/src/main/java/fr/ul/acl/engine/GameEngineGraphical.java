@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import fr.ul.acl.model.Entities;
-import fr.ul.acl.model.Player;
-
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -15,7 +12,6 @@ import fr.ul.acl.model.Player;
  */
 public class GameEngineGraphical {
 
-	private Entities entities;
 	/**
 	 * le game a executer
 	 */
@@ -51,9 +47,8 @@ public class GameEngineGraphical {
 	 *            controlleur a utiliser
 	 *            
 	 */
-	public GameEngineGraphical(Game game, GamePainter gamePainter, GameController gameController, Entities gestion_entities) {
+	public GameEngineGraphical(Game game, GamePainter gamePainter, GameController gameController) {
 		// creation du game
-		this.entities = gestion_entities;
 		this.game = game;
 		this.gamePainter = gamePainter;
 		this.gameController = gameController;
@@ -62,7 +57,7 @@ public class GameEngineGraphical {
 	/**
 	 * permet de lancer le game
 	 */
-	public void run(Player player) throws InterruptedException {
+	public void run(Game game) throws InterruptedException {
 
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
@@ -73,11 +68,11 @@ public class GameEngineGraphical {
 			ArrayList<Cmd> c = this.gameController.getCommand();
 
 			// fait evoluer le game
-			this.game.evolve(c,entities);
+			this.game.evolve(c);
 			//this.gamePainter.set_pos(entities.get_player().get_x(),entities.get_player().get_y());
 			// affiche le game
-			this.gui.paint(this.game , entities ,FPS , game.getMenu());
-			this.gui.get_jframe().addMouseMotionListener(player);
+			this.gui.paint(this.game , FPS);
+			this.gui.get_jframe().addMouseMotionListener(game.get_Entities().get_player());
 			//this.gui.get_jframe().addMouseListener(player);
 			// met en attente
 			long currentTime = System.nanoTime();

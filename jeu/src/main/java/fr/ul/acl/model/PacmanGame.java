@@ -9,6 +9,10 @@ import fr.ul.acl.engine.Cmd;
 import fr.ul.acl.engine.Game;
 import fr.ul.acl.model.upgrades.Menu;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import java.net.URL;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -21,6 +25,11 @@ public class PacmanGame implements Game {
 	private int entity_delay = 0;
 	private boolean game_is_close = false;
 	private Menu menu_upgrades;
+
+	private Entities entities;
+
+	Clip clip;
+    URL soundURL[] = new URL[5];
 
 	/**
 	 * constructeur avec fichier source pour le help
@@ -39,7 +48,11 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 
+		this.entities = new Entities(width,height);
 		this.menu_upgrades = new Menu(width , height);
+
+		soundURL[0] = getClass().getResource("/footsteps.wav");
+		setFile(0);
 	}
 
 	/**
@@ -48,7 +61,7 @@ public class PacmanGame implements Game {
 	 * @param commande
 	 */
 	@Override
-	public void evolve(ArrayList<Cmd> commandes , Entities entities) {
+	public void evolve(ArrayList<Cmd> commandes) {
 		//deplacement joueur
 		//System.out.println(commandes.toString());
 		int x=0,y=0;
@@ -99,6 +112,10 @@ public class PacmanGame implements Game {
 		 // on fait evoluer le jeu si le menu n'est pas ouvert et s'il est ouvert aussi
 			int speed = entities.get_player().get_speed();
 
+			if((x!=0 || y!=0) && !clip.isActive()){
+				PlayMusic(0);
+			}
+
 			if (changes_shooting_state){
 				entities.get_player().change_shooting_state();
 			}
@@ -120,6 +137,7 @@ public class PacmanGame implements Game {
 			entities.locate_player();
 			
 			entities.kill_dead_entities();
+			entities.changeWave();
 			//fait évoluer les entitiés
 			entities.get_player().evolve(entities , menu_upgrades);
 
@@ -149,9 +167,38 @@ public class PacmanGame implements Game {
 		// le jeu n'est jamais fini
 		return game_is_close;
 	}
-
 	public Menu getMenu(){
 		return menu_upgrades;
 	}
 
+	public Menu get_Menu(){
+		return this.menu_upgrades;
+	}
+
+	public Entities get_Entities(){
+		return this.entities;
+	}
+
+	public void setFile(int i){
+        try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+        }catch(Exception e){
+            System.out.println("error 99");
+        }
+
+    }
+
+    public void PlayMusic(int i){
+        setFile(i);
+        clip.start();
+    }
+
+    public void loop(int i){
+        setFile(i);
+        System.out.println(clip);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
 }

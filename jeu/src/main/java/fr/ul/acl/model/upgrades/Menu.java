@@ -2,29 +2,20 @@ package fr.ul.acl.model.upgrades;
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.*;
 import java.awt.*;
 
 import fr.ul.acl.model.Player;
 import fr.ul.acl.model.upgrades.upgrades_list.*;
 
 public class Menu {
-    private int width;
-    private int height;
-    private int dwidth;
     private int dheight;
-    private int button_width;
     private int button_height;
     private Boolean isOpen = false;
     private ArrayList<Boutton> bouttons;
     private ArrayList<Upgrade> upgrades;
 
     public Menu(int width , int height){
-        this.width = width;
-        this.dwidth = width/5;
         this.dheight = height/10;
-        this.height = height;
-        button_width = dwidth-10;
         button_height = dheight-10;
 
         upgrades = new ArrayList<>();
@@ -43,7 +34,6 @@ public class Menu {
         int txt_y = 50 + ((80 -  metrics.getHeight())/2) + metrics.getAscent();
         crayon.drawString(texte, txt_x, txt_y);
         crayon.setFont(new Font("Arial", Font.PLAIN, 20));
-
         for(int i=0 ; i<3 ; i++){
             bouttons.get(i).draw(crayon);
         }
