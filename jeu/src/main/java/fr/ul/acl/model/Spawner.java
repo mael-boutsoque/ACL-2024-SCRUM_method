@@ -53,15 +53,15 @@ public class Spawner extends Entity {
     }
     private void load_monstres(int level, Entities entities){
         monstres.clear();
-        Zombie z = new Zombie(this.x,this.y,width,height,20, entities);
+        Zombie z = new Zombie(this.x,this.y,width,height,level, entities);
     	z.move_relative(this.x_relative, this.y_relative, entities);
         monstres.add(z);
         
-        Zombie_quick z2 = new Zombie_quick(this.x,this.y, width,height,20, entities);
+        Zombie_quick z2 = new Zombie_quick(this.x,this.y, width,height,level, entities);
     	z2.move_relative(this.x_relative, this.y_relative, entities);
     	monstres.add(z2);
         
-        Zombie_tireur z3 = new Zombie_tireur(this.x,this.y, width,height,20, entities);
+        Zombie_tireur z3 = new Zombie_tireur(this.x,this.y, width,height,level, entities);
     	z3.move_relative(this.x_relative, this.y_relative, entities);
     	 monstres.add(z3);
     }

@@ -16,8 +16,6 @@ public class Main {
 		PacmanPainter painter = new PacmanPainter();
 		PacmanGame game = new PacmanGame("helpFilePacman.txt" , painter.getWidth(),painter.getHeight());
 		PacmanController controller = new PacmanController();
-		
-
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		engine.run(game);// ajoute le joueur aux classes a update pour avoir la position de la souri

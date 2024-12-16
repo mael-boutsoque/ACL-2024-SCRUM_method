@@ -11,6 +11,6 @@ public class Bonus_de_vie extends Upgrade {
     }
 
     public void update_player(Player player){
-        player.add_life(1);
+        player.add_life(10);
     }
 }
