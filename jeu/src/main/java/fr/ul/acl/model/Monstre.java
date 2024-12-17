@@ -66,7 +66,7 @@ public class Monstre extends Entity{
 	}
 
 	public int get_speed() {
-		return this.speed;
+		return (int) this.speed;
 	}
 
 	@Override public int get_level(){

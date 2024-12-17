@@ -79,7 +79,7 @@ public class GameEngineGraphical {
             long elapsedTime = currentTime - previousTime;
             previousTime = currentTime;
 			//Thread.sleep(5);
-			long min_wait = 3;
+			long min_wait = 1;
 			Thread.sleep(FPS);
 			long waitTime = 1000000000 / TARGET_FPS - elapsedTime;
 			FPS = Math.max(min_wait,waitTime / 1000000);

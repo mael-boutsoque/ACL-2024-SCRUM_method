@@ -32,7 +32,7 @@ public class Entity {
     protected int heal_bar_height = 10;
 
     // debug
-    public boolean show_hitbox = true;
+    public boolean show_hitbox = false;
 
     public Entity(int x,int y,int width,int height){
         this.x = x;

@@ -185,8 +185,8 @@ public class Entities {
 			obstacles.get(i).draw(crayon);
         }
         
-        for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
-    		g.draw(crayon);
+        /*for(GrapheWaypoint g : pathfinder.get_graphe_map().keySet()) {
+            g.draw(crayon);
     		crayon.setColor(Color.RED);
     		int x1 = g.get_x();
     		int y1 = g.get_y();
@@ -195,7 +195,7 @@ public class Entities {
     		for (GrapheWaypoint g2 : pathfinder.get_graphe_map().get(g)) {
     			x2 = g2.get_x();
     			y2 = g2.get_y();
-    			crayon.drawLine(x1, y1, x2, y2);
+    			//crayon.drawLine(x1, y1, x2, y2);
     		}
     	}
         
@@ -205,17 +205,17 @@ public class Entities {
     		int y1 = g.get_y();
     		int x2 = g.get_x();
     		int y2 = g.get_y();
-			crayon.setColor(Color.GREEN);
+			//crayon.setColor(Color.GREEN);
 			if (g2 != null) {
 				x2 = g2.get_x();
 				y2 = g2.get_y();
-				crayon.drawLine(x1, y1, x2, y2);
+				//crayon.drawLine(x1, y1, x2, y2);
 			}
         }
 
-        crayon.setColor(Color.GREEN);
-        crayon.drawOval(this.closest_node_to_player.get_x(), this.closest_node_to_player.get_y(), 20, 20);
-        
+        //crayon.setColor(Color.GREEN);
+        //crayon.drawOval(this.closest_node_to_player.get_x(), this.closest_node_to_player.get_y(), 20, 20);
+        */
 
         
         for(int i=0;i<enemies.size();i++){
